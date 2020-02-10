@@ -16,9 +16,9 @@ module carry_lookahead_adder_four_bit
 	assign	p2 = A[2] | B[2];
 	assign	p3 = A[3] | B[3];
 	assign	g0 = A[0] & B[0];
-	assign	g0 = A[1] & B[1];
-	assign	g0 = A[2] & B[2];
-	assign	g0 = A[3] & B[3];
+	assign	g1 = A[1] & B[1];
+	assign	g2 = A[2] & B[2];
+	assign	g3 = A[3] & B[3];
 	assign	c0 = Cin;
 	assign	c1 = (c0 & p0) | g0;
 	assign	c2 = (c1 & p1) | g1;
