@@ -104,6 +104,7 @@ module lab4_adders_toplevel
      * Each time you instantate an "object", you consume physical hardware on the FPGA
      * in the same way that you'd place a 74-series hex driver chip on your protoboard 
      * Make sure only *one* adder module (out of the three types) is instantiated*/
+
 /*
 	 ripple_adder ripple_adder_inst
     (

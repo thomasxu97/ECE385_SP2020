@@ -20,9 +20,9 @@ module carry_lookahead_adder_four_bit
 	assign	g2 = A[2] & B[2];
 	assign	g3 = A[3] & B[3];
 	assign	c0 = Cin;
-	assign	c1 = (c0 & p0) | g0;
-	assign	c2 = (c1 & p1) | g1;
-	assign	c3 = (c2 & p2) | g2;
+	assign	c1 = (Cin & p0) | g0;
+	assign	c2 = (Cin & p0 & p1) | (g0 & p1) | g1;
+	assign	c3 = (Cin & p0 & p1 & p2) | (g0 & p1 & p2) | (g1 & p2) | g2;
 
 	assign	Sum[0] = A[0] ^ B[0] ^ c0;
 	assign 	Sum[1] = A[1] ^ B[1] ^ c1;
