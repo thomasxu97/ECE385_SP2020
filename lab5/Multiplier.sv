@@ -25,11 +25,12 @@ module Multiplier(
     logic           Add_comb;
     logic           Sub_comb;
     logic           LoadA;
-    logic           ClearB;
+    logic           ClearB = 1'b0;
     logic           Aout;
     logic           Bout;
     logic           X_comb;
-
+	 logic			  Clr_ld;
+	 
     always_ff @(posedge Clk) begin
         AhexU <= AhexU_comb;
         AhexL <= AhexL_comb;
@@ -39,18 +40,14 @@ module Multiplier(
 
     always_ff @(posedge Clk)
     begin
-        if(!Reset)
-            X <= 0;
-        if(Clr_ld)
-            X <= 0;
         if(Add_comb == 1'b1) 
         begin
-            A_comb <= A;
+            A_comb <= Aval;
             B_comb <= S;
         end
         if(Sub_comb == 1'b1)
         begin
-            A_comb <= A;
+            A_comb <= Aval;
             B_comb <= ~S+1'b1;
         end
     end
@@ -63,15 +60,15 @@ module Multiplier(
 
     Adder9bit Adder(.A(A_comb), .B(B_comb), .Sum(Sum_comb), .CO(X_comb));
 
-    ControlUnit Ctrl(.ClearA_LoadB(~ClearA_LoadB), .Run(~Run), .Clk, .Reset(~Reset), 
-        .M(Bout), .Clr_ld(ClearA_LoadB), .Shift(Reg_shift),
-        .Add(Add_comb), .Sub(Sub_comb));
+    ControlUnit Ctrl(.ClearA_LoadB(~ClearA_LoadB), .Run(~Run), .Clk(Clk), .Reset(~Reset), 
+        .M(Bout), .Clr_ld(Clr_ld), .Shift(Reg_shift), .Add(Add_comb), .Sub(Sub_comb), 
+		  .LoadA(LoadA));
 
-    Register8bit A(.Din(Sum), .Clk, .Shift(Reg_shift), .Clear(ClearA_LoadB),
+    Register8bit A(.Din(Sum), .Clk(Clk), .Shift(Reg_shift), .Clear(Clr_ld),
         .Load(LoadA), .ShiftIn(X), .Dout(Aval), .ShiftOut(Aout));
 
-    Register8bit B(.Din(S), .Clk, .Shift(Reg_shift), .Clear(ClearB),
-        .Load(ClearA_LoadB), .ShiftIn(Aout), .Dout(Bval), .ShiftOut(Bout));
+    Register8bit B(.Din(S), .Clk(Clk), .Shift(Reg_shift), .Clear(ClearB),
+        .Load(Clr_ld), .ShiftIn(Aout), .Dout(Bval), .ShiftOut(Bout));
 
     HexDriver AhexU_inst
     (
