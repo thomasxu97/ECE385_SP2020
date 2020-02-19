@@ -30,25 +30,26 @@ module ControlUnit(
     always_comb
         begin
             next_state = curr_state;
-            unique case (curr_state)
+            case (curr_state)
                 INIT: 
-					if (Run) 
-					begin
+					if (Run) begin
 						next_state = START;
 						Counter = 3'b0;
 					end
-					if (ClearA_LoadB) begin
+					else if (ClearA_LoadB && Clr_ld == 1'b0) begin
 					    Clr_ld = 1'b1;   
 					end
                     
                 START: 
+						  Clr_ld = 1'b0;
                     if (M == 1 && Counter < 7) 
                         next_state = ADD;
                     else if (M == 0)
                         next_state = SHIFT;
                     else if (M == 1 && Counter == 7)
                         next_state = SUB;
-
+                    else
+                        next_state = START;
                 ADD:
                     Add = 1'b1;
                     next_state = SHIFT;
@@ -60,10 +61,9 @@ module ControlUnit(
                 SHIFT:
                     Shift = 1'b1;
                     if (Counter < 7)
-                    begin
                         next_state = START;
-                    end
-                    else next_state = FINISH;
+                    else 
+                        next_state = FINISH;
 
                 FINISH:
                     if (~Run) next_state = INIT;
