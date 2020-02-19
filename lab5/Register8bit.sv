@@ -16,7 +16,6 @@ always_ff @(posedge Clk or posedge Clear)
         else if (Load) Dout <= Din;
         else if (Shift)
         begin
-            ShiftOut <= Dout[0];
             Dout[0] <= Dout[1];
             Dout[1] <= Dout[2];
             Dout[2] <= Dout[3];
@@ -27,4 +26,6 @@ always_ff @(posedge Clk or posedge Clear)
             Dout[7] <= ShiftIn;
         end
     end
+
+    assign ShiftOut = Dout[0];
 endmodule

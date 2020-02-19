@@ -32,13 +32,14 @@ module ControlUnit(
             next_state = curr_state;
             unique case (curr_state)
                 INIT: 
-                if (Run) 
-                    begin
-                        next_state = START;
-                        Counter = 3'b0;
-                    end
-                if (ClearA_LoadB)
-                    Clr_ld = 1'b1;   
+					if (Run) 
+					begin
+						next_state = START;
+						Counter = 3'b0;
+					end
+					if (ClearA_LoadB) begin
+					    Clr_ld = 1'b1;   
+					end
                     
                 START: 
                     if (M == 1 && Counter < 7) 
@@ -59,9 +60,9 @@ module ControlUnit(
                 SHIFT:
                     Shift = 1'b1;
                     if (Counter < 7)
-                        begin
-                            next_state = START;
-                        end
+                    begin
+                        next_state = START;
+                    end
                     else next_state = FINISH;
 
                 FINISH:
