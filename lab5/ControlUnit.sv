@@ -5,6 +5,7 @@ module ControlUnit(
     input logic Reset,
     input logic M,
 
+	 output logic ClearA,
     output logic Clr_ld,
     output logic Shift,
     output logic Add,
@@ -37,15 +38,17 @@ module ControlUnit(
 				Shift = 1'b0;
 				Sub = 1'b0;
 				LoadA = 1'b0;
-				
+				ClearA = Clr_ld;
             case (curr_state)
 					INIT: 
 					begin
 					if (Run) begin
+							ClearA = 1'b1;
 							next_state = START;
 						end
 						else if (ClearA_LoadB) begin
 							 Clr_ld = 1'b1; 
+							 ClearA = 1'b1;
 						end
 					end
                     
@@ -90,12 +93,14 @@ module ControlUnit(
 					end
 
                FINISH:
+					/*
                    if (Run) 
 						 begin 
 							next_state = INIT;
 							Clr_ld = 1'b1; 
 						end
-
+					*/
+						next_state = INIT;
             endcase
         end
 
