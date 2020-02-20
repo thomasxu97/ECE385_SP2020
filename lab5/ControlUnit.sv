@@ -11,8 +11,8 @@ module ControlUnit(
     output logic Sub,
 	 output logic LoadA
 );
-    logic [2:0] Counter = 3'b0;
-    enum logic [2:0] {INIT, START, ADD, SHIFT, SUB, FINISH} curr_state, next_state;
+    logic [3:0] Counter = 4'b0;
+    enum logic [2:0] {INIT, START, ADD, SHIFT, SUB, HALT, FINISH} curr_state, next_state;
 
     always_ff @(posedge Clk or posedge Reset)
     begin
@@ -43,7 +43,6 @@ module ControlUnit(
 					begin
 					if (Run) begin
 							next_state = START;
-							Clr_ld = 1'b1; 
 						end
 						else if (ClearA_LoadB) begin
 							 Clr_ld = 1'b1; 
@@ -72,6 +71,7 @@ module ControlUnit(
                SUB:
 					begin
                     Sub = 1'b1;
+						  LoadA = 1'b1;
                     next_state = SHIFT;
 					end
                 
@@ -81,11 +81,20 @@ module ControlUnit(
                     if (Counter < 8)
                         next_state = START;
                     else 
-                        next_state = FINISH;
+                        next_state = HALT;
+					end
+					
+					HALT:
+					begin
+						if (~Run) next_state = FINISH;
 					end
 
                FINISH:
-                   if (~Run) next_state = INIT;
+                   if (Run) 
+						 begin 
+							next_state = INIT;
+							Clr_ld = 1'b1; 
+						end
 
             endcase
         end

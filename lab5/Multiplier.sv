@@ -17,6 +17,7 @@ module Multiplier(
     logic[7:0]      Sum_comb;
     logic[7:0]      A_comb;
     logic[7:0]      B_comb;
+	 logic           mode_comb;
     logic[6:0]      AhexU_comb;
     logic[6:0]      AhexL_comb;
     logic[6:0]      BhexU_comb;
@@ -38,27 +39,17 @@ module Multiplier(
         BhexL <= BhexL_comb;
     end
 
-    always_ff @(posedge Clk)
-    begin
-        if(Add_comb == 1'b1) 
-        begin
-            A_comb <= Aval;
-            B_comb <= S;
-        end
-        if(Sub_comb == 1'b1)
-        begin
-            A_comb <= Aval;
-            B_comb <= ~S+1'b1;
-        end
-    end
-
     always_comb
     begin
+		  mode_comb = 1'b1;
+		  A_comb = Aval;
+        B_comb = S;
+        if(Sub_comb == 1'b1) mode_comb = 1'b0;
         Sum = Sum_comb;
         X = X_comb;
     end
 
-    Adder9bit Adder(.A(A_comb), .B(B_comb), .Sum(Sum_comb), .CO(X_comb));
+    Adder9bit Adder(.A(A_comb), .B(B_comb), .Sum(Sum_comb), .mode(mode_comb), .CO(X_comb));
 
     ControlUnit Ctrl(.ClearA_LoadB(~ClearA_LoadB), .Run(~Run), .Clk(Clk), .Reset(~Reset), 
         .M(Bout), .Clr_ld(Clr_ld), .Shift(Reg_shift), .Add(Add_comb), .Sub(Sub_comb), 
