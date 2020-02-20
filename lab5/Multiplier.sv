@@ -27,6 +27,7 @@ module Multiplier(
     logic           Sub_comb;
     logic           LoadA;
     logic           ClearB = 1'b0;
+	 logic 			  ClearA;
     logic           Aout;
     logic           Bout;
     logic           X_comb;
@@ -52,10 +53,10 @@ module Multiplier(
     Adder9bit Adder(.A(A_comb), .B(B_comb), .Sum(Sum_comb), .mode(mode_comb), .CO(X_comb));
 
     ControlUnit Ctrl(.ClearA_LoadB(~ClearA_LoadB), .Run(~Run), .Clk(Clk), .Reset(~Reset), 
-        .M(Bout), .Clr_ld(Clr_ld), .Shift(Reg_shift), .Add(Add_comb), .Sub(Sub_comb), 
+        .M(Bout), .ClearA, .Clr_ld(Clr_ld), .Shift(Reg_shift), .Add(Add_comb), .Sub(Sub_comb), 
 		  .LoadA(LoadA));
 
-    Register8bit A(.Din(Sum), .Clk(Clk), .Shift(Reg_shift), .Clear(Clr_ld),
+    Register8bit A(.Din(Sum), .Clk(Clk), .Shift(Reg_shift), .Clear(ClearA),
         .Load(LoadA), .ShiftIn(X), .Dout(Aval), .ShiftOut(Aout));
 
     Register8bit B(.Din(S), .Clk(Clk), .Shift(Reg_shift), .Clear(ClearB),
@@ -63,26 +64,26 @@ module Multiplier(
 
     HexDriver AhexU_inst
     (
-        .In0(Aval[3:0]),   // This connects the 4 least significant bits of 
+        .In0(Aval[7:4]),   // This connects the 4 least significant bits of 
                         // register A to the input of a hex driver named Ahex0_inst
         .Out0(AhexU_comb)
     );
     
     HexDriver AhexL_inst
     (
-        .In0(Aval[7:4]),
+        .In0(Aval[3:0]),
         .Out0(AhexL_comb)
     );
 
     HexDriver BhexU_inst
     (
-        .In0(Bval[3:0]),
+        .In0(Bval[7:4]),
         .Out0(BhexU_comb)
     );
     
     HexDriver BhexL_inst
     (
-        .In0(Bval[7:4]),
+        .In0(Bval[3:0]),
         .Out0(BhexL_comb)
     );
 	 
