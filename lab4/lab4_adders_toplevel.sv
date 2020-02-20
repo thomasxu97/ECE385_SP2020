@@ -132,6 +132,7 @@ module lab4_adders_toplevel
         .CO(CO_comb)
     );
 
+
     HexDriver Ahex0_inst
     (
         .In0(A[3:0]),   // This connects the 4 least significant bits of 
