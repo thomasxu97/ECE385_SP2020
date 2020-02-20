@@ -1,9 +1,9 @@
 module Multiplier(
     input logic[7:0] S,
     input logic Clk,
-    input logic Reset,
-    input logic Run,
-    input logic ClearA_LoadB,
+    input logic Reset_SH,
+    input logic Run_SH,
+    input logic ClearA_LoadB_SH,
 
     output logic[6:0] AhexU, 
     output logic[6:0] AhexL,
@@ -94,5 +94,7 @@ module Multiplier(
         .In0(Bval[7:4]),
         .Out0(BhexL_comb)
     );
+	 
+	 sync button_sync[2:0] (Clk, {Reset_SH, ClearA_LoadB_SH, Run_SH}, {Reset, ClearA_LoadB, Run});
 
 endmodule
