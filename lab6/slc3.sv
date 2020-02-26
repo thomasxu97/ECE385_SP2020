@@ -37,7 +37,8 @@ assign Run_ah = ~Run;
 logic BEN;
 logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC, LD_LED;
 logic GatePC, GateMDR, GateALU, GateMARMUX;
-logic [1:0] PCMUX, ADDR2MUX;
+logic [1:0] PCMUX;
+logic [2:0] ADDR2MUX;
 logic DRMUX, ADDR1MUX, MARMUX;
 logic MIO_EN;
 

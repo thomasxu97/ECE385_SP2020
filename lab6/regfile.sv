@@ -5,7 +5,7 @@ module regfile #(parameter width = 16)
     input LD_REGF,
     input [width-1:0] in,
     input [2:0] SR1, SR2, DR,
-    output logic [31:0] RA, RB
+    output logic [width-1:0] RA, RB
 );
 
 logic [width-1:0] data [8];

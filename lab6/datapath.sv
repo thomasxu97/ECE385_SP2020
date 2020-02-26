@@ -9,7 +9,7 @@ module datapath #(parameter width = 16)
     input LD_MAR,
     input LD_NZP,
     input [width-1:0] MDR_in,
-    input pcmux_sel,
+    input [1:0] pcmux_sel,
     input regfilemux_sel,
     input marmux_sel,
     input alumux1_sel,

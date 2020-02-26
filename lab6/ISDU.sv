@@ -38,7 +38,7 @@ module ISDU (   input logic         Clk,
 				output logic        DRMUX,
 									MARMUX,
 									ADDR1MUX,
-				output logic [1:0]  ADDR2MUX,
+				output logic [2:0]  ADDR2MUX,
 				  
 				output logic        Mem_CE,
 									Mem_UB,
