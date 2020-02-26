@@ -18,7 +18,7 @@ module datapath #(parameter width = 16)
     output [width-1:0] MDR_out,
     output [width-1:0] MAR_out,
     output [width-1:0] IR_out,
-    output BEN;
+    output BEN,
     output [width-1:0] Data_to_SRAM
 );
 
@@ -109,7 +109,7 @@ nzp NZP(
     .LD (LD_NZP),
     .in (regfilemux_out),
     .nzp (nzp_out)
-)
+);
 
 alu ALU(
     .opcode (opcode),
