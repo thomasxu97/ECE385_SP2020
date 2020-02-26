@@ -27,7 +27,7 @@ end
 
 always_comb
 begin
-    out = data;
+    nzp = data;
 end
 
 endmodule : nzp

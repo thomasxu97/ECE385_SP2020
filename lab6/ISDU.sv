@@ -75,22 +75,13 @@ module ISDU (   input logic         Clk,
 		LD_MDR = 1'b0;
 		LD_IR = 1'b0;
 		LD_BEN = 1'b0;
-		LD_CC = 1'b0;
 		LD_REG = 1'b0;
 		LD_PC = 1'b0;
 		LD_LED = 1'b0;
 		 
-		GatePC = 1'b0;
-		GateMDR = 1'b0;
-		GateALU = 1'b0;
-		GateMARMUX = 1'b0;
-		 
-		ALUK = 2'b00;
-		 
 		PCMUX = 2'b00;
 		DRMUX = 1'b0;
-		SR1MUX = 1'b0;
-		SR2MUX = 1'b0;
+		MARMUX = 1'b0;
 		ADDR1MUX = 1'b0;
 		ADDR2MUX = 2'b00;
 		 
@@ -103,29 +94,15 @@ module ISDU (   input logic         Clk,
 				if (Run) 
 					Next_state = S_18;                      
 			S_18 : 
-			begin
 				Next_state = S_33_1;
-				LD_MAR = 1'b1;
-				LD_PC = 1'b1;
-				PCMUX = 1'b0;
-			end
 			// Any states involving SRAM require more than one clock cycles.
 			// The exact number will be discussed in lecture.
 			S_33_1 : 
-			begin
 				Next_state = S_33_2;
-				LD_MDR = 1'b1;
-			end
 			S_33_2 : 
-			begin
 				Next_state = S_35;
-				LD_MDR = 1'b1;
-			end
 			S_35 : 
-			begin
 				Next_state = PauseIR1;
-				LD_IR = 1'b1;
-			end
 			// PauseIR1 and PauseIR2 are only for Week 1 such that TAs can see 
 			// the values in IR.
 			PauseIR1 : 
@@ -162,13 +139,12 @@ module ISDU (   input logic         Clk,
 			Halted: ;
 			S_18 : 
 				begin 
-					GatePC = 1'b1;
 					LD_MAR = 1'b1;
 					PCMUX = 2'b00;
 					LD_PC = 1'b1;
 				end
 			S_33_1 : 
-				Mem_OE = 1'b0;
+					Mem_OE = 1'b0;
 			S_33_2 : 
 				begin 
 					Mem_OE = 1'b0;
@@ -176,24 +152,12 @@ module ISDU (   input logic         Clk,
 				end
 			S_35 : 
 				begin 
-					GateMDR = 1'b1;
 					LD_IR = 1'b1;
 				end
 			PauseIR1: ;
 			PauseIR2: ;
-			S_32 : 
-				LD_BEN = 1'b1;
-			S_01 : 
-				begin 
-					SR2MUX = IR_5;
-					ALUK = 2'b00;
-					GateALU = 1'b1;
-					LD_REG = 1'b1;
-					// incomplete...
-				end
-
-			// You need to finish the rest of states.....
-
+			S_32 : ;
+			S_01 : ;
 			default : ;
 		endcase
 	end 

@@ -17,7 +17,7 @@ begin
     begin
         data <= '0;
     end
-    else if (load)
+    else if (LD_PC)
     begin
         data <= in;
     end

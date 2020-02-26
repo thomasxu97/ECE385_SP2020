@@ -121,7 +121,7 @@ alu ALU(
 always_comb begin : MUXES
     unique case (pcmux_sel)
         2'b00: pcmux_out = PC_out + 1;
-        2'b01: pcmux_out = SA;
+        2'b01: pcmux_out = RA;
         2'b11: pcmux_out = alu_out;
     endcase
 
