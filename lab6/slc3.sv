@@ -93,8 +93,7 @@ datapath Datapath(
     .MDR_out (MDR),
     .MAR_out (MAR),
     .IR_out (IR),
-    .BEN (BEN),
-    .Data_to_SRAM (Data_to_SRAM)
+    .BEN (BEN)
 );
 
 // Our SRAM and I/O controller

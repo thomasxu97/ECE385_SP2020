@@ -18,8 +18,7 @@ module datapath #(parameter width = 16)
     output [width-1:0] MDR_out,
     output [width-1:0] MAR_out,
     output [width-1:0] IR_out,
-    output BEN,
-    output [width-1:0] Data_to_SRAM
+    output BEN
 );
 
 
