@@ -44,16 +44,10 @@ S = 0;
 #5 Run = 0;
 #5 Run = 1;
 
-#10 Continue = 0;
-#5 Continue = 1;
-
-#10 Continue = 0;
-#5 Continue = 1;
-
-#10 Continue = 0;
-#5 Continue = 1;
-
-#10 Continue = 0;
-#5 Continue = 1;
+for (int i=0; i<100; i=i+1)
+begin
+	#10 Continue = 0;
+	#5 Continue = 1;
+end
 end
 endmodule
