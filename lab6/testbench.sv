@@ -13,7 +13,7 @@ logic [11:0] LED;
 logic [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7;
 logic CE, UB, LB, OE, WE;
 logic [19:0] ADDR;
-inout wire [15:0] Data;
+wire [15:0] Data;
 		
 // Instantiating the DUT
 // Make sure the module and signal names match with those in your design
@@ -44,5 +44,16 @@ S = 0;
 #5 Run = 0;
 #5 Run = 1;
 
+#10 Continue = 0;
+#5 Continue = 1;
+
+#10 Continue = 0;
+#5 Continue = 1;
+
+#10 Continue = 0;
+#5 Continue = 1;
+
+#10 Continue = 0;
+#5 Continue = 1;
 end
 endmodule
