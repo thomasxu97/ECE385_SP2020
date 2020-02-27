@@ -10,10 +10,11 @@ module ControlUnit(
     output logic Shift,
     output logic Add,
     output logic Sub,
-	 output logic LoadA
+	 output logic LoadA,
+	 output logic Updatex
 );
     logic [3:0] Counter = 4'b0;
-    enum logic [2:0] {INIT, START, ADD, SHIFT, SUB, HALT, FINISH} curr_state, next_state;
+    enum logic [2:0] {INIT, START, ADD, SHIFT, SUB, UPDATEX, HALT, FINISH} curr_state, next_state;
 
     always_ff @(posedge Clk or posedge Reset)
     begin
@@ -39,6 +40,7 @@ module ControlUnit(
 				Sub = 1'b0;
 				LoadA = 1'b0;
 				ClearA = Clr_ld;
+				Updatex = 1'b0;
             case (curr_state)
 					INIT: 
 					begin
@@ -68,14 +70,16 @@ module ControlUnit(
 					begin
                     Add = 1'b1;
 						  LoadA = 1'b1;
-                    next_state = SHIFT;
+						  //Updatex = 1'b1;
+                    next_state = UPDATEX;
 					end
 
                SUB:
 					begin
                     Sub = 1'b1;
 						  LoadA = 1'b1;
-                    next_state = SHIFT;
+						  //Updatex = 1'b1;
+                    next_state = UPDATEX;
 					end
                 
                SHIFT:
@@ -87,19 +91,18 @@ module ControlUnit(
                         next_state = HALT;
 					end
 					
+					UPDATEX:
+					begin
+							Updatex = 1'b1;
+							next_state = SHIFT;
+					end
+					
 					HALT:
 					begin
 						if (~Run) next_state = FINISH;
 					end
 
                FINISH:
-					/*
-                   if (Run) 
-						 begin 
-							next_state = INIT;
-							Clr_ld = 1'b1; 
-						end
-					*/
 						next_state = INIT;
             endcase
         end
