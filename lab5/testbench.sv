@@ -46,19 +46,19 @@ initial begin: TEST_VECTORS
 Reset_SH = 0;		// Toggle Rest
 ClearA_LoadB_SH = 1;
 Run_SH = 1;
-S = 8'b11000101;
+S = 8'd59;
 
 #10 Reset_SH = 1;
 
 #10 ClearA_LoadB_SH = 0;
 #10 ClearA_LoadB_SH = 1;
 
-#10 S = 8'b00000111;
+#10 S = -8'd07;
 
 #10 Run_SH = 0;	// Toggle Execute
    
 #300 Run_SH = 1;
-    ans_1a = (7*(-59));
+    ans_1a = (16'b1111_1110_0110_0011);
     if (Aval != ans_1a[15:8])
 	 ErrorCnt++;
     if (Bval != ans_1a[7:0])
