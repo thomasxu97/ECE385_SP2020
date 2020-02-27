@@ -77,7 +77,7 @@ assign MIO_EN = ~OE;
 // Be careful about whether Reset is active high or low
 datapath Datapath(
     .Clk (Clk),
-    .Reset (Reset),
+    .Reset (Reset_ah),
     .LD_PC (LD_PC),
     .LD_IR (LD_IR),
     .LD_REGF (LD_REG),
