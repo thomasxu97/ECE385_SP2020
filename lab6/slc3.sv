@@ -84,6 +84,7 @@ datapath Datapath(
     .LD_MDR (LD_MDR),
     .LD_MAR (LD_MAR),
     .LD_NZP (LD_BEN),
+    .LD_LED (LE_LED),
     .MDR_in (MDR_in),
     .pcmux_sel (PCMUX),
     .regfilemux_sel (DRMUX),
