@@ -7,10 +7,10 @@ module alu #(parameter width = 16)
 
 always_comb
 begin
-    unique case (opcode)
-        4'b0001:  f = a + b;
+    case (opcode)
         4'b0101:  f = a & b;
         4'b1001:  f = ~a;
+        default:  f = a + b;
     endcase
 end
 

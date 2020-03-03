@@ -39,7 +39,7 @@ logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC, LD_LED;
 logic GatePC, GateMDR, GateALU, GateMARMUX;
 logic [1:0] PCMUX;
 logic [2:0] ADDR2MUX;
-logic DRMUX, ADDR1MUX, MARMUX;
+logic DRMUX, ADDR1MUX, MARMUX, MDRMUX;
 logic MIO_EN;
 
 logic [15:0] MDR_in;
@@ -50,16 +50,16 @@ logic [15:0] Data_from_SRAM, Data_to_SRAM;
 logic [3:0][3:0] hex_4;
 
 // For week 1, hexdrivers will display IR. Comment out these in week 2.
-HexDriver hex_driver3 (IR[15:12], HEX3);
-HexDriver hex_driver2 (IR[11:8], HEX2);
-HexDriver hex_driver1 (IR[7:4], HEX1);
-HexDriver hex_driver0 (IR[3:0], HEX0);
+// HexDriver hex_driver3 (IR[15:12], HEX3);
+// HexDriver hex_driver2 (IR[11:8], HEX2);
+// HexDriver hex_driver1 (IR[7:4], HEX1);
+// HexDriver hex_driver0 (IR[3:0], HEX0);
 
 // For week 2, hexdrivers will be mounted to Mem2IO
-// HexDriver hex_driver3 (hex_4[3][3:0], HEX3);
-// HexDriver hex_driver2 (hex_4[2][3:0], HEX2);
-// HexDriver hex_driver1 (hex_4[1][3:0], HEX1);
-// HexDriver hex_driver0 (hex_4[0][3:0], HEX0);
+HexDriver hex_driver3 (hex_4[3][3:0], HEX3);
+HexDriver hex_driver2 (hex_4[2][3:0], HEX2);
+HexDriver hex_driver1 (hex_4[1][3:0], HEX1);
+HexDriver hex_driver0 (hex_4[0][3:0], HEX0);
 
 // The other hex display will show PC for both weeks.
 HexDriver hex_driver7 (PC[15:12], HEX7);
@@ -88,6 +88,7 @@ datapath Datapath(
     .pcmux_sel (PCMUX),
     .regfilemux_sel (DRMUX),
     .marmux_sel (MARMUX),
+    .mdrmux_sel (MDRMUX),
     .alumux1_sel (ADDR1MUX),
     .alumux2_sel (ADDR2MUX),
     .PC_out (PC),

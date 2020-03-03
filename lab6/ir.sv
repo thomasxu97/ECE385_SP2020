@@ -19,7 +19,7 @@ module ir #(parameter width = 16)
 logic [width-1:0] data;
 
 assign opcode = data[15:12];
-assign DR = data[11:9];
+assign DR = (opcode==4'b0100)? 3'b111 : data[11:9];
 assign SR1 = data[8:6];
 assign SR2 = data[2:0];
 assign imm5 = data[4:0];

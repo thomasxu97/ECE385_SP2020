@@ -10,7 +10,8 @@ module datapath #(parameter width = 16)
     input LD_NZP,
     input [width-1:0] MDR_in,
     input [1:0] pcmux_sel,
-    input regfilemux_sel,
+    input [1:0] regfilemux_sel,
+    input mdrmux_sel,
     input marmux_sel,
     input alumux1_sel,
     input [2:0] alumux2_sel,
@@ -90,7 +91,7 @@ register MDR(
     .Clk (Clk),
     .Reset (Reset),
     .LD (LD_MDR),
-    .in (MDR_in),
+    .in (mdrmux_out),
     .out (MDR_out)
 );
 
@@ -118,33 +119,42 @@ alu ALU(
 );
 
 always_comb begin : MUXES
-    unique case (pcmux_sel)
+    case (pcmux_sel)
         2'b00: pcmux_out = PC_out + 1;
         2'b01: pcmux_out = RA;
-        2'b11: pcmux_out = alu_out;
+        2'b10: pcmux_out = alu_out;
+        default: pcmux_out = PC_out + 1;
     endcase
 
-    unique case (regfilemux_sel)
-        1'b0: regfilemux_out = alu_out;
-        1'b1: regfilemux_out = MDR_out;
+    case (regfilemux_sel)
+        2'b00: regfilemux_out = alu_out;
+        2'b01: regfilemux_out = MDR_out;
+        2'b10: regfilemux_out = PC_out;
+        default: regfilemux_out = alu_out;
     endcase
 
-    unique case (alumux1_sel)
+    case (alumux1_sel)
         1'b0: alumux1_out = RA;
         1'b1: alumux1_out = PC_out;
     endcase
 
-    unique case (alumux2_sel)
+    case (alumux2_sel)
         3'b000: alumux2_out = RB;
         3'b001: alumux2_out = $signed(imm5);
         3'b010: alumux2_out = $signed(PCoffset9);
         3'b011: alumux2_out = $signed(PCoffset11);
         3'b100: alumux2_out = $signed(offset6);
+        default: alumux2_out = RB;
     endcase
 
-    unique case (marmux_sel)
+    case (marmux_sel)
         1'b0: marmux_out = PC_out;
         1'b1: marmux_out = alu_out;
+    endcase
+
+    case (mdrmux_sel)
+        1'b0: mdrmux_out = MDR_in;
+        1'b1: mdrmux_out = RA;
     endcase
 end
 

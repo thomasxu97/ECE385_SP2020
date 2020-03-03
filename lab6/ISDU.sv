@@ -35,8 +35,9 @@ module ISDU (   input logic         Clk,
 									LD_LED, // for PAUSE instruction
 									
 				output logic [1:0]  PCMUX,
-				output logic        DRMUX,
-									MARMUX,
+							        DRMUX,
+				output logic		MARMUX,
+									MDRMUX,
 									ADDR1MUX,
 				output logic [2:0]  ADDR2MUX,
 				  
@@ -55,7 +56,23 @@ module ISDU (   input logic         Clk,
 						S_33_2, 
 						S_35, 
 						S_32, 
-						S_01}   State, Next_state;   // Internal state logic
+						S_01,
+						S_05,
+						S_09,
+						S_00,
+						S_12,
+						S_04,
+						S_06,
+						S_07,
+						S_22,
+						S_21,
+						S_25_1,
+						S_25_2,
+						S_23,
+						S_27,
+						S_16_1,
+						S_16_2
+						}   State, Next_state;   // Internal state logic
 		
 	always_ff @ (posedge Clk)
 	begin
@@ -80,10 +97,11 @@ module ISDU (   input logic         Clk,
 		LD_LED = 1'b0;
 		 
 		PCMUX = 2'b00;
-		DRMUX = 1'b0;
+		DRMUX = 2'b00;
 		MARMUX = 1'b0;
+		MDRMUX = 1'b0;
 		ADDR1MUX = 1'b0;
-		ADDR2MUX = 2'b00;
+		ADDR2MUX = 3'b000;
 		 
 		Mem_OE = 1'b1;
 		Mem_WE = 1'b1;
@@ -102,7 +120,7 @@ module ISDU (   input logic         Clk,
 			S_33_2 : 
 				Next_state = S_35;
 			S_35 : 
-				Next_state = PauseIR1;
+				Next_state = S_32;
 			// PauseIR1 and PauseIR2 are only for Week 1 such that TAs can see 
 			// the values in IR.
 			PauseIR1 : 
@@ -115,21 +133,72 @@ module ISDU (   input logic         Clk,
 					Next_state = PauseIR2;
 				else 
 					Next_state = S_18;
+			PauseLED1 : 
+				if (~Continue) 
+					Next_state = PauseLED1;
+				else 
+					Next_state = PauseLED2;
+			PauseLED2 : 
+				if (Continue) 
+					Next_state = PauseLED2;
+				else 
+					Next_state = S_18;
 			S_32 : 
 				case (Opcode)
-					4'b0001 : 
+					4'b0001 : //ADD
 						Next_state = S_01;
-
-					// You need to finish the rest of opcodes.....
-
+					4'b0101 : //AND
+						Next_state = S_05;
+					4'b1001 : //NOT
+						Next_state = S_09;
+					4'b0000 : //BR
+						Next_state = S_00;
+					4'b1100: //JMP
+						Next_state = S_12;
+					4'b0100: //JSR
+						Next_state = S_04;
+					4'b0110: //LDR
+						Next_state = S_06;
+					4'b0111: //STR
+						Next_state = S_07;
+					4'b1101: //PAUSE
+						Next_state = PauseIR1;
 					default : 
 						Next_state = S_18;
 				endcase
 			S_01 : 
 				Next_state = S_18;
-
-			// You need to finish the rest of states.....
-
+			S_05 :
+				Next_state = S_18;
+			S_09 :
+				Next_state = S_18;
+			S_00 :
+				if (BEM) Next_state = S_18;
+				else Next_state = S_22;
+			S_12 :
+				Next_state = S_18;
+			S_04 :
+				Next_state = S_21;
+			S_06 :
+				Next_state = S_25;
+			S_07 :
+				Next_state = S_23;
+			S_22 : 
+				Next_state = S_18;
+			S_21 :
+				Next_state = S_18;
+			S_25_1 :
+				Next_state = S_25_2;
+			S_25_2 :
+				Next_state = S_27;
+			S_23 :
+				Next_state = S_16;
+			S_27 :
+				Next_state = S_18;
+			S_16_1 :
+				Next_state = S_16_2;
+			S_16_2 :
+				Next_state = S_18;
 			default : ;
 
 		endcase
@@ -140,6 +209,7 @@ module ISDU (   input logic         Clk,
 			S_18 : 
 				begin 
 					LD_MAR = 1'b1;
+					MARMUX = 1'b0;
 					PCMUX = 2'b00;
 					LD_PC = 1'b1;
 				end
@@ -149,20 +219,60 @@ module ISDU (   input logic         Clk,
 				begin 
 					Mem_OE = 1'b0;
 					LD_MDR = 1'b1;
+					MDRMUX = 1'b0;
 				end
 			S_35 : 
 				begin 
 					LD_IR = 1'b1;
 				end
-			PauseIR1: ;
-			PauseIR2: ;
-			S_32 : ;
-			S_01 : ;
+			PauseIR1: LD_LED = 1'b1;
+			PauseIR2: LD_LED = 1'b1;
+			PauseLED1: ;
+			PauseLED2: ;
+			S_32 : 
+				begin LD_BEN = 1'b1; end
+			S_01 : 
+				begin
+					if (IR_11) begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; ADDR2MUX = 3'b001; end
+					else begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; ADDR2MUX = 3'b000; end
+				end
+			S_05 :
+				begin
+					if (IR_11) begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; ADDR2MUX = 3'b001; end
+					else begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; ADDR2MUX = 3'b000; end
+				end
+			S_09 :
+				begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; end
+			S_00 : ;
+			S_12 : 
+				begin LD_PC = 1'b1; PCMUX = 2'b10; end
+			S_04 :
+				begin LD_REG = 1'b1; DRMUX = 2'b10; end
+			S_06 :
+				begin LD_MAR = 1'b1; MARMUX = 1'b1; ADDR1MUX = 1'b0; ADDR2MUX = 3'b100; end
+			S_07 ;
+				begin LD_MAR = 1'b1; MARMUX = 1'b1; ADDR1MUX = 1'b0; ADDR2MUX = 3'b100; end
+			S_22 :
+				begin LD_PC = 1'b1; PCMUX = 2'b10; ADDR1MUX = 1'b1; ADDR2MUX = 3'b010; end
+			S_21 :
+				begin LD_PC = 1'b1; PCMUX = 2'b10; ADDR1MUX = 1'b1; ADDR2MUX = 3'b011; end
+			S_25_1 :
+				begin Mem_OE = 1'b0; end
+			S_25_2 :
+				begin Mem_OE = 1'b0; LD_MDR = 1'b1; MDRMUX = 1'b0; end
+			S_23 :
+				begin LD_MDR = 1'b1; MDRMUX = 1'b1; end
+			S_27 :
+				begin LD_REG = 1'b1; DRMUX = 2'b01; end
+			S_16_1 :
+				begin Mem_WE = 1'b1; end
+			S_16_2 :
+				begin Mem_WE = 1'b1; end
 			default : ;
 		endcase
 	end 
 
-	 // These should always be active
+	// These should always be active
 	assign Mem_CE = 1'b0;
 	assign Mem_UB = 1'b0;
 	assign Mem_LB = 1'b0;
