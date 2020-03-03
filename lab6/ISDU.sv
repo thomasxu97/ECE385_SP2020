@@ -48,9 +48,11 @@ module ISDU (   input logic         Clk,
 									Mem_WE
 				);
 
-	enum logic [3:0] {  Halted, 
+	enum logic [4:0] {  Halted, 
 						PauseIR1, 
 						PauseIR2, 
+						PauseLED1, 
+						PauseLED2, 
 						S_18, 
 						S_33_1, 
 						S_33_2, 
@@ -173,14 +175,14 @@ module ISDU (   input logic         Clk,
 			S_09 :
 				Next_state = S_18;
 			S_00 :
-				if (BEM) Next_state = S_18;
+				if (BEN) Next_state = S_18;
 				else Next_state = S_22;
 			S_12 :
 				Next_state = S_18;
 			S_04 :
 				Next_state = S_21;
 			S_06 :
-				Next_state = S_25;
+				Next_state = S_25_1;
 			S_07 :
 				Next_state = S_23;
 			S_22 : 
@@ -192,7 +194,7 @@ module ISDU (   input logic         Clk,
 			S_25_2 :
 				Next_state = S_27;
 			S_23 :
-				Next_state = S_16;
+				Next_state = S_16_1;
 			S_27 :
 				Next_state = S_18;
 			S_16_1 :
@@ -250,7 +252,7 @@ module ISDU (   input logic         Clk,
 				begin LD_REG = 1'b1; DRMUX = 2'b10; end
 			S_06 :
 				begin LD_MAR = 1'b1; MARMUX = 1'b1; ADDR1MUX = 1'b0; ADDR2MUX = 3'b100; end
-			S_07 ;
+			S_07 :
 				begin LD_MAR = 1'b1; MARMUX = 1'b1; ADDR1MUX = 1'b0; ADDR2MUX = 3'b100; end
 			S_22 :
 				begin LD_PC = 1'b1; PCMUX = 2'b10; ADDR1MUX = 1'b1; ADDR2MUX = 3'b010; end

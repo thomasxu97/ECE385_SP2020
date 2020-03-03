@@ -18,7 +18,7 @@ module datapath #(parameter width = 16)
     input [2:0] alumux2_sel,
     output [width-1:0] PC_out,
     output [width-1:0] MDR_out,
-    output [width-1:0] MAR,
+    output [width-1:0] address,
     output [width-1:0] IR_out,
     output BEN
 );
@@ -44,6 +44,7 @@ logic [width-1:0] RB;
 
 logic [width-1:0] MAR_out;
 logic [width-1:0] marmux_out;
+logic [width-1:0] mdrmux_out;
 logic [2:0] nzp_out;
 
 logic [width-1:0] alumux1_out;
@@ -51,7 +52,7 @@ logic [width-1:0] alumux2_out;
 logic [width-1:0] alu_out;
 
 assign BEN = ((nzp_out & DR) != 0) & (opcode == 4'b0000);
-assign MAR = (LD_LED) ? 16'hFFF : MAR_out;
+assign address = (LD_LED) ? 16'hFFF : MAR_out;
 
 ir IR(
     .Clk (Clk),

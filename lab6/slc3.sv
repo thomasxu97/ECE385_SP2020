@@ -37,9 +37,9 @@ assign Run_ah = ~Run;
 logic BEN;
 logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC, LD_LED;
 logic GatePC, GateMDR, GateALU, GateMARMUX;
-logic [1:0] PCMUX;
+logic [1:0] PCMUX, DRMUX;
 logic [2:0] ADDR2MUX;
-logic DRMUX, ADDR1MUX, MARMUX, MDRMUX;
+logic ADDR1MUX, MARMUX, MDRMUX;
 logic MIO_EN;
 
 logic [15:0] MDR_in;
@@ -84,7 +84,7 @@ datapath Datapath(
     .LD_MDR (LD_MDR),
     .LD_MAR (LD_MAR),
     .LD_NZP (LD_BEN),
-    .LD_LED (LE_LED),
+    .LD_LED (LD_LED),
     .MDR_in (MDR_in),
     .pcmux_sel (PCMUX),
     .regfilemux_sel (DRMUX),
