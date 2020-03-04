@@ -7,8 +7,7 @@ module datapath #(parameter width = 16)
     input LD_REGF,
     input LD_MDR,
     input LD_MAR,
-    input LD_NZP,
-    input LD_LED,
+    input LD_BEN,
     input [width-1:0] MDR_in,
     input [1:0] pcmux_sel,
     input [1:0] regfilemux_sel,
@@ -18,7 +17,7 @@ module datapath #(parameter width = 16)
     input [2:0] alumux2_sel,
     output [width-1:0] PC_out,
     output [width-1:0] MDR_out,
-    output [width-1:0] address,
+    output [width-1:0] MAR_out,
     output [width-1:0] IR_out,
     output BEN
 );
@@ -42,7 +41,6 @@ logic [width-1:0] regfilemux_out;
 logic [width-1:0] RA;
 logic [width-1:0] RB;
 
-logic [width-1:0] MAR_out;
 logic [width-1:0] marmux_out;
 logic [width-1:0] mdrmux_out;
 logic [2:0] nzp_out;
@@ -51,8 +49,7 @@ logic [width-1:0] alumux1_out;
 logic [width-1:0] alumux2_out;
 logic [width-1:0] alu_out;
 
-assign BEN = ((nzp_out & DR) != 0) & (opcode == 4'b0000);
-assign address = (LD_LED) ? 16'hFFF : MAR_out;
+assign BEN = LD_BEN & ((nzp_out & DR) != 0) & (opcode == 4'b0000);
 
 ir IR(
     .Clk (Clk),
@@ -110,7 +107,7 @@ register MAR(
 nzp NZP(
     .Clk (Clk),
     .Reset (Reset),
-    .LD (LD_NZP),
+    .LD (LD_REGF),
     .in (regfilemux_out),
     .nzp (nzp_out)
 );
@@ -124,10 +121,10 @@ alu ALU(
 
 always_comb begin : MUXES
     case (pcmux_sel)
-        2'b00: pcmux_out = PC_out + 1;
+        2'b00: pcmux_out = PC_out + 16'b1;
         2'b01: pcmux_out = RA;
         2'b10: pcmux_out = alu_out;
-        default: pcmux_out = PC_out + 1;
+        default: pcmux_out = PC_out + 16'b1;
     endcase
 
     case (regfilemux_sel)

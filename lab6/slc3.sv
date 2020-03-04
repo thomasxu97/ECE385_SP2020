@@ -73,6 +73,8 @@ HexDriver hex_driver4 (PC[3:0], HEX4);
 assign ADDR = { 4'b00, MAR }; //Note, our external SRAM chip is 1Mx16, but address space is only 64Kx16
 assign MIO_EN = ~OE;
 
+assign LED = LD_LED ? IR[11:0] : 12'b0;
+
 // You need to make your own datapath module and connect everything to the datapath
 // Be careful about whether Reset is active high or low
 datapath Datapath(
@@ -83,8 +85,7 @@ datapath Datapath(
     .LD_REGF (LD_REG),
     .LD_MDR (LD_MDR),
     .LD_MAR (LD_MAR),
-    .LD_NZP (LD_BEN),
-    .LD_LED (LD_LED),
+    .LD_BEN (LD_BEN),
     .MDR_in (MDR_in),
     .pcmux_sel (PCMUX),
     .regfilemux_sel (DRMUX),

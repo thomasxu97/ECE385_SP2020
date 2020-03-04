@@ -37,17 +37,12 @@ initial begin: TEST
 Reset = 0;		// Toggle Rest
 Run = 1;
 Continue = 1;
-S = 0;
+S = 3;
 
 #4 Reset = 1;
 
 #4 Run = 0;
 #4 Run = 1;
 
-for (int i=0; i<100; i=i+1)
-begin
-	#10 Continue = 0;
-	#4 Continue = 1;
-end
 end
 endmodule

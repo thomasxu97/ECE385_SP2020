@@ -4,7 +4,7 @@ module pc_register #(parameter width = 16)
     input Reset,
     input LD_PC,
     input [width-1:0] in,
-    output [width-1:0] out
+    output logic [width-1:0] out
 );
 
 // PC needs to start at 0

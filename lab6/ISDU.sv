@@ -267,9 +267,9 @@ module ISDU (   input logic         Clk,
 			S_27 :
 				begin LD_REG = 1'b1; DRMUX = 2'b01; end
 			S_16_1 :
-				begin Mem_WE = 1'b1; end
+				begin Mem_WE = 1'b0; end
 			S_16_2 :
-				begin Mem_WE = 1'b1; end
+				begin Mem_WE = 1'b0; end
 			default : ;
 		endcase
 	end 
