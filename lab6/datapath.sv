@@ -11,6 +11,7 @@ module datapath #(parameter width = 16)
     input [width-1:0] MDR_in,
     input [1:0] pcmux_sel,
     input [1:0] regfilemux_sel,
+	 input srmux_sel,
     input mdrmux_sel,
     input marmux_sel,
     input alumux1_sel,
@@ -31,6 +32,7 @@ logic [3:0] opcode;
 logic [2:0] DR;
 logic [2:0] SR1;
 logic [2:0] SR2;
+logic [2:0] srmux_out;
 logic [4:0] imm5;
 logic [8:0] PCoffset9;
 logic [10:0] PCoffset11;
@@ -81,7 +83,7 @@ regfile regfile(
     .Reset (Reset),
     .LD_REGF (LD_REGF),
     .in (regfilemux_out),
-    .SR1 (SR1),
+    .SR1 (srmux_out),
     .SR2 (SR2),
     .DR (DR),
     .RA (RA),
@@ -157,6 +159,11 @@ always_comb begin : MUXES
         1'b0: mdrmux_out = MDR_in;
         1'b1: mdrmux_out = RA;
     endcase
+	 
+	 case (srmux_sel)
+	     1'b0: srmux_out = SR1;
+		  1'b1: srmux_out = DR;
+	 endcase
 end
 
 endmodule

@@ -37,7 +37,7 @@ initial begin: TEST
 Reset = 0;		// Toggle Rest
 Run = 1;
 Continue = 1;
-S = 3;
+S = 6;
 
 #4 Reset = 1;
 

@@ -39,7 +39,7 @@ logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC, LD_LED;
 logic GatePC, GateMDR, GateALU, GateMARMUX;
 logic [1:0] PCMUX, DRMUX;
 logic [2:0] ADDR2MUX;
-logic ADDR1MUX, MARMUX, MDRMUX;
+logic ADDR1MUX, MARMUX, MDRMUX, SRMUX;
 logic MIO_EN;
 
 logic [15:0] MDR_in;
@@ -89,6 +89,7 @@ datapath Datapath(
     .MDR_in (MDR_in),
     .pcmux_sel (PCMUX),
     .regfilemux_sel (DRMUX),
+	 .srmux_sel (SRMUX),
     .marmux_sel (MARMUX),
     .mdrmux_sel (MDRMUX),
     .alumux1_sel (ADDR1MUX),

@@ -39,6 +39,7 @@ module ISDU (   input logic         Clk,
 				output logic		MARMUX,
 									MDRMUX,
 									ADDR1MUX,
+									SRMUX,
 				output logic [2:0]  ADDR2MUX,
 				  
 				output logic        Mem_CE,
@@ -102,6 +103,7 @@ module ISDU (   input logic         Clk,
 		DRMUX = 2'b00;
 		MARMUX = 1'b0;
 		MDRMUX = 1'b0;
+		SRMUX = 1'b0;
 		ADDR1MUX = 1'b0;
 		ADDR2MUX = 3'b000;
 		 
@@ -263,7 +265,7 @@ module ISDU (   input logic         Clk,
 			S_25_2 :
 				begin Mem_OE = 1'b0; LD_MDR = 1'b1; MDRMUX = 1'b0; end
 			S_23 :
-				begin LD_MDR = 1'b1; MDRMUX = 1'b1; end
+				begin LD_MDR = 1'b1; MDRMUX = 1'b1; SRMUX = 1'b1; end
 			S_27 :
 				begin LD_REG = 1'b1; DRMUX = 2'b01; end
 			S_16_1 :
