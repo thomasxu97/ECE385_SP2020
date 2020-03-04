@@ -17,7 +17,7 @@ begin
     end
     else if (LD)
     begin
-        data <= (in > 0)? 3'b001 : ((in < 0) ? 3'b100 : 3'b010);
+        data <= ($signed(in) > 0)? 3'b001 : (($signed(in) < 0) ? 3'b100 : 3'b010);
     end
     else
     begin

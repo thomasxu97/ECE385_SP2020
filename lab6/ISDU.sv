@@ -52,8 +52,6 @@ module ISDU (   input logic         Clk,
 	enum logic [4:0] {  Halted, 
 						PauseIR1, 
 						PauseIR2, 
-						PauseLED1, 
-						PauseLED2, 
 						S_18, 
 						S_33_1, 
 						S_33_2, 
@@ -94,7 +92,7 @@ module ISDU (   input logic         Clk,
 		LD_MAR = 1'b0;
 		LD_MDR = 1'b0;
 		LD_IR = 1'b0;
-		LD_BEN = 1'b0;
+		LD_BEN = 1'b1;
 		LD_REG = 1'b0;
 		LD_PC = 1'b0;
 		LD_LED = 1'b0;
@@ -137,16 +135,6 @@ module ISDU (   input logic         Clk,
 					Next_state = PauseIR2;
 				else 
 					Next_state = S_18;
-			PauseLED1 : 
-				if (~Continue) 
-					Next_state = PauseLED1;
-				else 
-					Next_state = PauseLED2;
-			PauseLED2 : 
-				if (Continue) 
-					Next_state = PauseLED2;
-				else 
-					Next_state = S_18;
 			S_32 : 
 				case (Opcode)
 					4'b0001 : //ADD
@@ -177,8 +165,8 @@ module ISDU (   input logic         Clk,
 			S_09 :
 				Next_state = S_18;
 			S_00 :
-				if (BEN) Next_state = S_18;
-				else Next_state = S_22;
+				if (BEN) Next_state = S_22;
+				else Next_state = S_18;
 			S_12 :
 				Next_state = S_18;
 			S_04 :
@@ -231,18 +219,15 @@ module ISDU (   input logic         Clk,
 				end
 			PauseIR1: LD_LED = 1'b1;
 			PauseIR2: LD_LED = 1'b1;
-			PauseLED1: ;
-			PauseLED2: ;
-			S_32 : 
-				begin LD_BEN = 1'b1; end
+			S_32 : ;
 			S_01 : 
 				begin
-					if (IR_11) begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; ADDR2MUX = 3'b001; end
+					if (IR_5) begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; ADDR2MUX = 3'b001; end
 					else begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; ADDR2MUX = 3'b000; end
 				end
 			S_05 :
 				begin
-					if (IR_11) begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; ADDR2MUX = 3'b001; end
+					if (IR_5) begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; ADDR2MUX = 3'b001; end
 					else begin LD_REG = 1'b1; DRMUX = 2'b00; ADDR1MUX = 1'b0; ADDR2MUX = 3'b000; end
 				end
 			S_09 :
