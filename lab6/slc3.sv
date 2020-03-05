@@ -118,7 +118,7 @@ Mem2IO memory_subsystem(
 
 // The tri-state buffer serves as the interface between Mem2IO and SRAM
 tristate #(.N(16)) tr0(
-    .Clk(Clk), .tristate_output_enable(~WE), .Data_write(Data_to_SRAM), .Data_read(Data_from_SRAM), .Data(Data)
+    .Clk(Clk), .tristate_output_enable(~WE_sh), .Data_write(Data_to_SRAM), .Data_read(Data_from_SRAM), .Data(Data)
 );
 
 // State machine and control signals

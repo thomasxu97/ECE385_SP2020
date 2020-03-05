@@ -37,19 +37,20 @@ initial begin: TEST
 Reset = 0;		// Toggle Rest
 Run = 1;
 Continue = 1;
-S = 49;
+S = 11;
 
 #4 Reset = 1;
 
 #4 Run = 0;
 #4 Run = 1;
 
+/* test 1
 #4 S = 16'b1011;
 # 50 Continue = 0;
 # 4 Continue = 1;
+*/
 
 
-/* test 3
 #100 S = 4;
 #4 Continue = 0;
 #4 Continue = 1;
@@ -58,7 +59,7 @@ for (int i=0; i< 10; i++) begin
 	#100 Continue = 0;
 	#4 Continue = 1;
 end
-*/
+
 /* test 4
 #100 S = 16'b1100;
 #4 Continue = 0;
