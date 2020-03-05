@@ -21,17 +21,19 @@ module slc3(
     input logic Clk, Reset, Run, Continue,
     output logic [11:0] LED,
     output logic [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7,
-    output logic CE, UB, LB, OE, WE,
+    output logic CE, UB, LB, OE_sh, WE_sh,
     output logic [19:0] ADDR,
     inout wire [15:0] Data //tristate buffers need to be of type wire
 );
 
 // Declaration of push button active high signals
+logic Reset_sh, Continue_sh, Run_sh;
 logic Reset_ah, Continue_ah, Run_ah;
+logic OE, WE;
 
-assign Reset_ah = ~Reset;
-assign Continue_ah = ~Continue;
-assign Run_ah = ~Run;
+assign Reset_ah = ~Reset_sh;
+assign Continue_ah = ~Continue_sh;
+assign Run_ah = ~Run_sh;
 
 // Internal connections
 logic BEN;
@@ -74,6 +76,10 @@ assign ADDR = { 4'b00, MAR }; //Note, our external SRAM chip is 1Mx16, but addre
 assign MIO_EN = ~OE;
 
 assign LED = LD_LED ? IR[11:0] : 12'b0;
+
+// synchronizers
+sync button_sync[2:0] (Clk, {Reset, Continue, Run}, {Reset_sh, Continue_sh, Run_sh});
+sync_r1 output_sync[1:0] (Clk, {OE, WE}, {OE_sh, WE_sh});
 
 // You need to make your own datapath module and connect everything to the datapath
 // Be careful about whether Reset is active high or low
