@@ -204,12 +204,12 @@ module ISDU (   input logic         Clk,
 					MARMUX = 1'b0;
 					PCMUX = 2'b00;
 					LD_PC = 1'b1;
+					Mem_OE = 1'b0;
 				end
 			S_33_1 : 
 					Mem_OE = 1'b0;
 			S_33_2 : 
 				begin 
-					Mem_OE = 1'b0;
 					LD_MDR = 1'b1;
 					MDRMUX = 1'b0;
 				end
@@ -238,7 +238,7 @@ module ISDU (   input logic         Clk,
 			S_04 :
 				begin LD_REG = 1'b1; DRMUX = 2'b10; end
 			S_06 :
-				begin LD_MAR = 1'b1; MARMUX = 1'b1; ADDR1MUX = 1'b0; ADDR2MUX = 3'b100; end
+				begin LD_MAR = 1'b1; MARMUX = 1'b1; ADDR1MUX = 1'b0; ADDR2MUX = 3'b100; Mem_OE = 1'b0; end
 			S_07 :
 				begin LD_MAR = 1'b1; MARMUX = 1'b1; ADDR1MUX = 1'b0; ADDR2MUX = 3'b100; end
 			S_22 :
@@ -248,15 +248,14 @@ module ISDU (   input logic         Clk,
 			S_25_1 :
 				begin Mem_OE = 1'b0; end
 			S_25_2 :
-				begin Mem_OE = 1'b0; LD_MDR = 1'b1; MDRMUX = 1'b0; end
+				begin LD_MDR = 1'b1; MDRMUX = 1'b0; end
 			S_23 :
-				begin LD_MDR = 1'b1; MDRMUX = 1'b1; SRMUX = 1'b1; end
+				begin LD_MDR = 1'b1; MDRMUX = 1'b1; SRMUX = 1'b1; Mem_WE = 1'b0; end
 			S_27 :
 				begin LD_REG = 1'b1; DRMUX = 2'b01; end
 			S_16_1 :
 				begin Mem_WE = 1'b0; end
-			S_16_2 :
-				begin Mem_WE = 1'b0; end
+			S_16_2 : ;
 			default : ;
 		endcase
 	end 

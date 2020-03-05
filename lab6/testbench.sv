@@ -44,6 +44,11 @@ S = 49;
 #4 Run = 0;
 #4 Run = 1;
 
+#4 S = 16'b1011;
+# 50 Continue = 0;
+# 4 Continue = 1;
+
+
 /* test 3
 #100 S = 4;
 #4 Continue = 0;
@@ -54,7 +59,7 @@ for (int i=0; i< 10; i++) begin
 	#4 Continue = 1;
 end
 */
-/* tes 4
+/* test 4
 #100 S = 16'b1100;
 #4 Continue = 0;
 #4 Continue = 1;
@@ -63,12 +68,12 @@ end
 #4 Continue = 1;
 */ 
 
-
+/* test 5
 #40 S = 16'b1011;
 #4 Continue = 0;
 #100 Continue = 1;
 #4 Continue = 0;
 #100 Continue = 1;
-
+*/
 end
 endmodule

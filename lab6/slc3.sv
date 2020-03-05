@@ -79,7 +79,7 @@ assign LED = LD_LED ? IR[11:0] : 12'b0;
 
 // synchronizers
 sync button_sync[2:0] (Clk, {Reset, Continue, Run}, {Reset_sh, Continue_sh, Run_sh});
-sync_r1 output_sync[1:0] (Clk, {OE, WE}, {OE_sh, WE_sh});
+sync_r1 output_sync[1:0] (Clk, Reset_ah, {OE, WE}, {OE_sh, WE_sh});
 
 // You need to make your own datapath module and connect everything to the datapath
 // Be careful about whether Reset is active high or low
@@ -110,6 +110,7 @@ datapath Datapath(
 // Our SRAM and I/O controller
 Mem2IO memory_subsystem(
     .*, .Reset(Reset_ah), .ADDR(ADDR), .Switches(S),
+	 .OE(OE_sh), .WE(WE_sh),
     .HEX0(hex_4[0][3:0]), .HEX1(hex_4[1][3:0]), .HEX2(hex_4[2][3:0]), .HEX3(hex_4[3][3:0]),
     .Data_from_CPU(MDR), .Data_to_CPU(MDR_in),
     .Data_from_SRAM(Data_from_SRAM), .Data_to_SRAM(Data_to_SRAM)
