@@ -42,11 +42,33 @@ module avalon_aes_interface (
 	logic [31:0] AES_MSG_DE0, AES_MSG_DE1, AES_MSG_DE2, AES_MSG_DE3;
 	logic [31:0] AES_START, AES_DONE;
 	logic [31:0] EMPTY_REG;
-	logic [31:0] read_reg, write_reg;
+	logic [31:0] write_reg;
 	logic [31:0] write_wire;
 	
 	assign EXPORT_DATA = {AES_MSG_EN0[31:16], AES_MSG_EN3[15:0]};
-	assign AVL_READDATA = read_reg;
+	
+	always_comb begin
+		AVL_READDATA = EMPTY_REG;
+		if (AVL_CS && AVL_READ) begin
+			case (AVL_ADDR) 
+				4'd0: AVL_READDATA 	= AES_KEY0;
+				4'd1: AVL_READDATA 	= AES_KEY1;
+				4'd2: AVL_READDATA 	= AES_KEY2;
+				4'd3: AVL_READDATA 	= AES_KEY3;
+				4'd4: AVL_READDATA 	= AES_MSG_EN0;
+				4'd5: AVL_READDATA 	= AES_MSG_EN1;
+				4'd6: AVL_READDATA 	= AES_MSG_EN2;
+				4'd7: AVL_READDATA 	= AES_MSG_EN3;
+				4'd8: AVL_READDATA 	= AES_MSG_DE0;
+				4'd9: AVL_READDATA 	= AES_MSG_DE1;
+				4'd10: AVL_READDATA 	= AES_MSG_DE2;
+				4'd11: AVL_READDATA 	= AES_MSG_DE3;
+				4'd14: AVL_READDATA 	= AES_START;
+				4'd15: AVL_READDATA 	= AES_DONE;
+				default: AVL_READDATA = EMPTY_REG;
+			endcase
+		end
+	end
 	
 	always_comb begin
 		case (AVL_ADDR) 
@@ -74,10 +96,11 @@ module avalon_aes_interface (
 			4'b0100: write_wire = {write_reg[31:24], AVL_WRITEDATA[23:16], write_reg[15:0]};
 			4'b0010: write_wire = {write_reg[31:16], AVL_WRITEDATA[15:8], write_reg[7:0]};
 			4'b0001: write_wire = {write_reg[31:8], AVL_WRITEDATA[7:0]};
+			default: write_wire = 32'd0;
 		endcase
 	end
 	always_ff @ (posedge CLK) begin
-		if (AVL_CS && RESET) begin
+		if (RESET) begin
 			AES_KEY0		<= 32'd0;
 			AES_KEY1		<= 32'd0;
 			AES_KEY2		<= 32'd0;
@@ -110,25 +133,6 @@ module avalon_aes_interface (
 				4'd14: AES_START 		<= write_wire;
 				4'd15: AES_DONE 		<= write_wire;
 				default: EMPTY_REG 	<= write_wire;
-			endcase
-		end
-		else if (AVL_CS && AVL_READ) begin
-			case (AVL_ADDR) 
-				4'd0: read_reg 	<= AES_KEY0;
-				4'd1: read_reg 	<= AES_KEY1;
-				4'd2: read_reg 	<= AES_KEY2;
-				4'd3: read_reg 	<= AES_KEY3;
-				4'd4: read_reg 	<= AES_MSG_EN0;
-				4'd5: read_reg 	<= AES_MSG_EN1;
-				4'd6: read_reg 	<= AES_MSG_EN2;
-				4'd7: read_reg 	<= AES_MSG_EN3;
-				4'd8: read_reg 	<= AES_MSG_DE0;
-				4'd9: read_reg 	<= AES_MSG_DE1;
-				4'd10: read_reg 	<= AES_MSG_DE2;
-				4'd11: read_reg 	<= AES_MSG_DE3;
-				4'd14: read_reg 	<= AES_START;
-				4'd15: read_reg 	<= AES_DONE;
-				default: read_reg <= EMPTY_REG;
 			endcase
 		end
 	end
