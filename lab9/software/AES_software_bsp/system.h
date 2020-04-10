@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'lab9_soc'
  * SOPC Builder design path: ../../lab9_soc.sopcinfo
  *
- * Generated: Thu Apr 09 23:29:50 CDT 2020
+ * Generated: Fri Apr 10 15:59:06 CDT 2020
  */
 
 /*
@@ -56,17 +56,17 @@
 
 
 /*
- * AES_Decryption_0 configuration
+ * AES configuration
  *
  */
 
-#define AES_DECRYPTION_0_BASE 0x40
-#define AES_DECRYPTION_0_IRQ -1
-#define AES_DECRYPTION_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define AES_DECRYPTION_0_NAME "/dev/AES_Decryption_0"
-#define AES_DECRYPTION_0_SPAN 64
-#define AES_DECRYPTION_0_TYPE "AES_Decryption"
-#define ALT_MODULE_CLASS_AES_Decryption_0 AES_Decryption
+#define AES_BASE 0x40
+#define AES_IRQ -1
+#define AES_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define AES_NAME "/dev/AES"
+#define AES_SPAN 64
+#define AES_TYPE "AES_Decryption"
+#define ALT_MODULE_CLASS_AES AES_Decryption
 
 
 /*
@@ -195,21 +195,21 @@
 
 
 /*
- * TIMER configuration
+ * Timer configuration
  *
  */
 
-#define ALT_MODULE_CLASS_TIMER altera_avalon_timer
+#define ALT_MODULE_CLASS_Timer altera_avalon_timer
 #define TIMER_ALWAYS_RUN 0
 #define TIMER_BASE 0x20
 #define TIMER_COUNTER_SIZE 32
 #define TIMER_FIXED_PERIOD 0
 #define TIMER_FREQ 50000000
-#define TIMER_IRQ 1
+#define TIMER_IRQ 0
 #define TIMER_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define TIMER_LOAD_VALUE 49999
 #define TIMER_MULT 0.001
-#define TIMER_NAME "/dev/TIMER"
+#define TIMER_NAME "/dev/Timer"
 #define TIMER_PERIOD 1
 #define TIMER_PERIOD_UNITS "ms"
 #define TIMER_RESET_OUTPUT 0
@@ -370,7 +370,7 @@
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1586492502
+#define SYSID_QSYS_0_TIMESTAMP 1586551587
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 #endif /* __SYSTEM_H_ */

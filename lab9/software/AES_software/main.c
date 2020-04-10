@@ -325,6 +325,7 @@ int main()
         }
     }
     else {
+
         // Run the Benchmark
         int i = 0;
         int size_KB = 2;
@@ -349,6 +350,7 @@ int main()
         time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
         speed = size_KB / time_spent;
         printf("Hardware Encryption Speed: %f KB/s \n", speed);
+
     }
     return 0;
 }

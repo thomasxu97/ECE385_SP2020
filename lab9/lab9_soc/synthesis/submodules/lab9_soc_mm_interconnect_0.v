@@ -24,13 +24,13 @@ module lab9_soc_mm_interconnect_0 (
 		output wire        nios2_gen2_0_instruction_master_waitrequest,    //                                         .waitrequest
 		input  wire        nios2_gen2_0_instruction_master_read,           //                                         .read
 		output wire [31:0] nios2_gen2_0_instruction_master_readdata,       //                                         .readdata
-		output wire [3:0]  AES_Decryption_0_AES_Slave_address,             //               AES_Decryption_0_AES_Slave.address
-		output wire        AES_Decryption_0_AES_Slave_write,               //                                         .write
-		output wire        AES_Decryption_0_AES_Slave_read,                //                                         .read
-		input  wire [31:0] AES_Decryption_0_AES_Slave_readdata,            //                                         .readdata
-		output wire [31:0] AES_Decryption_0_AES_Slave_writedata,           //                                         .writedata
-		output wire [3:0]  AES_Decryption_0_AES_Slave_byteenable,          //                                         .byteenable
-		output wire        AES_Decryption_0_AES_Slave_chipselect,          //                                         .chipselect
+		output wire [3:0]  AES_AES_Slave_address,                          //                            AES_AES_Slave.address
+		output wire        AES_AES_Slave_write,                            //                                         .write
+		output wire        AES_AES_Slave_read,                             //                                         .read
+		input  wire [31:0] AES_AES_Slave_readdata,                         //                                         .readdata
+		output wire [31:0] AES_AES_Slave_writedata,                        //                                         .writedata
+		output wire [3:0]  AES_AES_Slave_byteenable,                       //                                         .byteenable
+		output wire        AES_AES_Slave_chipselect,                       //                                         .chipselect
 		output wire [1:0]  button_s1_address,                              //                                button_s1.address
 		input  wire [31:0] button_s1_readdata,                             //                                         .readdata
 		output wire [0:0]  jtag_uart_0_avalon_jtag_slave_address,          //            jtag_uart_0_avalon_jtag_slave.address
@@ -71,11 +71,11 @@ module lab9_soc_mm_interconnect_0 (
 		output wire [31:0] sdram_pll_pll_slave_writedata,                  //                                         .writedata
 		output wire [0:0]  sysid_qsys_0_control_slave_address,             //               sysid_qsys_0_control_slave.address
 		input  wire [31:0] sysid_qsys_0_control_slave_readdata,            //                                         .readdata
-		output wire [2:0]  TIMER_s1_address,                               //                                 TIMER_s1.address
-		output wire        TIMER_s1_write,                                 //                                         .write
-		input  wire [15:0] TIMER_s1_readdata,                              //                                         .readdata
-		output wire [15:0] TIMER_s1_writedata,                             //                                         .writedata
-		output wire        TIMER_s1_chipselect                             //                                         .chipselect
+		output wire [2:0]  Timer_s1_address,                               //                                 Timer_s1.address
+		output wire        Timer_s1_write,                                 //                                         .write
+		input  wire [15:0] Timer_s1_readdata,                              //                                         .readdata
+		output wire [15:0] Timer_s1_writedata,                             //                                         .writedata
+		output wire        Timer_s1_chipselect                             //                                         .chipselect
 	);
 
 	wire          nios2_gen2_0_data_master_translator_avalon_universal_master_0_waitrequest;          // nios2_gen2_0_data_master_agent:av_waitrequest -> nios2_gen2_0_data_master_translator:uav_waitrequest
@@ -112,33 +112,33 @@ module lab9_soc_mm_interconnect_0 (
 	wire    [8:0] rsp_mux_001_src_channel;                                                            // rsp_mux_001:src_channel -> nios2_gen2_0_instruction_master_agent:rp_channel
 	wire          rsp_mux_001_src_startofpacket;                                                      // rsp_mux_001:src_startofpacket -> nios2_gen2_0_instruction_master_agent:rp_startofpacket
 	wire          rsp_mux_001_src_endofpacket;                                                        // rsp_mux_001:src_endofpacket -> nios2_gen2_0_instruction_master_agent:rp_endofpacket
-	wire   [31:0] aes_decryption_0_aes_slave_agent_m0_readdata;                                       // AES_Decryption_0_AES_Slave_translator:uav_readdata -> AES_Decryption_0_AES_Slave_agent:m0_readdata
-	wire          aes_decryption_0_aes_slave_agent_m0_waitrequest;                                    // AES_Decryption_0_AES_Slave_translator:uav_waitrequest -> AES_Decryption_0_AES_Slave_agent:m0_waitrequest
-	wire          aes_decryption_0_aes_slave_agent_m0_debugaccess;                                    // AES_Decryption_0_AES_Slave_agent:m0_debugaccess -> AES_Decryption_0_AES_Slave_translator:uav_debugaccess
-	wire   [28:0] aes_decryption_0_aes_slave_agent_m0_address;                                        // AES_Decryption_0_AES_Slave_agent:m0_address -> AES_Decryption_0_AES_Slave_translator:uav_address
-	wire    [3:0] aes_decryption_0_aes_slave_agent_m0_byteenable;                                     // AES_Decryption_0_AES_Slave_agent:m0_byteenable -> AES_Decryption_0_AES_Slave_translator:uav_byteenable
-	wire          aes_decryption_0_aes_slave_agent_m0_read;                                           // AES_Decryption_0_AES_Slave_agent:m0_read -> AES_Decryption_0_AES_Slave_translator:uav_read
-	wire          aes_decryption_0_aes_slave_agent_m0_readdatavalid;                                  // AES_Decryption_0_AES_Slave_translator:uav_readdatavalid -> AES_Decryption_0_AES_Slave_agent:m0_readdatavalid
-	wire          aes_decryption_0_aes_slave_agent_m0_lock;                                           // AES_Decryption_0_AES_Slave_agent:m0_lock -> AES_Decryption_0_AES_Slave_translator:uav_lock
-	wire   [31:0] aes_decryption_0_aes_slave_agent_m0_writedata;                                      // AES_Decryption_0_AES_Slave_agent:m0_writedata -> AES_Decryption_0_AES_Slave_translator:uav_writedata
-	wire          aes_decryption_0_aes_slave_agent_m0_write;                                          // AES_Decryption_0_AES_Slave_agent:m0_write -> AES_Decryption_0_AES_Slave_translator:uav_write
-	wire    [2:0] aes_decryption_0_aes_slave_agent_m0_burstcount;                                     // AES_Decryption_0_AES_Slave_agent:m0_burstcount -> AES_Decryption_0_AES_Slave_translator:uav_burstcount
-	wire          aes_decryption_0_aes_slave_agent_rf_source_valid;                                   // AES_Decryption_0_AES_Slave_agent:rf_source_valid -> AES_Decryption_0_AES_Slave_agent_rsp_fifo:in_valid
-	wire  [107:0] aes_decryption_0_aes_slave_agent_rf_source_data;                                    // AES_Decryption_0_AES_Slave_agent:rf_source_data -> AES_Decryption_0_AES_Slave_agent_rsp_fifo:in_data
-	wire          aes_decryption_0_aes_slave_agent_rf_source_ready;                                   // AES_Decryption_0_AES_Slave_agent_rsp_fifo:in_ready -> AES_Decryption_0_AES_Slave_agent:rf_source_ready
-	wire          aes_decryption_0_aes_slave_agent_rf_source_startofpacket;                           // AES_Decryption_0_AES_Slave_agent:rf_source_startofpacket -> AES_Decryption_0_AES_Slave_agent_rsp_fifo:in_startofpacket
-	wire          aes_decryption_0_aes_slave_agent_rf_source_endofpacket;                             // AES_Decryption_0_AES_Slave_agent:rf_source_endofpacket -> AES_Decryption_0_AES_Slave_agent_rsp_fifo:in_endofpacket
-	wire          aes_decryption_0_aes_slave_agent_rsp_fifo_out_valid;                                // AES_Decryption_0_AES_Slave_agent_rsp_fifo:out_valid -> AES_Decryption_0_AES_Slave_agent:rf_sink_valid
-	wire  [107:0] aes_decryption_0_aes_slave_agent_rsp_fifo_out_data;                                 // AES_Decryption_0_AES_Slave_agent_rsp_fifo:out_data -> AES_Decryption_0_AES_Slave_agent:rf_sink_data
-	wire          aes_decryption_0_aes_slave_agent_rsp_fifo_out_ready;                                // AES_Decryption_0_AES_Slave_agent:rf_sink_ready -> AES_Decryption_0_AES_Slave_agent_rsp_fifo:out_ready
-	wire          aes_decryption_0_aes_slave_agent_rsp_fifo_out_startofpacket;                        // AES_Decryption_0_AES_Slave_agent_rsp_fifo:out_startofpacket -> AES_Decryption_0_AES_Slave_agent:rf_sink_startofpacket
-	wire          aes_decryption_0_aes_slave_agent_rsp_fifo_out_endofpacket;                          // AES_Decryption_0_AES_Slave_agent_rsp_fifo:out_endofpacket -> AES_Decryption_0_AES_Slave_agent:rf_sink_endofpacket
-	wire          cmd_mux_src_valid;                                                                  // cmd_mux:src_valid -> AES_Decryption_0_AES_Slave_agent:cp_valid
-	wire  [106:0] cmd_mux_src_data;                                                                   // cmd_mux:src_data -> AES_Decryption_0_AES_Slave_agent:cp_data
-	wire          cmd_mux_src_ready;                                                                  // AES_Decryption_0_AES_Slave_agent:cp_ready -> cmd_mux:src_ready
-	wire    [8:0] cmd_mux_src_channel;                                                                // cmd_mux:src_channel -> AES_Decryption_0_AES_Slave_agent:cp_channel
-	wire          cmd_mux_src_startofpacket;                                                          // cmd_mux:src_startofpacket -> AES_Decryption_0_AES_Slave_agent:cp_startofpacket
-	wire          cmd_mux_src_endofpacket;                                                            // cmd_mux:src_endofpacket -> AES_Decryption_0_AES_Slave_agent:cp_endofpacket
+	wire   [31:0] aes_aes_slave_agent_m0_readdata;                                                    // AES_AES_Slave_translator:uav_readdata -> AES_AES_Slave_agent:m0_readdata
+	wire          aes_aes_slave_agent_m0_waitrequest;                                                 // AES_AES_Slave_translator:uav_waitrequest -> AES_AES_Slave_agent:m0_waitrequest
+	wire          aes_aes_slave_agent_m0_debugaccess;                                                 // AES_AES_Slave_agent:m0_debugaccess -> AES_AES_Slave_translator:uav_debugaccess
+	wire   [28:0] aes_aes_slave_agent_m0_address;                                                     // AES_AES_Slave_agent:m0_address -> AES_AES_Slave_translator:uav_address
+	wire    [3:0] aes_aes_slave_agent_m0_byteenable;                                                  // AES_AES_Slave_agent:m0_byteenable -> AES_AES_Slave_translator:uav_byteenable
+	wire          aes_aes_slave_agent_m0_read;                                                        // AES_AES_Slave_agent:m0_read -> AES_AES_Slave_translator:uav_read
+	wire          aes_aes_slave_agent_m0_readdatavalid;                                               // AES_AES_Slave_translator:uav_readdatavalid -> AES_AES_Slave_agent:m0_readdatavalid
+	wire          aes_aes_slave_agent_m0_lock;                                                        // AES_AES_Slave_agent:m0_lock -> AES_AES_Slave_translator:uav_lock
+	wire   [31:0] aes_aes_slave_agent_m0_writedata;                                                   // AES_AES_Slave_agent:m0_writedata -> AES_AES_Slave_translator:uav_writedata
+	wire          aes_aes_slave_agent_m0_write;                                                       // AES_AES_Slave_agent:m0_write -> AES_AES_Slave_translator:uav_write
+	wire    [2:0] aes_aes_slave_agent_m0_burstcount;                                                  // AES_AES_Slave_agent:m0_burstcount -> AES_AES_Slave_translator:uav_burstcount
+	wire          aes_aes_slave_agent_rf_source_valid;                                                // AES_AES_Slave_agent:rf_source_valid -> AES_AES_Slave_agent_rsp_fifo:in_valid
+	wire  [107:0] aes_aes_slave_agent_rf_source_data;                                                 // AES_AES_Slave_agent:rf_source_data -> AES_AES_Slave_agent_rsp_fifo:in_data
+	wire          aes_aes_slave_agent_rf_source_ready;                                                // AES_AES_Slave_agent_rsp_fifo:in_ready -> AES_AES_Slave_agent:rf_source_ready
+	wire          aes_aes_slave_agent_rf_source_startofpacket;                                        // AES_AES_Slave_agent:rf_source_startofpacket -> AES_AES_Slave_agent_rsp_fifo:in_startofpacket
+	wire          aes_aes_slave_agent_rf_source_endofpacket;                                          // AES_AES_Slave_agent:rf_source_endofpacket -> AES_AES_Slave_agent_rsp_fifo:in_endofpacket
+	wire          aes_aes_slave_agent_rsp_fifo_out_valid;                                             // AES_AES_Slave_agent_rsp_fifo:out_valid -> AES_AES_Slave_agent:rf_sink_valid
+	wire  [107:0] aes_aes_slave_agent_rsp_fifo_out_data;                                              // AES_AES_Slave_agent_rsp_fifo:out_data -> AES_AES_Slave_agent:rf_sink_data
+	wire          aes_aes_slave_agent_rsp_fifo_out_ready;                                             // AES_AES_Slave_agent:rf_sink_ready -> AES_AES_Slave_agent_rsp_fifo:out_ready
+	wire          aes_aes_slave_agent_rsp_fifo_out_startofpacket;                                     // AES_AES_Slave_agent_rsp_fifo:out_startofpacket -> AES_AES_Slave_agent:rf_sink_startofpacket
+	wire          aes_aes_slave_agent_rsp_fifo_out_endofpacket;                                       // AES_AES_Slave_agent_rsp_fifo:out_endofpacket -> AES_AES_Slave_agent:rf_sink_endofpacket
+	wire          cmd_mux_src_valid;                                                                  // cmd_mux:src_valid -> AES_AES_Slave_agent:cp_valid
+	wire  [106:0] cmd_mux_src_data;                                                                   // cmd_mux:src_data -> AES_AES_Slave_agent:cp_data
+	wire          cmd_mux_src_ready;                                                                  // AES_AES_Slave_agent:cp_ready -> cmd_mux:src_ready
+	wire    [8:0] cmd_mux_src_channel;                                                                // cmd_mux:src_channel -> AES_AES_Slave_agent:cp_channel
+	wire          cmd_mux_src_startofpacket;                                                          // cmd_mux:src_startofpacket -> AES_AES_Slave_agent:cp_startofpacket
+	wire          cmd_mux_src_endofpacket;                                                            // cmd_mux:src_endofpacket -> AES_AES_Slave_agent:cp_endofpacket
 	wire   [31:0] jtag_uart_0_avalon_jtag_slave_agent_m0_readdata;                                    // jtag_uart_0_avalon_jtag_slave_translator:uav_readdata -> jtag_uart_0_avalon_jtag_slave_agent:m0_readdata
 	wire          jtag_uart_0_avalon_jtag_slave_agent_m0_waitrequest;                                 // jtag_uart_0_avalon_jtag_slave_translator:uav_waitrequest -> jtag_uart_0_avalon_jtag_slave_agent:m0_waitrequest
 	wire          jtag_uart_0_avalon_jtag_slave_agent_m0_debugaccess;                                 // jtag_uart_0_avalon_jtag_slave_agent:m0_debugaccess -> jtag_uart_0_avalon_jtag_slave_translator:uav_debugaccess
@@ -331,33 +331,33 @@ module lab9_soc_mm_interconnect_0 (
 	wire    [8:0] cmd_mux_007_src_channel;                                                            // cmd_mux_007:src_channel -> button_s1_agent:cp_channel
 	wire          cmd_mux_007_src_startofpacket;                                                      // cmd_mux_007:src_startofpacket -> button_s1_agent:cp_startofpacket
 	wire          cmd_mux_007_src_endofpacket;                                                        // cmd_mux_007:src_endofpacket -> button_s1_agent:cp_endofpacket
-	wire   [31:0] timer_s1_agent_m0_readdata;                                                         // TIMER_s1_translator:uav_readdata -> TIMER_s1_agent:m0_readdata
-	wire          timer_s1_agent_m0_waitrequest;                                                      // TIMER_s1_translator:uav_waitrequest -> TIMER_s1_agent:m0_waitrequest
-	wire          timer_s1_agent_m0_debugaccess;                                                      // TIMER_s1_agent:m0_debugaccess -> TIMER_s1_translator:uav_debugaccess
-	wire   [28:0] timer_s1_agent_m0_address;                                                          // TIMER_s1_agent:m0_address -> TIMER_s1_translator:uav_address
-	wire    [3:0] timer_s1_agent_m0_byteenable;                                                       // TIMER_s1_agent:m0_byteenable -> TIMER_s1_translator:uav_byteenable
-	wire          timer_s1_agent_m0_read;                                                             // TIMER_s1_agent:m0_read -> TIMER_s1_translator:uav_read
-	wire          timer_s1_agent_m0_readdatavalid;                                                    // TIMER_s1_translator:uav_readdatavalid -> TIMER_s1_agent:m0_readdatavalid
-	wire          timer_s1_agent_m0_lock;                                                             // TIMER_s1_agent:m0_lock -> TIMER_s1_translator:uav_lock
-	wire   [31:0] timer_s1_agent_m0_writedata;                                                        // TIMER_s1_agent:m0_writedata -> TIMER_s1_translator:uav_writedata
-	wire          timer_s1_agent_m0_write;                                                            // TIMER_s1_agent:m0_write -> TIMER_s1_translator:uav_write
-	wire    [2:0] timer_s1_agent_m0_burstcount;                                                       // TIMER_s1_agent:m0_burstcount -> TIMER_s1_translator:uav_burstcount
-	wire          timer_s1_agent_rf_source_valid;                                                     // TIMER_s1_agent:rf_source_valid -> TIMER_s1_agent_rsp_fifo:in_valid
-	wire  [107:0] timer_s1_agent_rf_source_data;                                                      // TIMER_s1_agent:rf_source_data -> TIMER_s1_agent_rsp_fifo:in_data
-	wire          timer_s1_agent_rf_source_ready;                                                     // TIMER_s1_agent_rsp_fifo:in_ready -> TIMER_s1_agent:rf_source_ready
-	wire          timer_s1_agent_rf_source_startofpacket;                                             // TIMER_s1_agent:rf_source_startofpacket -> TIMER_s1_agent_rsp_fifo:in_startofpacket
-	wire          timer_s1_agent_rf_source_endofpacket;                                               // TIMER_s1_agent:rf_source_endofpacket -> TIMER_s1_agent_rsp_fifo:in_endofpacket
-	wire          timer_s1_agent_rsp_fifo_out_valid;                                                  // TIMER_s1_agent_rsp_fifo:out_valid -> TIMER_s1_agent:rf_sink_valid
-	wire  [107:0] timer_s1_agent_rsp_fifo_out_data;                                                   // TIMER_s1_agent_rsp_fifo:out_data -> TIMER_s1_agent:rf_sink_data
-	wire          timer_s1_agent_rsp_fifo_out_ready;                                                  // TIMER_s1_agent:rf_sink_ready -> TIMER_s1_agent_rsp_fifo:out_ready
-	wire          timer_s1_agent_rsp_fifo_out_startofpacket;                                          // TIMER_s1_agent_rsp_fifo:out_startofpacket -> TIMER_s1_agent:rf_sink_startofpacket
-	wire          timer_s1_agent_rsp_fifo_out_endofpacket;                                            // TIMER_s1_agent_rsp_fifo:out_endofpacket -> TIMER_s1_agent:rf_sink_endofpacket
-	wire          cmd_mux_008_src_valid;                                                              // cmd_mux_008:src_valid -> TIMER_s1_agent:cp_valid
-	wire  [106:0] cmd_mux_008_src_data;                                                               // cmd_mux_008:src_data -> TIMER_s1_agent:cp_data
-	wire          cmd_mux_008_src_ready;                                                              // TIMER_s1_agent:cp_ready -> cmd_mux_008:src_ready
-	wire    [8:0] cmd_mux_008_src_channel;                                                            // cmd_mux_008:src_channel -> TIMER_s1_agent:cp_channel
-	wire          cmd_mux_008_src_startofpacket;                                                      // cmd_mux_008:src_startofpacket -> TIMER_s1_agent:cp_startofpacket
-	wire          cmd_mux_008_src_endofpacket;                                                        // cmd_mux_008:src_endofpacket -> TIMER_s1_agent:cp_endofpacket
+	wire   [31:0] timer_s1_agent_m0_readdata;                                                         // Timer_s1_translator:uav_readdata -> Timer_s1_agent:m0_readdata
+	wire          timer_s1_agent_m0_waitrequest;                                                      // Timer_s1_translator:uav_waitrequest -> Timer_s1_agent:m0_waitrequest
+	wire          timer_s1_agent_m0_debugaccess;                                                      // Timer_s1_agent:m0_debugaccess -> Timer_s1_translator:uav_debugaccess
+	wire   [28:0] timer_s1_agent_m0_address;                                                          // Timer_s1_agent:m0_address -> Timer_s1_translator:uav_address
+	wire    [3:0] timer_s1_agent_m0_byteenable;                                                       // Timer_s1_agent:m0_byteenable -> Timer_s1_translator:uav_byteenable
+	wire          timer_s1_agent_m0_read;                                                             // Timer_s1_agent:m0_read -> Timer_s1_translator:uav_read
+	wire          timer_s1_agent_m0_readdatavalid;                                                    // Timer_s1_translator:uav_readdatavalid -> Timer_s1_agent:m0_readdatavalid
+	wire          timer_s1_agent_m0_lock;                                                             // Timer_s1_agent:m0_lock -> Timer_s1_translator:uav_lock
+	wire   [31:0] timer_s1_agent_m0_writedata;                                                        // Timer_s1_agent:m0_writedata -> Timer_s1_translator:uav_writedata
+	wire          timer_s1_agent_m0_write;                                                            // Timer_s1_agent:m0_write -> Timer_s1_translator:uav_write
+	wire    [2:0] timer_s1_agent_m0_burstcount;                                                       // Timer_s1_agent:m0_burstcount -> Timer_s1_translator:uav_burstcount
+	wire          timer_s1_agent_rf_source_valid;                                                     // Timer_s1_agent:rf_source_valid -> Timer_s1_agent_rsp_fifo:in_valid
+	wire  [107:0] timer_s1_agent_rf_source_data;                                                      // Timer_s1_agent:rf_source_data -> Timer_s1_agent_rsp_fifo:in_data
+	wire          timer_s1_agent_rf_source_ready;                                                     // Timer_s1_agent_rsp_fifo:in_ready -> Timer_s1_agent:rf_source_ready
+	wire          timer_s1_agent_rf_source_startofpacket;                                             // Timer_s1_agent:rf_source_startofpacket -> Timer_s1_agent_rsp_fifo:in_startofpacket
+	wire          timer_s1_agent_rf_source_endofpacket;                                               // Timer_s1_agent:rf_source_endofpacket -> Timer_s1_agent_rsp_fifo:in_endofpacket
+	wire          timer_s1_agent_rsp_fifo_out_valid;                                                  // Timer_s1_agent_rsp_fifo:out_valid -> Timer_s1_agent:rf_sink_valid
+	wire  [107:0] timer_s1_agent_rsp_fifo_out_data;                                                   // Timer_s1_agent_rsp_fifo:out_data -> Timer_s1_agent:rf_sink_data
+	wire          timer_s1_agent_rsp_fifo_out_ready;                                                  // Timer_s1_agent:rf_sink_ready -> Timer_s1_agent_rsp_fifo:out_ready
+	wire          timer_s1_agent_rsp_fifo_out_startofpacket;                                          // Timer_s1_agent_rsp_fifo:out_startofpacket -> Timer_s1_agent:rf_sink_startofpacket
+	wire          timer_s1_agent_rsp_fifo_out_endofpacket;                                            // Timer_s1_agent_rsp_fifo:out_endofpacket -> Timer_s1_agent:rf_sink_endofpacket
+	wire          cmd_mux_008_src_valid;                                                              // cmd_mux_008:src_valid -> Timer_s1_agent:cp_valid
+	wire  [106:0] cmd_mux_008_src_data;                                                               // cmd_mux_008:src_data -> Timer_s1_agent:cp_data
+	wire          cmd_mux_008_src_ready;                                                              // Timer_s1_agent:cp_ready -> cmd_mux_008:src_ready
+	wire    [8:0] cmd_mux_008_src_channel;                                                            // cmd_mux_008:src_channel -> Timer_s1_agent:cp_channel
+	wire          cmd_mux_008_src_startofpacket;                                                      // cmd_mux_008:src_startofpacket -> Timer_s1_agent:cp_startofpacket
+	wire          cmd_mux_008_src_endofpacket;                                                        // cmd_mux_008:src_endofpacket -> Timer_s1_agent:cp_endofpacket
 	wire          nios2_gen2_0_data_master_agent_cp_valid;                                            // nios2_gen2_0_data_master_agent:cp_valid -> router:sink_valid
 	wire  [106:0] nios2_gen2_0_data_master_agent_cp_data;                                             // nios2_gen2_0_data_master_agent:cp_data -> router:sink_data
 	wire          nios2_gen2_0_data_master_agent_cp_ready;                                            // router:sink_ready -> nios2_gen2_0_data_master_agent:cp_ready
@@ -380,11 +380,11 @@ module lab9_soc_mm_interconnect_0 (
 	wire    [8:0] router_001_src_channel;                                                             // router_001:src_channel -> cmd_demux_001:sink_channel
 	wire          router_001_src_startofpacket;                                                       // router_001:src_startofpacket -> cmd_demux_001:sink_startofpacket
 	wire          router_001_src_endofpacket;                                                         // router_001:src_endofpacket -> cmd_demux_001:sink_endofpacket
-	wire          aes_decryption_0_aes_slave_agent_rp_valid;                                          // AES_Decryption_0_AES_Slave_agent:rp_valid -> router_002:sink_valid
-	wire  [106:0] aes_decryption_0_aes_slave_agent_rp_data;                                           // AES_Decryption_0_AES_Slave_agent:rp_data -> router_002:sink_data
-	wire          aes_decryption_0_aes_slave_agent_rp_ready;                                          // router_002:sink_ready -> AES_Decryption_0_AES_Slave_agent:rp_ready
-	wire          aes_decryption_0_aes_slave_agent_rp_startofpacket;                                  // AES_Decryption_0_AES_Slave_agent:rp_startofpacket -> router_002:sink_startofpacket
-	wire          aes_decryption_0_aes_slave_agent_rp_endofpacket;                                    // AES_Decryption_0_AES_Slave_agent:rp_endofpacket -> router_002:sink_endofpacket
+	wire          aes_aes_slave_agent_rp_valid;                                                       // AES_AES_Slave_agent:rp_valid -> router_002:sink_valid
+	wire  [106:0] aes_aes_slave_agent_rp_data;                                                        // AES_AES_Slave_agent:rp_data -> router_002:sink_data
+	wire          aes_aes_slave_agent_rp_ready;                                                       // router_002:sink_ready -> AES_AES_Slave_agent:rp_ready
+	wire          aes_aes_slave_agent_rp_startofpacket;                                               // AES_AES_Slave_agent:rp_startofpacket -> router_002:sink_startofpacket
+	wire          aes_aes_slave_agent_rp_endofpacket;                                                 // AES_AES_Slave_agent:rp_endofpacket -> router_002:sink_endofpacket
 	wire          router_002_src_valid;                                                               // router_002:src_valid -> rsp_demux:sink_valid
 	wire  [106:0] router_002_src_data;                                                                // router_002:src_data -> rsp_demux:sink_data
 	wire          router_002_src_ready;                                                               // rsp_demux:sink_ready -> router_002:src_ready
@@ -468,11 +468,11 @@ module lab9_soc_mm_interconnect_0 (
 	wire    [8:0] router_009_src_channel;                                                             // router_009:src_channel -> rsp_demux_007:sink_channel
 	wire          router_009_src_startofpacket;                                                       // router_009:src_startofpacket -> rsp_demux_007:sink_startofpacket
 	wire          router_009_src_endofpacket;                                                         // router_009:src_endofpacket -> rsp_demux_007:sink_endofpacket
-	wire          timer_s1_agent_rp_valid;                                                            // TIMER_s1_agent:rp_valid -> router_010:sink_valid
-	wire  [106:0] timer_s1_agent_rp_data;                                                             // TIMER_s1_agent:rp_data -> router_010:sink_data
-	wire          timer_s1_agent_rp_ready;                                                            // router_010:sink_ready -> TIMER_s1_agent:rp_ready
-	wire          timer_s1_agent_rp_startofpacket;                                                    // TIMER_s1_agent:rp_startofpacket -> router_010:sink_startofpacket
-	wire          timer_s1_agent_rp_endofpacket;                                                      // TIMER_s1_agent:rp_endofpacket -> router_010:sink_endofpacket
+	wire          timer_s1_agent_rp_valid;                                                            // Timer_s1_agent:rp_valid -> router_010:sink_valid
+	wire  [106:0] timer_s1_agent_rp_data;                                                             // Timer_s1_agent:rp_data -> router_010:sink_data
+	wire          timer_s1_agent_rp_ready;                                                            // router_010:sink_ready -> Timer_s1_agent:rp_ready
+	wire          timer_s1_agent_rp_startofpacket;                                                    // Timer_s1_agent:rp_startofpacket -> router_010:sink_startofpacket
+	wire          timer_s1_agent_rp_endofpacket;                                                      // Timer_s1_agent:rp_endofpacket -> router_010:sink_endofpacket
 	wire          router_010_src_valid;                                                               // router_010:src_valid -> rsp_demux_008:sink_valid
 	wire  [106:0] router_010_src_data;                                                                // router_010:src_data -> rsp_demux_008:sink_data
 	wire          router_010_src_ready;                                                               // rsp_demux_008:sink_ready -> router_010:src_ready
@@ -683,13 +683,13 @@ module lab9_soc_mm_interconnect_0 (
 	wire    [8:0] crosser_003_out_channel;                                                            // crosser_003:out_channel -> rsp_mux_001:sink4_channel
 	wire          crosser_003_out_startofpacket;                                                      // crosser_003:out_startofpacket -> rsp_mux_001:sink4_startofpacket
 	wire          crosser_003_out_endofpacket;                                                        // crosser_003:out_endofpacket -> rsp_mux_001:sink4_endofpacket
-	wire          aes_decryption_0_aes_slave_agent_rdata_fifo_src_valid;                              // AES_Decryption_0_AES_Slave_agent:rdata_fifo_src_valid -> avalon_st_adapter:in_0_valid
-	wire   [33:0] aes_decryption_0_aes_slave_agent_rdata_fifo_src_data;                               // AES_Decryption_0_AES_Slave_agent:rdata_fifo_src_data -> avalon_st_adapter:in_0_data
-	wire          aes_decryption_0_aes_slave_agent_rdata_fifo_src_ready;                              // avalon_st_adapter:in_0_ready -> AES_Decryption_0_AES_Slave_agent:rdata_fifo_src_ready
-	wire          avalon_st_adapter_out_0_valid;                                                      // avalon_st_adapter:out_0_valid -> AES_Decryption_0_AES_Slave_agent:rdata_fifo_sink_valid
-	wire   [33:0] avalon_st_adapter_out_0_data;                                                       // avalon_st_adapter:out_0_data -> AES_Decryption_0_AES_Slave_agent:rdata_fifo_sink_data
-	wire          avalon_st_adapter_out_0_ready;                                                      // AES_Decryption_0_AES_Slave_agent:rdata_fifo_sink_ready -> avalon_st_adapter:out_0_ready
-	wire    [0:0] avalon_st_adapter_out_0_error;                                                      // avalon_st_adapter:out_0_error -> AES_Decryption_0_AES_Slave_agent:rdata_fifo_sink_error
+	wire          aes_aes_slave_agent_rdata_fifo_src_valid;                                           // AES_AES_Slave_agent:rdata_fifo_src_valid -> avalon_st_adapter:in_0_valid
+	wire   [33:0] aes_aes_slave_agent_rdata_fifo_src_data;                                            // AES_AES_Slave_agent:rdata_fifo_src_data -> avalon_st_adapter:in_0_data
+	wire          aes_aes_slave_agent_rdata_fifo_src_ready;                                           // avalon_st_adapter:in_0_ready -> AES_AES_Slave_agent:rdata_fifo_src_ready
+	wire          avalon_st_adapter_out_0_valid;                                                      // avalon_st_adapter:out_0_valid -> AES_AES_Slave_agent:rdata_fifo_sink_valid
+	wire   [33:0] avalon_st_adapter_out_0_data;                                                       // avalon_st_adapter:out_0_data -> AES_AES_Slave_agent:rdata_fifo_sink_data
+	wire          avalon_st_adapter_out_0_ready;                                                      // AES_AES_Slave_agent:rdata_fifo_sink_ready -> avalon_st_adapter:out_0_ready
+	wire    [0:0] avalon_st_adapter_out_0_error;                                                      // avalon_st_adapter:out_0_error -> AES_AES_Slave_agent:rdata_fifo_sink_error
 	wire          jtag_uart_0_avalon_jtag_slave_agent_rdata_fifo_src_valid;                           // jtag_uart_0_avalon_jtag_slave_agent:rdata_fifo_src_valid -> avalon_st_adapter_001:in_0_valid
 	wire   [33:0] jtag_uart_0_avalon_jtag_slave_agent_rdata_fifo_src_data;                            // jtag_uart_0_avalon_jtag_slave_agent:rdata_fifo_src_data -> avalon_st_adapter_001:in_0_data
 	wire          jtag_uart_0_avalon_jtag_slave_agent_rdata_fifo_src_ready;                           // avalon_st_adapter_001:in_0_ready -> jtag_uart_0_avalon_jtag_slave_agent:rdata_fifo_src_ready
@@ -739,13 +739,13 @@ module lab9_soc_mm_interconnect_0 (
 	wire   [33:0] avalon_st_adapter_007_out_0_data;                                                   // avalon_st_adapter_007:out_0_data -> button_s1_agent:rdata_fifo_sink_data
 	wire          avalon_st_adapter_007_out_0_ready;                                                  // button_s1_agent:rdata_fifo_sink_ready -> avalon_st_adapter_007:out_0_ready
 	wire    [0:0] avalon_st_adapter_007_out_0_error;                                                  // avalon_st_adapter_007:out_0_error -> button_s1_agent:rdata_fifo_sink_error
-	wire          timer_s1_agent_rdata_fifo_src_valid;                                                // TIMER_s1_agent:rdata_fifo_src_valid -> avalon_st_adapter_008:in_0_valid
-	wire   [33:0] timer_s1_agent_rdata_fifo_src_data;                                                 // TIMER_s1_agent:rdata_fifo_src_data -> avalon_st_adapter_008:in_0_data
-	wire          timer_s1_agent_rdata_fifo_src_ready;                                                // avalon_st_adapter_008:in_0_ready -> TIMER_s1_agent:rdata_fifo_src_ready
-	wire          avalon_st_adapter_008_out_0_valid;                                                  // avalon_st_adapter_008:out_0_valid -> TIMER_s1_agent:rdata_fifo_sink_valid
-	wire   [33:0] avalon_st_adapter_008_out_0_data;                                                   // avalon_st_adapter_008:out_0_data -> TIMER_s1_agent:rdata_fifo_sink_data
-	wire          avalon_st_adapter_008_out_0_ready;                                                  // TIMER_s1_agent:rdata_fifo_sink_ready -> avalon_st_adapter_008:out_0_ready
-	wire    [0:0] avalon_st_adapter_008_out_0_error;                                                  // avalon_st_adapter_008:out_0_error -> TIMER_s1_agent:rdata_fifo_sink_error
+	wire          timer_s1_agent_rdata_fifo_src_valid;                                                // Timer_s1_agent:rdata_fifo_src_valid -> avalon_st_adapter_008:in_0_valid
+	wire   [33:0] timer_s1_agent_rdata_fifo_src_data;                                                 // Timer_s1_agent:rdata_fifo_src_data -> avalon_st_adapter_008:in_0_data
+	wire          timer_s1_agent_rdata_fifo_src_ready;                                                // avalon_st_adapter_008:in_0_ready -> Timer_s1_agent:rdata_fifo_src_ready
+	wire          avalon_st_adapter_008_out_0_valid;                                                  // avalon_st_adapter_008:out_0_valid -> Timer_s1_agent:rdata_fifo_sink_valid
+	wire   [33:0] avalon_st_adapter_008_out_0_data;                                                   // avalon_st_adapter_008:out_0_data -> Timer_s1_agent:rdata_fifo_sink_data
+	wire          avalon_st_adapter_008_out_0_ready;                                                  // Timer_s1_agent:rdata_fifo_sink_ready -> avalon_st_adapter_008:out_0_ready
+	wire    [0:0] avalon_st_adapter_008_out_0_error;                                                  // avalon_st_adapter_008:out_0_error -> Timer_s1_agent:rdata_fifo_sink_error
 
 	altera_merlin_master_translator #(
 		.AV_ADDRESS_W                (29),
@@ -893,42 +893,42 @@ module lab9_soc_mm_interconnect_0 (
 		.AV_WRITE_WAIT_CYCLES           (0),
 		.AV_SETUP_WAIT_CYCLES           (0),
 		.AV_DATA_HOLD_CYCLES            (0)
-	) aes_decryption_0_aes_slave_translator (
-		.clk                    (clk_0_clk_clk),                                     //                      clk.clk
-		.reset                  (nios2_gen2_0_reset_reset_bridge_in_reset_reset),    //                    reset.reset
-		.uav_address            (aes_decryption_0_aes_slave_agent_m0_address),       // avalon_universal_slave_0.address
-		.uav_burstcount         (aes_decryption_0_aes_slave_agent_m0_burstcount),    //                         .burstcount
-		.uav_read               (aes_decryption_0_aes_slave_agent_m0_read),          //                         .read
-		.uav_write              (aes_decryption_0_aes_slave_agent_m0_write),         //                         .write
-		.uav_waitrequest        (aes_decryption_0_aes_slave_agent_m0_waitrequest),   //                         .waitrequest
-		.uav_readdatavalid      (aes_decryption_0_aes_slave_agent_m0_readdatavalid), //                         .readdatavalid
-		.uav_byteenable         (aes_decryption_0_aes_slave_agent_m0_byteenable),    //                         .byteenable
-		.uav_readdata           (aes_decryption_0_aes_slave_agent_m0_readdata),      //                         .readdata
-		.uav_writedata          (aes_decryption_0_aes_slave_agent_m0_writedata),     //                         .writedata
-		.uav_lock               (aes_decryption_0_aes_slave_agent_m0_lock),          //                         .lock
-		.uav_debugaccess        (aes_decryption_0_aes_slave_agent_m0_debugaccess),   //                         .debugaccess
-		.av_address             (AES_Decryption_0_AES_Slave_address),                //      avalon_anti_slave_0.address
-		.av_write               (AES_Decryption_0_AES_Slave_write),                  //                         .write
-		.av_read                (AES_Decryption_0_AES_Slave_read),                   //                         .read
-		.av_readdata            (AES_Decryption_0_AES_Slave_readdata),               //                         .readdata
-		.av_writedata           (AES_Decryption_0_AES_Slave_writedata),              //                         .writedata
-		.av_byteenable          (AES_Decryption_0_AES_Slave_byteenable),             //                         .byteenable
-		.av_chipselect          (AES_Decryption_0_AES_Slave_chipselect),             //                         .chipselect
-		.av_begintransfer       (),                                                  //              (terminated)
-		.av_beginbursttransfer  (),                                                  //              (terminated)
-		.av_burstcount          (),                                                  //              (terminated)
-		.av_readdatavalid       (1'b0),                                              //              (terminated)
-		.av_waitrequest         (1'b0),                                              //              (terminated)
-		.av_writebyteenable     (),                                                  //              (terminated)
-		.av_lock                (),                                                  //              (terminated)
-		.av_clken               (),                                                  //              (terminated)
-		.uav_clken              (1'b0),                                              //              (terminated)
-		.av_debugaccess         (),                                                  //              (terminated)
-		.av_outputenable        (),                                                  //              (terminated)
-		.uav_response           (),                                                  //              (terminated)
-		.av_response            (2'b00),                                             //              (terminated)
-		.uav_writeresponsevalid (),                                                  //              (terminated)
-		.av_writeresponsevalid  (1'b0)                                               //              (terminated)
+	) aes_aes_slave_translator (
+		.clk                    (clk_0_clk_clk),                                  //                      clk.clk
+		.reset                  (nios2_gen2_0_reset_reset_bridge_in_reset_reset), //                    reset.reset
+		.uav_address            (aes_aes_slave_agent_m0_address),                 // avalon_universal_slave_0.address
+		.uav_burstcount         (aes_aes_slave_agent_m0_burstcount),              //                         .burstcount
+		.uav_read               (aes_aes_slave_agent_m0_read),                    //                         .read
+		.uav_write              (aes_aes_slave_agent_m0_write),                   //                         .write
+		.uav_waitrequest        (aes_aes_slave_agent_m0_waitrequest),             //                         .waitrequest
+		.uav_readdatavalid      (aes_aes_slave_agent_m0_readdatavalid),           //                         .readdatavalid
+		.uav_byteenable         (aes_aes_slave_agent_m0_byteenable),              //                         .byteenable
+		.uav_readdata           (aes_aes_slave_agent_m0_readdata),                //                         .readdata
+		.uav_writedata          (aes_aes_slave_agent_m0_writedata),               //                         .writedata
+		.uav_lock               (aes_aes_slave_agent_m0_lock),                    //                         .lock
+		.uav_debugaccess        (aes_aes_slave_agent_m0_debugaccess),             //                         .debugaccess
+		.av_address             (AES_AES_Slave_address),                          //      avalon_anti_slave_0.address
+		.av_write               (AES_AES_Slave_write),                            //                         .write
+		.av_read                (AES_AES_Slave_read),                             //                         .read
+		.av_readdata            (AES_AES_Slave_readdata),                         //                         .readdata
+		.av_writedata           (AES_AES_Slave_writedata),                        //                         .writedata
+		.av_byteenable          (AES_AES_Slave_byteenable),                       //                         .byteenable
+		.av_chipselect          (AES_AES_Slave_chipselect),                       //                         .chipselect
+		.av_begintransfer       (),                                               //              (terminated)
+		.av_beginbursttransfer  (),                                               //              (terminated)
+		.av_burstcount          (),                                               //              (terminated)
+		.av_readdatavalid       (1'b0),                                           //              (terminated)
+		.av_waitrequest         (1'b0),                                           //              (terminated)
+		.av_writebyteenable     (),                                               //              (terminated)
+		.av_lock                (),                                               //              (terminated)
+		.av_clken               (),                                               //              (terminated)
+		.uav_clken              (1'b0),                                           //              (terminated)
+		.av_debugaccess         (),                                               //              (terminated)
+		.av_outputenable        (),                                               //              (terminated)
+		.uav_response           (),                                               //              (terminated)
+		.av_response            (2'b00),                                          //              (terminated)
+		.uav_writeresponsevalid (),                                               //              (terminated)
+		.av_writeresponsevalid  (1'b0)                                            //              (terminated)
 	);
 
 	altera_merlin_slave_translator #(
@@ -1419,11 +1419,11 @@ module lab9_soc_mm_interconnect_0 (
 		.uav_writedata          (timer_s1_agent_m0_writedata),                    //                         .writedata
 		.uav_lock               (timer_s1_agent_m0_lock),                         //                         .lock
 		.uav_debugaccess        (timer_s1_agent_m0_debugaccess),                  //                         .debugaccess
-		.av_address             (TIMER_s1_address),                               //      avalon_anti_slave_0.address
-		.av_write               (TIMER_s1_write),                                 //                         .write
-		.av_readdata            (TIMER_s1_readdata),                              //                         .readdata
-		.av_writedata           (TIMER_s1_writedata),                             //                         .writedata
-		.av_chipselect          (TIMER_s1_chipselect),                            //                         .chipselect
+		.av_address             (Timer_s1_address),                               //      avalon_anti_slave_0.address
+		.av_write               (Timer_s1_write),                                 //                         .write
+		.av_readdata            (Timer_s1_readdata),                              //                         .readdata
+		.av_writedata           (Timer_s1_writedata),                             //                         .writedata
+		.av_chipselect          (Timer_s1_chipselect),                            //                         .chipselect
 		.av_read                (),                                               //              (terminated)
 		.av_begintransfer       (),                                               //              (terminated)
 		.av_beginbursttransfer  (),                                               //              (terminated)
@@ -1643,50 +1643,50 @@ module lab9_soc_mm_interconnect_0 (
 		.USE_READRESPONSE          (0),
 		.USE_WRITERESPONSE         (0),
 		.ECC_ENABLE                (0)
-	) aes_decryption_0_aes_slave_agent (
-		.clk                     (clk_0_clk_clk),                                               //             clk.clk
-		.reset                   (nios2_gen2_0_reset_reset_bridge_in_reset_reset),              //       clk_reset.reset
-		.m0_address              (aes_decryption_0_aes_slave_agent_m0_address),                 //              m0.address
-		.m0_burstcount           (aes_decryption_0_aes_slave_agent_m0_burstcount),              //                .burstcount
-		.m0_byteenable           (aes_decryption_0_aes_slave_agent_m0_byteenable),              //                .byteenable
-		.m0_debugaccess          (aes_decryption_0_aes_slave_agent_m0_debugaccess),             //                .debugaccess
-		.m0_lock                 (aes_decryption_0_aes_slave_agent_m0_lock),                    //                .lock
-		.m0_readdata             (aes_decryption_0_aes_slave_agent_m0_readdata),                //                .readdata
-		.m0_readdatavalid        (aes_decryption_0_aes_slave_agent_m0_readdatavalid),           //                .readdatavalid
-		.m0_read                 (aes_decryption_0_aes_slave_agent_m0_read),                    //                .read
-		.m0_waitrequest          (aes_decryption_0_aes_slave_agent_m0_waitrequest),             //                .waitrequest
-		.m0_writedata            (aes_decryption_0_aes_slave_agent_m0_writedata),               //                .writedata
-		.m0_write                (aes_decryption_0_aes_slave_agent_m0_write),                   //                .write
-		.rp_endofpacket          (aes_decryption_0_aes_slave_agent_rp_endofpacket),             //              rp.endofpacket
-		.rp_ready                (aes_decryption_0_aes_slave_agent_rp_ready),                   //                .ready
-		.rp_valid                (aes_decryption_0_aes_slave_agent_rp_valid),                   //                .valid
-		.rp_data                 (aes_decryption_0_aes_slave_agent_rp_data),                    //                .data
-		.rp_startofpacket        (aes_decryption_0_aes_slave_agent_rp_startofpacket),           //                .startofpacket
-		.cp_ready                (cmd_mux_src_ready),                                           //              cp.ready
-		.cp_valid                (cmd_mux_src_valid),                                           //                .valid
-		.cp_data                 (cmd_mux_src_data),                                            //                .data
-		.cp_startofpacket        (cmd_mux_src_startofpacket),                                   //                .startofpacket
-		.cp_endofpacket          (cmd_mux_src_endofpacket),                                     //                .endofpacket
-		.cp_channel              (cmd_mux_src_channel),                                         //                .channel
-		.rf_sink_ready           (aes_decryption_0_aes_slave_agent_rsp_fifo_out_ready),         //         rf_sink.ready
-		.rf_sink_valid           (aes_decryption_0_aes_slave_agent_rsp_fifo_out_valid),         //                .valid
-		.rf_sink_startofpacket   (aes_decryption_0_aes_slave_agent_rsp_fifo_out_startofpacket), //                .startofpacket
-		.rf_sink_endofpacket     (aes_decryption_0_aes_slave_agent_rsp_fifo_out_endofpacket),   //                .endofpacket
-		.rf_sink_data            (aes_decryption_0_aes_slave_agent_rsp_fifo_out_data),          //                .data
-		.rf_source_ready         (aes_decryption_0_aes_slave_agent_rf_source_ready),            //       rf_source.ready
-		.rf_source_valid         (aes_decryption_0_aes_slave_agent_rf_source_valid),            //                .valid
-		.rf_source_startofpacket (aes_decryption_0_aes_slave_agent_rf_source_startofpacket),    //                .startofpacket
-		.rf_source_endofpacket   (aes_decryption_0_aes_slave_agent_rf_source_endofpacket),      //                .endofpacket
-		.rf_source_data          (aes_decryption_0_aes_slave_agent_rf_source_data),             //                .data
-		.rdata_fifo_sink_ready   (avalon_st_adapter_out_0_ready),                               // rdata_fifo_sink.ready
-		.rdata_fifo_sink_valid   (avalon_st_adapter_out_0_valid),                               //                .valid
-		.rdata_fifo_sink_data    (avalon_st_adapter_out_0_data),                                //                .data
-		.rdata_fifo_sink_error   (avalon_st_adapter_out_0_error),                               //                .error
-		.rdata_fifo_src_ready    (aes_decryption_0_aes_slave_agent_rdata_fifo_src_ready),       //  rdata_fifo_src.ready
-		.rdata_fifo_src_valid    (aes_decryption_0_aes_slave_agent_rdata_fifo_src_valid),       //                .valid
-		.rdata_fifo_src_data     (aes_decryption_0_aes_slave_agent_rdata_fifo_src_data),        //                .data
-		.m0_response             (2'b00),                                                       //     (terminated)
-		.m0_writeresponsevalid   (1'b0)                                                         //     (terminated)
+	) aes_aes_slave_agent (
+		.clk                     (clk_0_clk_clk),                                  //             clk.clk
+		.reset                   (nios2_gen2_0_reset_reset_bridge_in_reset_reset), //       clk_reset.reset
+		.m0_address              (aes_aes_slave_agent_m0_address),                 //              m0.address
+		.m0_burstcount           (aes_aes_slave_agent_m0_burstcount),              //                .burstcount
+		.m0_byteenable           (aes_aes_slave_agent_m0_byteenable),              //                .byteenable
+		.m0_debugaccess          (aes_aes_slave_agent_m0_debugaccess),             //                .debugaccess
+		.m0_lock                 (aes_aes_slave_agent_m0_lock),                    //                .lock
+		.m0_readdata             (aes_aes_slave_agent_m0_readdata),                //                .readdata
+		.m0_readdatavalid        (aes_aes_slave_agent_m0_readdatavalid),           //                .readdatavalid
+		.m0_read                 (aes_aes_slave_agent_m0_read),                    //                .read
+		.m0_waitrequest          (aes_aes_slave_agent_m0_waitrequest),             //                .waitrequest
+		.m0_writedata            (aes_aes_slave_agent_m0_writedata),               //                .writedata
+		.m0_write                (aes_aes_slave_agent_m0_write),                   //                .write
+		.rp_endofpacket          (aes_aes_slave_agent_rp_endofpacket),             //              rp.endofpacket
+		.rp_ready                (aes_aes_slave_agent_rp_ready),                   //                .ready
+		.rp_valid                (aes_aes_slave_agent_rp_valid),                   //                .valid
+		.rp_data                 (aes_aes_slave_agent_rp_data),                    //                .data
+		.rp_startofpacket        (aes_aes_slave_agent_rp_startofpacket),           //                .startofpacket
+		.cp_ready                (cmd_mux_src_ready),                              //              cp.ready
+		.cp_valid                (cmd_mux_src_valid),                              //                .valid
+		.cp_data                 (cmd_mux_src_data),                               //                .data
+		.cp_startofpacket        (cmd_mux_src_startofpacket),                      //                .startofpacket
+		.cp_endofpacket          (cmd_mux_src_endofpacket),                        //                .endofpacket
+		.cp_channel              (cmd_mux_src_channel),                            //                .channel
+		.rf_sink_ready           (aes_aes_slave_agent_rsp_fifo_out_ready),         //         rf_sink.ready
+		.rf_sink_valid           (aes_aes_slave_agent_rsp_fifo_out_valid),         //                .valid
+		.rf_sink_startofpacket   (aes_aes_slave_agent_rsp_fifo_out_startofpacket), //                .startofpacket
+		.rf_sink_endofpacket     (aes_aes_slave_agent_rsp_fifo_out_endofpacket),   //                .endofpacket
+		.rf_sink_data            (aes_aes_slave_agent_rsp_fifo_out_data),          //                .data
+		.rf_source_ready         (aes_aes_slave_agent_rf_source_ready),            //       rf_source.ready
+		.rf_source_valid         (aes_aes_slave_agent_rf_source_valid),            //                .valid
+		.rf_source_startofpacket (aes_aes_slave_agent_rf_source_startofpacket),    //                .startofpacket
+		.rf_source_endofpacket   (aes_aes_slave_agent_rf_source_endofpacket),      //                .endofpacket
+		.rf_source_data          (aes_aes_slave_agent_rf_source_data),             //                .data
+		.rdata_fifo_sink_ready   (avalon_st_adapter_out_0_ready),                  // rdata_fifo_sink.ready
+		.rdata_fifo_sink_valid   (avalon_st_adapter_out_0_valid),                  //                .valid
+		.rdata_fifo_sink_data    (avalon_st_adapter_out_0_data),                   //                .data
+		.rdata_fifo_sink_error   (avalon_st_adapter_out_0_error),                  //                .error
+		.rdata_fifo_src_ready    (aes_aes_slave_agent_rdata_fifo_src_ready),       //  rdata_fifo_src.ready
+		.rdata_fifo_src_valid    (aes_aes_slave_agent_rdata_fifo_src_valid),       //                .valid
+		.rdata_fifo_src_data     (aes_aes_slave_agent_rdata_fifo_src_data),        //                .data
+		.m0_response             (2'b00),                                          //     (terminated)
+		.m0_writeresponsevalid   (1'b0)                                            //     (terminated)
 	);
 
 	altera_avalon_sc_fifo #(
@@ -1702,32 +1702,32 @@ module lab9_soc_mm_interconnect_0 (
 		.USE_STORE_FORWARD   (0),
 		.USE_ALMOST_FULL_IF  (0),
 		.USE_ALMOST_EMPTY_IF (0)
-	) aes_decryption_0_aes_slave_agent_rsp_fifo (
-		.clk               (clk_0_clk_clk),                                               //       clk.clk
-		.reset             (nios2_gen2_0_reset_reset_bridge_in_reset_reset),              // clk_reset.reset
-		.in_data           (aes_decryption_0_aes_slave_agent_rf_source_data),             //        in.data
-		.in_valid          (aes_decryption_0_aes_slave_agent_rf_source_valid),            //          .valid
-		.in_ready          (aes_decryption_0_aes_slave_agent_rf_source_ready),            //          .ready
-		.in_startofpacket  (aes_decryption_0_aes_slave_agent_rf_source_startofpacket),    //          .startofpacket
-		.in_endofpacket    (aes_decryption_0_aes_slave_agent_rf_source_endofpacket),      //          .endofpacket
-		.out_data          (aes_decryption_0_aes_slave_agent_rsp_fifo_out_data),          //       out.data
-		.out_valid         (aes_decryption_0_aes_slave_agent_rsp_fifo_out_valid),         //          .valid
-		.out_ready         (aes_decryption_0_aes_slave_agent_rsp_fifo_out_ready),         //          .ready
-		.out_startofpacket (aes_decryption_0_aes_slave_agent_rsp_fifo_out_startofpacket), //          .startofpacket
-		.out_endofpacket   (aes_decryption_0_aes_slave_agent_rsp_fifo_out_endofpacket),   //          .endofpacket
-		.csr_address       (2'b00),                                                       // (terminated)
-		.csr_read          (1'b0),                                                        // (terminated)
-		.csr_write         (1'b0),                                                        // (terminated)
-		.csr_readdata      (),                                                            // (terminated)
-		.csr_writedata     (32'b00000000000000000000000000000000),                        // (terminated)
-		.almost_full_data  (),                                                            // (terminated)
-		.almost_empty_data (),                                                            // (terminated)
-		.in_empty          (1'b0),                                                        // (terminated)
-		.out_empty         (),                                                            // (terminated)
-		.in_error          (1'b0),                                                        // (terminated)
-		.out_error         (),                                                            // (terminated)
-		.in_channel        (1'b0),                                                        // (terminated)
-		.out_channel       ()                                                             // (terminated)
+	) aes_aes_slave_agent_rsp_fifo (
+		.clk               (clk_0_clk_clk),                                  //       clk.clk
+		.reset             (nios2_gen2_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.in_data           (aes_aes_slave_agent_rf_source_data),             //        in.data
+		.in_valid          (aes_aes_slave_agent_rf_source_valid),            //          .valid
+		.in_ready          (aes_aes_slave_agent_rf_source_ready),            //          .ready
+		.in_startofpacket  (aes_aes_slave_agent_rf_source_startofpacket),    //          .startofpacket
+		.in_endofpacket    (aes_aes_slave_agent_rf_source_endofpacket),      //          .endofpacket
+		.out_data          (aes_aes_slave_agent_rsp_fifo_out_data),          //       out.data
+		.out_valid         (aes_aes_slave_agent_rsp_fifo_out_valid),         //          .valid
+		.out_ready         (aes_aes_slave_agent_rsp_fifo_out_ready),         //          .ready
+		.out_startofpacket (aes_aes_slave_agent_rsp_fifo_out_startofpacket), //          .startofpacket
+		.out_endofpacket   (aes_aes_slave_agent_rsp_fifo_out_endofpacket),   //          .endofpacket
+		.csr_address       (2'b00),                                          // (terminated)
+		.csr_read          (1'b0),                                           // (terminated)
+		.csr_write         (1'b0),                                           // (terminated)
+		.csr_readdata      (),                                               // (terminated)
+		.csr_writedata     (32'b00000000000000000000000000000000),           // (terminated)
+		.almost_full_data  (),                                               // (terminated)
+		.almost_empty_data (),                                               // (terminated)
+		.in_empty          (1'b0),                                           // (terminated)
+		.out_empty         (),                                               // (terminated)
+		.in_error          (1'b0),                                           // (terminated)
+		.out_error         (),                                               // (terminated)
+		.in_channel        (1'b0),                                           // (terminated)
+		.out_channel       ()                                                // (terminated)
 	);
 
 	altera_merlin_slave_agent #(
@@ -2804,19 +2804,19 @@ module lab9_soc_mm_interconnect_0 (
 	);
 
 	lab9_soc_mm_interconnect_0_router_002 router_002 (
-		.sink_ready         (aes_decryption_0_aes_slave_agent_rp_ready),         //      sink.ready
-		.sink_valid         (aes_decryption_0_aes_slave_agent_rp_valid),         //          .valid
-		.sink_data          (aes_decryption_0_aes_slave_agent_rp_data),          //          .data
-		.sink_startofpacket (aes_decryption_0_aes_slave_agent_rp_startofpacket), //          .startofpacket
-		.sink_endofpacket   (aes_decryption_0_aes_slave_agent_rp_endofpacket),   //          .endofpacket
-		.clk                (clk_0_clk_clk),                                     //       clk.clk
-		.reset              (nios2_gen2_0_reset_reset_bridge_in_reset_reset),    // clk_reset.reset
-		.src_ready          (router_002_src_ready),                              //       src.ready
-		.src_valid          (router_002_src_valid),                              //          .valid
-		.src_data           (router_002_src_data),                               //          .data
-		.src_channel        (router_002_src_channel),                            //          .channel
-		.src_startofpacket  (router_002_src_startofpacket),                      //          .startofpacket
-		.src_endofpacket    (router_002_src_endofpacket)                         //          .endofpacket
+		.sink_ready         (aes_aes_slave_agent_rp_ready),                   //      sink.ready
+		.sink_valid         (aes_aes_slave_agent_rp_valid),                   //          .valid
+		.sink_data          (aes_aes_slave_agent_rp_data),                    //          .data
+		.sink_startofpacket (aes_aes_slave_agent_rp_startofpacket),           //          .startofpacket
+		.sink_endofpacket   (aes_aes_slave_agent_rp_endofpacket),             //          .endofpacket
+		.clk                (clk_0_clk_clk),                                  //       clk.clk
+		.reset              (nios2_gen2_0_reset_reset_bridge_in_reset_reset), // clk_reset.reset
+		.src_ready          (router_002_src_ready),                           //       src.ready
+		.src_valid          (router_002_src_valid),                           //          .valid
+		.src_data           (router_002_src_data),                            //          .data
+		.src_channel        (router_002_src_channel),                         //          .channel
+		.src_startofpacket  (router_002_src_startofpacket),                   //          .startofpacket
+		.src_endofpacket    (router_002_src_endofpacket)                      //          .endofpacket
 	);
 
 	lab9_soc_mm_interconnect_0_router_002 router_003 (
@@ -3703,15 +3703,15 @@ module lab9_soc_mm_interconnect_0 (
 		.outUseReady     (1),
 		.outReadyLatency (0)
 	) avalon_st_adapter (
-		.in_clk_0_clk   (clk_0_clk_clk),                                         // in_clk_0.clk
-		.in_rst_0_reset (nios2_gen2_0_reset_reset_bridge_in_reset_reset),        // in_rst_0.reset
-		.in_0_data      (aes_decryption_0_aes_slave_agent_rdata_fifo_src_data),  //     in_0.data
-		.in_0_valid     (aes_decryption_0_aes_slave_agent_rdata_fifo_src_valid), //         .valid
-		.in_0_ready     (aes_decryption_0_aes_slave_agent_rdata_fifo_src_ready), //         .ready
-		.out_0_data     (avalon_st_adapter_out_0_data),                          //    out_0.data
-		.out_0_valid    (avalon_st_adapter_out_0_valid),                         //         .valid
-		.out_0_ready    (avalon_st_adapter_out_0_ready),                         //         .ready
-		.out_0_error    (avalon_st_adapter_out_0_error)                          //         .error
+		.in_clk_0_clk   (clk_0_clk_clk),                                  // in_clk_0.clk
+		.in_rst_0_reset (nios2_gen2_0_reset_reset_bridge_in_reset_reset), // in_rst_0.reset
+		.in_0_data      (aes_aes_slave_agent_rdata_fifo_src_data),        //     in_0.data
+		.in_0_valid     (aes_aes_slave_agent_rdata_fifo_src_valid),       //         .valid
+		.in_0_ready     (aes_aes_slave_agent_rdata_fifo_src_ready),       //         .ready
+		.out_0_data     (avalon_st_adapter_out_0_data),                   //    out_0.data
+		.out_0_valid    (avalon_st_adapter_out_0_valid),                  //         .valid
+		.out_0_ready    (avalon_st_adapter_out_0_ready),                  //         .ready
+		.out_0_error    (avalon_st_adapter_out_0_error)                   //         .error
 	);
 
 	lab9_soc_mm_interconnect_0_avalon_st_adapter #(

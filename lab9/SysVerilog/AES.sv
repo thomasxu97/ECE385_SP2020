@@ -98,7 +98,7 @@ module AES (
 							ASSIGNKEY_1,
 							ASSIGNKEY_2,
 							ASSIGNKEY_3
-							}   curr_state, next_state; 
+							}  curr_state, next_state; 
 
 	
 	always_comb begin

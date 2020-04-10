@@ -45,18 +45,20 @@ module avalon_aes_interface (
 	logic [31:0] write_reg;
 	logic [31:0] write_wire;
 	logic [127:0] msg_dec;
-	logic done;
+	logic start, done_wire;
 	assign EXPORT_DATA = {AES_MSG_EN0[31:16], AES_MSG_EN3[15:0]};
-
+	assign start = AES_START[0];
 	AES decrypter(
-		.*,
-		.AES_START(AES_START[0]),
-		.AES_DONE(done),
+		.CLK(CLK),
+		.RESET(RESET),
+		.AES_START(start),
+		.AES_DONE(done_wire),
 		.AES_KEY({AES_KEY0, AES_KEY1, AES_KEY2, AES_KEY3}),
 		.AES_MSG_ENC({AES_MSG_EN0,AES_MSG_EN1,AES_MSG_EN2,AES_MSG_EN3}),
 		.AES_MSG_DEC(msg_dec)
 	);
 
+	
 	always_comb begin
 		AVL_READDATA = EMPTY_REG;
 		if (AVL_CS && AVL_READ) begin
@@ -136,13 +138,17 @@ module avalon_aes_interface (
 				4'd5: AES_MSG_EN1 	<= write_wire;
 				4'd6: AES_MSG_EN2 	<= write_wire;
 				4'd7: AES_MSG_EN3 	<= write_wire;
+				4'd14: AES_START 		<= write_wire;
+				default: EMPTY_REG 	<= write_wire;
+			endcase
+		end 
+		else begin
+			case (AVL_ADDR) 
 				4'd8: AES_MSG_DE0 	<= msg_dec[127:96];
 				4'd9: AES_MSG_DE1 	<= msg_dec[95:64];
 				4'd10: AES_MSG_DE2 	<= msg_dec[63:32];
 				4'd11: AES_MSG_DE3 	<= msg_dec[31:0];
-				4'd14: AES_START 		<= write_wire;
-				4'd15: AES_DONE 		<= {31'd0,done};
-				default: EMPTY_REG 	<= write_wire;
+				4'd15: AES_DONE 		<= {31'd0, done_wire};
 			endcase
 		end
 	end

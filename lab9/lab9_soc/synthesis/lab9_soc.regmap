@@ -253,7 +253,7 @@
     </registers>
    </peripheral>
   <peripheral>
-      <name>lab9_soc_TIMER_s1_altera_avalon_timer</name><baseAddress>0x00000000</baseAddress> 
+      <name>lab9_soc_Timer_s1_altera_avalon_timer</name><baseAddress>0x00000000</baseAddress> 
       <addressBlock>
         <offset>0x0</offset>
         <size>16</size>

@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2020.04.09.23:21:43</td>
+    <td class="l">2020.04.10.15:46:27</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -91,10 +91,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </a> Nios II 18.1
      <br/>All Components
      <br/>&#160;&#160;
-     <a href="#module_AES_Decryption_0"><b>AES_Decryption_0</b>
+     <a href="#module_AES"><b>AES</b>
      </a> AES_Decryption 1.2
      <br/>&#160;&#160;
-     <a href="#module_TIMER"><b>TIMER</b>
+     <a href="#module_Timer"><b>Timer</b>
      </a> altera_avalon_timer 18.1
      <br/>&#160;&#160;
      <a href="#module_button"><b>button</b>
@@ -135,7 +135,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slavemodule">&#160;
-     <a href="#module_AES_Decryption_0"><b>AES_Decryption_0</b>
+     <a href="#module_AES"><b>AES</b>
      </a>
     </td>
     <td class="empty"></td>
@@ -148,7 +148,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    </tr>
    <tr>
     <td class="slavemodule">&#160;
-     <a href="#module_TIMER"><b>TIMER</b>
+     <a href="#module_Timer"><b>Timer</b>
      </a>
     </td>
     <td class="empty"></td>
@@ -251,10 +251,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="addr"><span style="color:#989898">0x</span>000000b8</td>
    </tr>
   </table>
-  <a name="module_AES_Decryption_0"> </a>
+  <a name="module_AES"> </a>
   <div>
    <hr/>
-   <h2>AES_Decryption_0</h2>AES_Decryption v1.2
+   <h2>AES</h2>AES_Decryption v1.2
    <br/>
    <div class="greydiv">
     <table class="connectionboxes">
@@ -263,7 +263,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_nios2_gen2_0">nios2_gen2_0</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="9">AES_Decryption_0</td>
+      <td class="main" rowspan="9">AES</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;AES_Slave</td>
@@ -320,10 +320,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
-  <a name="module_TIMER"> </a>
+  <a name="module_Timer"> </a>
   <div>
    <hr/>
-   <h2>TIMER</h2>altera_avalon_timer v18.1
+   <h2>Timer</h2>altera_avalon_timer v18.1
    <br/>
    <div class="greydiv">
     <table class="connectionboxes">
@@ -332,7 +332,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_nios2_gen2_0">nios2_gen2_0</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="11">TIMER</td>
+      <td class="main" rowspan="11">Timer</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -951,7 +951,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
       <td class="neighbor" rowspan="4">
-       <a href="#module_AES_Decryption_0">AES_Decryption_0</a>
+       <a href="#module_AES">AES</a>
       </td>
      </tr>
      <tr>
@@ -1183,7 +1183,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
       <td class="neighbor" rowspan="6">
-       <a href="#module_TIMER">TIMER</a>
+       <a href="#module_Timer">Timer</a>
       </td>
      </tr>
      <tr>
@@ -1910,7 +1910,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory2_0.s1' start='0x0' end='0x10' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='TIMER.s1' start='0x20' end='0x40' type='altera_avalon_timer.s1' /&gt;&lt;slave name='AES_Decryption_0.AES_Slave' start='0x40' end='0x80' type='AES_Decryption.AES_Slave' /&gt;&lt;slave name='button.s1' start='0x90' end='0xA0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='sdram_pll.pll_slave' start='0xA0' end='0xB0' type='altpll.pll_slave' /&gt;&lt;slave name='sysid_qsys_0.control_slave' start='0xB8' end='0xC0' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='jtag_uart_0.avalon_jtag_slave' start='0xC0' end='0xC8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;slave name='nios2_gen2_0.debug_mem_slave' start='0x1000' end='0x1800' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='sdram.s1' start='0x10000000' end='0x18000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory2_0.s1' start='0x0' end='0x10' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='Timer.s1' start='0x20' end='0x40' type='altera_avalon_timer.s1' /&gt;&lt;slave name='AES.AES_Slave' start='0x40' end='0x80' type='AES_Decryption.AES_Slave' /&gt;&lt;slave name='button.s1' start='0x90' end='0xA0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='sdram_pll.pll_slave' start='0xA0' end='0xB0' type='altpll.pll_slave' /&gt;&lt;slave name='sysid_qsys_0.control_slave' start='0xB8' end='0xC0' type='altera_avalon_sysid_qsys.control_slave' /&gt;&lt;slave name='jtag_uart_0.avalon_jtag_slave' start='0xC0' end='0xC8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;slave name='nios2_gen2_0.debug_mem_slave' start='0x1000' end='0x1800' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='sdram.s1' start='0x10000000' end='0x18000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -1962,7 +1962,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">internalIrqMaskSystemInfo</td>
-        <td class="parametervalue">34</td>
+        <td class="parametervalue">33</td>
        </tr>
        <tr>
         <td class="parametername">customInstSlavesSystemInfo</td>
@@ -3506,7 +3506,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1586492502</td>
+        <td class="parametervalue">1586551587</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -3531,7 +3531,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1586492502</td>
+        <td class="parametervalue">1586551587</td>
        </tr>
       </table>
      </td>
@@ -3540,8 +3540,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </div>
   <table class="blueBar">
    <tr>
-    <td class="l">generation took 0.01 seconds</td>
-    <td class="r">rendering took 0.08 seconds</td>
+    <td class="l">generation took 0.00 seconds</td>
+    <td class="r">rendering took 0.05 seconds</td>
    </tr>
   </table>
  </body>

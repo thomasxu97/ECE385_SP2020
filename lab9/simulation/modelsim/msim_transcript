@@ -632,3 +632,5 @@
 #    Time: 0 ps  Iteration: 0  Instance: /testbench/decrypt
 # ** Warning: (vsim-8315) C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/AES.sv(106): No condition is true in the unique/priority if/case statement.
 #    Time: 0 ps  Iteration: 1  Instance: /testbench/decrypt
+# End time: 00:08:15 on Apr 10,2020, Elapsed time: 0:49:28
+# Errors: 0, Warnings: 2

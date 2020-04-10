@@ -1,28 +1,29 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst lab9_soc.jtag_uart_0 -pg 1 -lvl 3 -y 390
-preplace inst lab9_soc.sdram -pg 1 -lvl 3 -y 590
+preplace inst lab9_soc.jtag_uart_0 -pg 1 -lvl 3 -y 490
+preplace inst lab9_soc.sdram -pg 1 -lvl 3 -y 690
 preplace inst lab9_soc.clk_0 -pg 1 -lvl 1 -y 370
 preplace inst lab9_soc.sysid_qsys_0 -pg 1 -lvl 3 -y 310
 preplace inst lab9_soc.button -pg 1 -lvl 3 -y 130
+preplace inst lab9_soc.TIMER -pg 1 -lvl 3 -y 390
 preplace inst lab9_soc.AES_Decryption_0 -pg 1 -lvl 3 -y 30
 preplace inst lab9_soc -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst lab9_soc.sdram_pll -pg 1 -lvl 3 -y 510
+preplace inst lab9_soc.sdram_pll -pg 1 -lvl 3 -y 610
 preplace inst lab9_soc.nios2_gen2_0.clock_bridge -pg 1
 preplace inst lab9_soc.nios2_gen2_0.reset_bridge -pg 1
 preplace inst lab9_soc.onchip_memory2_0 -pg 1 -lvl 3 -y 230
 preplace inst lab9_soc.nios2_gen2_0.cpu -pg 1
 preplace inst lab9_soc.nios2_gen2_0 -pg 1 -lvl 2 -y 350
-preplace netloc EXPORT<net_container>lab9_soc</net_container>(MASTER)lab9_soc.sdram_clk,(MASTER)sdram_pll.c1) 1 3 1 N
-preplace netloc POINT_TO_POINT<net_container>lab9_soc</net_container>(SLAVE)jtag_uart_0.irq,(MASTER)nios2_gen2_0.irq) 1 2 1 N
-preplace netloc EXPORT<net_container>lab9_soc</net_container>(SLAVE)lab9_soc.sdram_wire,(SLAVE)sdram.wire) 1 0 3 NJ 660 NJ 660 NJ
-preplace netloc POINT_TO_POINT<net_container>lab9_soc</net_container>(SLAVE)sdram.clk,(MASTER)sdram_pll.c0) 1 2 2 750 500 990
-preplace netloc INTERCONNECT<net_container>lab9_soc</net_container>(SLAVE)sysid_qsys_0.control_slave,(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)onchip_memory2_0.s1,(SLAVE)sdram_pll.pll_slave,(MASTER)nios2_gen2_0.data_master,(SLAVE)jtag_uart_0.avalon_jtag_slave,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)AES_Decryption_0.AES_Slave,(SLAVE)button.s1,(SLAVE)sdram.s1) 1 1 2 330 490 730
-preplace netloc FAN_OUT<net_container>lab9_soc</net_container>(SLAVE)nios2_gen2_0.clk,(SLAVE)button.clk,(SLAVE)sdram_pll.inclk_interface,(SLAVE)AES_Decryption_0.CLK,(SLAVE)jtag_uart_0.clk,(SLAVE)onchip_memory2_0.clk1,(MASTER)clk_0.clk,(SLAVE)sysid_qsys_0.clk) 1 1 2 290 290 710
-preplace netloc EXPORT<net_container>lab9_soc</net_container>(SLAVE)lab9_soc.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-preplace netloc INTERCONNECT<net_container>lab9_soc</net_container>(SLAVE)sdram_pll.inclk_interface_reset,(SLAVE)AES_Decryption_0.RESET,(SLAVE)onchip_memory2_0.reset1,(SLAVE)sdram.reset,(SLAVE)nios2_gen2_0.reset,(SLAVE)sysid_qsys_0.reset,(SLAVE)jtag_uart_0.reset,(MASTER)clk_0.clk_reset,(SLAVE)button.reset,(MASTER)nios2_gen2_0.debug_reset_request) 1 1 2 310 310 690
-preplace netloc EXPORT<net_container>lab9_soc</net_container>(SLAVE)lab9_soc.aes_export,(SLAVE)AES_Decryption_0.Export_Data) 1 0 3 NJ 80 NJ 80 NJ
-preplace netloc EXPORT<net_container>lab9_soc</net_container>(SLAVE)lab9_soc.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>lab9_soc</net_container>(SLAVE)lab9_soc.button_wire,(SLAVE)button.external_connection) 1 0 3 NJ 160 NJ 160 NJ
-levelinfo -pg 1 0 80 1100
-levelinfo -hier lab9_soc 90 120 450 800 1010
+preplace netloc EXPORT<net_container>lab9_soc</net_container>(SLAVE)AES_Decryption_0.Export_Data,(SLAVE)lab9_soc.aes_export) 1 0 3 NJ 80 NJ 80 NJ
+preplace netloc POINT_TO_POINT<net_container>lab9_soc</net_container>(MASTER)sdram_pll.c0,(SLAVE)sdram.clk) 1 2 2 770 600 1010
+preplace netloc EXPORT<net_container>lab9_soc</net_container>(SLAVE)clk_0.clk_in,(SLAVE)lab9_soc.clk) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>lab9_soc</net_container>(SLAVE)TIMER.irq,(MASTER)nios2_gen2_0.irq,(SLAVE)jtag_uart_0.irq) 1 2 1 710
+preplace netloc INTERCONNECT<net_container>lab9_soc</net_container>(SLAVE)jtag_uart_0.avalon_jtag_slave,(SLAVE)onchip_memory2_0.s1,(SLAVE)TIMER.s1,(SLAVE)AES_Decryption_0.AES_Slave,(SLAVE)nios2_gen2_0.debug_mem_slave,(SLAVE)sdram.s1,(MASTER)nios2_gen2_0.data_master,(SLAVE)sdram_pll.pll_slave,(SLAVE)button.s1,(MASTER)nios2_gen2_0.instruction_master,(SLAVE)sysid_qsys_0.control_slave) 1 1 2 330 530 690
+preplace netloc EXPORT<net_container>lab9_soc</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)lab9_soc.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>lab9_soc</net_container>(SLAVE)button.external_connection,(SLAVE)lab9_soc.button_wire) 1 0 3 NJ 160 NJ 160 NJ
+preplace netloc FAN_OUT<net_container>lab9_soc</net_container>(SLAVE)sysid_qsys_0.clk,(SLAVE)jtag_uart_0.clk,(SLAVE)sdram_pll.inclk_interface,(SLAVE)TIMER.clk,(SLAVE)AES_Decryption_0.CLK,(SLAVE)button.clk,(MASTER)clk_0.clk,(SLAVE)nios2_gen2_0.clk,(SLAVE)onchip_memory2_0.clk1) 1 1 2 310 490 750
+preplace netloc INTERCONNECT<net_container>lab9_soc</net_container>(MASTER)clk_0.clk_reset,(SLAVE)sdram.reset,(SLAVE)jtag_uart_0.reset,(SLAVE)button.reset,(SLAVE)onchip_memory2_0.reset1,(SLAVE)sdram_pll.inclk_interface_reset,(SLAVE)nios2_gen2_0.reset,(SLAVE)TIMER.reset,(SLAVE)sysid_qsys_0.reset,(MASTER)nios2_gen2_0.debug_reset_request,(SLAVE)AES_Decryption_0.RESET) 1 1 2 290 510 730
+preplace netloc EXPORT<net_container>lab9_soc</net_container>(SLAVE)sdram.wire,(SLAVE)lab9_soc.sdram_wire) 1 0 3 NJ 760 NJ 760 NJ
+preplace netloc EXPORT<net_container>lab9_soc</net_container>(MASTER)sdram_pll.c1,(MASTER)lab9_soc.sdram_clk) 1 3 1 N
+levelinfo -pg 1 0 80 1120
+levelinfo -hier lab9_soc 90 120 450 820 1030

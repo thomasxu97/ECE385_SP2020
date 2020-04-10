@@ -77,9 +77,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  29 .quartus_project_dir 00000022  00000000  00000000  000a2c80  2**0
                   CONTENTS, READONLY
- 30 .jdi          000052b2  00000000  00000000  000a2ca2  2**0
+ 30 .jdi          00006804  00000000  00000000  000a2ca2  2**0
                   CONTENTS, READONLY
- 31 .sopcinfo     0005a8d1  00000000  00000000  000a7f54  2**0
+ 31 .sopcinfo     0005a7ce  00000000  00000000  000a94a6  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 10000000 l    d  .entry	00000000 .entry
@@ -2616,6 +2616,7 @@ int main()
 100013b8:	003faa06 	br	10001264 <__alt_data_end+0xf8001264>
     }
     else {
+
         // Run the Benchmark
         int i = 0;
 100013bc:	e03fdb15 	stw	zero,-148(fp)
@@ -2638,7 +2639,7 @@ int main()
 100013ec:	1885883a 	add	r2,r3,r2
 100013f0:	00c01884 	movi	r3,98
 100013f4:	10c00005 	stb	r3,0(r2)
-    else {
+
         // Run the Benchmark
         int i = 0;
         int size_KB = 2;
@@ -2795,6 +2796,7 @@ int main()
 100015c4:	010400b4 	movhi	r4,4098
 100015c8:	21293b04 	addi	r4,r4,-23316
 100015cc:	00023f80 	call	100023f8 <printf>
+
     }
     return 0;
 100015d0:	0005883a 	mov	r2,zero
@@ -27152,9 +27154,9 @@ void alt_sys_init( void )
 100183ac:	dfc00115 	stw	ra,4(sp)
 100183b0:	df000015 	stw	fp,0(sp)
 100183b4:	d839883a 	mov	fp,sp
-    ALTERA_AVALON_TIMER_INIT ( TIMER, TIMER);
+    ALTERA_AVALON_TIMER_INIT ( TIMER, Timer);
 100183b8:	01c0fa04 	movi	r7,1000
-100183bc:	01800044 	movi	r6,1
+100183bc:	000d883a 	mov	r6,zero
 100183c0:	000b883a 	mov	r5,zero
 100183c4:	01000804 	movi	r4,32
 100183c8:	0018ee80 	call	10018ee8 <alt_avalon_timer_sc_init>
