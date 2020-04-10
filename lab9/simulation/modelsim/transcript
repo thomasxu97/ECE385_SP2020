@@ -1,0 +1,9 @@
+# Compile of testbench.sv was successful.
+# Compile of KeyExpansion.sv was successful.
+# 2 compiles, 0 failed with no errors.
+vsim
+# Load canceled
+# Load canceled
+# Load canceled
+# End time: 17:30:50 on Apr 04,2020, Elapsed time: 0:09:23
+# Errors: 1, Warnings: 0

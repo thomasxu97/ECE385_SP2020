@@ -1,0 +1,28 @@
+module InvSubBytesMatrix(
+	input logic [127:0] in,
+	output logic [127:0] out
+);
+	logic [31:0] word_1;
+	logic [31:0] word_2;
+	logic [31:0] word_3;
+	logic [31:0] word_4;
+	
+	localparam n_words = 4;
+	assign out[0*32 +:32] = word_1;
+	assign out[1*32 +:32] = word_2;
+	assign out[2*32 +:32] = word_3;
+	assign out[3*32 +:32] = word_4;
+	
+	InvSubWord ISWord_1(.in(in[0*32 +:32]), .out(word_1);
+	InvSubWord ISWord_2(.in(in[1*32 +:32]), .out(word_2);
+	InvSubWord ISWord_3(.in(in[2*32 +:32]), .out(word_3);
+	InvSubWord ISWord_4(.in(in[3*32 +:32]), .out(word_4);
+
+endmodule 
+
+module InvSubWord(
+	input logic [31:0] in,
+	output logic [31:0] out
+);
+
+endmodule 

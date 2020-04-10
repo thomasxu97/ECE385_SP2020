@@ -42,3 +42,30 @@ DRsize.010 0 0 0 1 0 1
 DRsize.011 0 0 1 0 0 1 
 DRsize.100 0 1 0 0 0 1 
 DRsize.101 1 0 0 0 0 1 
+
+State Machine - |lab9_top|lab9_soc:lab9_qsystem|avalon_aes_interface:aes_decryption_0|AES:decrypter|curr_state
+Name curr_state.ASSIGNKEY_3 curr_state.ASSIGNKEY_2 curr_state.ASSIGNKEY_1 curr_state.INV_MIXCOLUMNS_4_NEXT curr_state.INV_MIXCOLUMNS_4 curr_state.INV_MIXCOLUMNS_3_NEXT curr_state.INV_MIXCOLUMNS_3 curr_state.INV_MIXCOLUMNS_2_NEXT curr_state.INV_MIXCOLUMNS_2 curr_state.INV_MIXCOLUMNS_1_NEXT curr_state.INV_MIXCOLUMNS_1 curr_state.POST_ADD_ROUNDKEY curr_state.LOOP_ADD_ROUNDKEY curr_state.PRE_ADD_ROUNDKEY curr_state.POST_INV_SUBBYTES_2 curr_state.POST_INV_SUBBYTES_1 curr_state.LOOP_INV_SUBBYTES_2 curr_state.LOOP_INV_SUBBYTES_1 curr_state.POST_INV_SHIFTROWS curr_state.LOOP_INV_SHIFTROWS curr_state.KEY_EXPANSION curr_state.INIT curr_state.DONE curr_state.WAIT 
+curr_state.WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+curr_state.DONE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+curr_state.INIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+curr_state.KEY_EXPANSION 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+curr_state.LOOP_INV_SHIFTROWS 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+curr_state.POST_INV_SHIFTROWS 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+curr_state.LOOP_INV_SUBBYTES_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+curr_state.LOOP_INV_SUBBYTES_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+curr_state.POST_INV_SUBBYTES_1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+curr_state.POST_INV_SUBBYTES_2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+curr_state.PRE_ADD_ROUNDKEY 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+curr_state.LOOP_ADD_ROUNDKEY 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.POST_ADD_ROUNDKEY 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.INV_MIXCOLUMNS_1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.INV_MIXCOLUMNS_1_NEXT 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.INV_MIXCOLUMNS_2 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.INV_MIXCOLUMNS_2_NEXT 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.INV_MIXCOLUMNS_3 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.INV_MIXCOLUMNS_3_NEXT 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.INV_MIXCOLUMNS_4 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.INV_MIXCOLUMNS_4_NEXT 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.ASSIGNKEY_1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.ASSIGNKEY_2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.ASSIGNKEY_3 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 

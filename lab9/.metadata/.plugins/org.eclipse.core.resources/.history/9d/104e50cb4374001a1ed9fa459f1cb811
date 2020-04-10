@@ -1,0 +1,293 @@
+/************************************************************************
+Lab 9 Nios Software
+
+Dong Kai Wang, Fall 2017
+Christine Chen, Fall 2013
+
+For use with ECE 385 Experiment 9
+University of Illinois ECE Department
+************************************************************************/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include "aes.h"
+
+// Pointer to base address of AES module, make sure it matches Qsys
+volatile unsigned int * AES_PTR = (unsigned int *) 0x00000100;
+
+// Execution mode: 0 for testing, 1 for benchmarking
+int run_mode = 0;
+
+/** charToHex
+ *  Convert a single character to the 4-bit value it represents.
+ *  
+ *  Input: a character c (e.g. 'A')
+ *  Output: converted 4-bit value (e.g. 0xA)
+ */
+unsigned char charToHex(unsigned char c)
+{
+    unsigned char hex = c;
+
+    if (hex >= '0' && hex <= '9')
+        hex -= '0';
+    else if (hex >= 'A' && hex <= 'F')
+    {
+        hex -= 'A';
+        hex += 10;
+    }
+    else if (hex >= 'a' && hex <= 'f')
+    {
+        hex -= 'a';
+        hex += 10;
+    }
+    return hex;
+}
+
+/** charsToHex
+ *  Convert two characters to byte value it represents.
+ *  Inputs must be 0-9, A-F, or a-f.
+ *  
+ *  Input: two characters c1 and c2 (e.g. 'A' and '7')
+ *  Output: converted byte value (e.g. 0xA7)
+ */
+unsigned char charsToHex(unsigned char c1, unsigned char c2)
+{
+    unsigned char hex1 = charToHex(c1);
+    unsigned char hex2 = charToHex(c2);
+    return (hex1 << 4) + hex2;
+}
+
+/** addRoundKey
+*/
+void addRoundKey(unsigned char * msg_byte, unsigned char * key_byte, int length)
+{
+    for (int i=0; i<length; i++)
+        msg_byte[i] = msg_byte[i] ^ key_byte[i];
+}
+
+/** subBytes
+*/
+void subBytes(unsigned char * msg_byte, int length)
+{
+    for (int i=0; i<length; i++)
+        msg_byte[i] = aes_sbox[msg_byte[i]];
+}
+
+/** shiftRows
+*/
+void shiftRows(unsigned char * msg_byte, int num_row, int num_col)
+{
+    unsigned char temp[8];
+    for (int i=0; i<num_row; i++)
+    {
+        for (int j=0; j<num_col; j++)
+        {
+            temp[j] = msg_byte[j*num_row+i];
+            temp[num_row+j] = msg_byte[j*num_row+i];
+        }
+        for (int j=0; j<num_col; j++)
+            msg_byte[j*num_row+i] = temp[j+i];
+    }
+}
+
+/** mixColumns
+ * Reference: https://en.wikipedia.org/wiki/Rijndael_MixColumns
+ */
+void mixColumns(unsigned char * msg_byte, int num_row, int num_col)
+{
+    unsigned char column[4];
+    unsigned char xtimes[4];
+    unsigned char temp[4];
+    for (int i=0; i<num_col; i++)
+    {
+        for (int j=0; j<num_row; j++)
+        {
+            column[j] = msg_byte[i*num_row+j];
+            xtimes[j] = (column[j] >> 7) ? ((column[j] << 1) ^ 0x1B) : (column[j] << 1);
+        }
+        temp[0] = xtimes[0] ^ column[3] ^ column[2] ^ xtimes[1] ^ column[1]; 
+        temp[1] = xtimes[1] ^ column[0] ^ column[3] ^ xtimes[2] ^ column[2]; 
+        temp[2] = xtimes[2] ^ column[1] ^ column[0] ^ xtimes[3] ^ column[3]; 
+        temp[3] = xtimes[3] ^ column[2] ^ column[1] ^ xtimes[0] ^ column[0]; 
+        for (int j=0; j<num_row; j++)
+            msg_byte[i*num_row+j] = temp[j];
+    }
+}
+
+/** keyExpansion
+*/
+void keyExpansion(unsigned char * key_byte, unsigned char * key_schedule, int Nk, int Nb, int Nr)
+{
+    unsigned char temp[4];
+    unsigned char t;
+    unsigned int rcon;
+    int i, j;
+    for (i=0; i<Nk*4; i++)
+        key_schedule[i] = key_byte[i];
+    for (; i<4*Nb*(Nr+1); i+=4)
+    {
+        for (j=0; j<4; j++)
+            temp[j] = key_schedule[i-4+j];
+        if ((i/4) % Nk == 0)
+        {
+            t = temp[0];
+            temp[0] = temp[1];
+            temp[1] = temp[2];
+            temp[2] = temp[3];
+            temp[3] = t; 
+            subBytes(temp, 4);
+            rcon = Rcon[i/4/Nk];
+            for (j=0; j<4; j++)
+                temp[j] = temp[j] ^ (unsigned char)(rcon >> ((3-j)*8));
+        }
+        addRoundKey(temp, &key_schedule[i-Nk*4], 4);
+        for (j=0; j<4; j++)
+            key_schedule[i+j] = temp[j];
+    }
+}
+
+
+/** encrypt
+ *  Perform AES encryption in software.
+ *
+ *  Input: msg_ascii - Pointer to 32x 8-bit char array that contains the input message in ASCII format
+ *         key_ascii - Pointer to 32x 8-bit char array that contains the input key in ASCII format
+ *  Output:  msg_enc - Pointer to 4x 32-bit int array that contains the encrypted message
+ *               key - Pointer to 4x 32-bit int array that contains the input key
+ */
+void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int * msg_enc, unsigned int * key)
+{
+    // Implement this function
+    unsigned char msg_byte[16];
+    unsigned char key_byte[16];
+    unsigned char key_schedule[176];
+
+    int i=0;
+    int Nr = 10;
+    while (msg_ascii[i] != '\0')
+    {
+        msg_byte[i/2] = charsToHex(msg_ascii[i], msg_ascii[i+1]);
+        i += 2;
+    }
+
+    i = 0;
+    while (key_ascii[i] != '\0')
+    {
+        key_byte[i/2] = charsToHex(key_ascii[i], key_ascii[i+1]);
+        i += 2;
+    }
+
+    keyExpansion(key_byte, key_schedule, 4, 4, 10);
+
+    for (i=0; i<16; i++)
+        key[(int)(i/4)] = (key[(int)(i/4)] << 8) | (unsigned int)(key_schedule[160+i]);
+
+    printf("\nLast Expanded Round key: \n");
+        for(i = 0; i < 4; i++){
+            printf("%08x", key[i]);
+        }
+    printf("\n");
+
+    addRoundKey(msg_byte, key_schedule, 16);
+
+    for (i=0; i<Nr-1; i++)
+    {
+        subBytes(msg_byte, 16);
+        shiftRows(msg_byte, 4, 4);
+        mixColumns(msg_byte, 4, 4);
+        addRoundKey(msg_byte, &key_schedule[16*(i+1)], 16);
+    }
+
+    subBytes(msg_byte, 16);
+    shiftRows(msg_byte, 4, 4);
+    addRoundKey(msg_byte, &key_schedule[160], 16);
+
+    for (i=0; i<16; i++)
+    {
+        msg_enc[(int)(i/4)] = (msg_enc[(int)(i/4)] << 8) | (unsigned int)(msg_byte[i]);
+        key[(int)(i/4)] = (key[(int)(i/4)] << 8) | (unsigned int)(key_byte[i]);
+    }
+}
+
+/** decrypt
+ *  Perform AES decryption in hardware.
+ *
+ *  Input:  msg_enc - Pointer to 4x 32-bit int array that contains the encrypted message
+ *              key - Pointer to 4x 32-bit int array that contains the input key
+ *  Output: msg_dec - Pointer to 4x 32-bit int array that contains the decrypted message
+ */
+void decrypt(unsigned int * msg_enc, unsigned int * msg_dec, unsigned int * key)
+{
+    // Implement this function
+}
+
+/** main
+ *  Allows the user to enter the message, key, and select execution mode
+ *
+ */
+int main()
+{
+    // Input Message and Key as 32x 8-bit ASCII Characters ([33] is for NULL terminator)
+    unsigned char msg_ascii[33];
+    unsigned char key_ascii[33];
+    // Key, Encrypted Message, and Decrypted Message in 4x 32-bit Format to facilitate Read/Write to Hardware
+    unsigned int key[4];
+    unsigned int msg_enc[4];
+    unsigned int msg_dec[4];
+
+    printf("Select execution mode: 0 for testing, 1 for benchmarking: ");
+    scanf("%d", &run_mode);
+
+    if (run_mode == 0) {
+        // Continuously Perform Encryption and Decryption
+        while (1) {
+            int i = 0;
+            printf("\nEnter Message:\n");
+            scanf("%s", msg_ascii);
+            printf("\n");
+            printf("\nEnter Key:\n");
+            scanf("%s", key_ascii);
+            printf("\n");
+            encrypt(msg_ascii, key_ascii, msg_enc, key);
+            printf("\nEncrpted message is: \n");
+            for(i = 0; i < 4; i++){
+                printf("%08x", msg_enc[i]);
+            }
+            printf("\n");
+            decrypt(msg_enc, msg_dec, key);
+            printf("\nDecrypted message is: \n");
+            for(i = 0; i < 4; i++){
+                printf("%08x", msg_dec[i]);
+            }
+            printf("\n");
+        }
+    }
+    else {
+        // Run the Benchmark
+        int i = 0;
+        int size_KB = 2;
+        // Choose a random Plaintext and Key
+        for (i = 0; i < 32; i++) {
+            msg_ascii[i] = 'a';
+            key_ascii[i] = 'b';
+        }
+        // Run Encryption
+        clock_t begin = clock();
+        for (i = 0; i < size_KB * 64; i++)
+            encrypt(msg_ascii, key_ascii, msg_enc, key);
+        clock_t end = clock();
+        double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+        double speed = size_KB / time_spent;
+        printf("Software Encryption Speed: %f KB/s \n", speed);
+        // Run Decryption
+        begin = clock();
+        for (i = 0; i < size_KB * 64; i++)
+            decrypt(msg_enc, msg_dec, key);
+        end = clock();
+        time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+        speed = size_KB / time_spent;
+        printf("Hardware Encryption Speed: %f KB/s \n", speed);
+    }
+    return 0;
+}

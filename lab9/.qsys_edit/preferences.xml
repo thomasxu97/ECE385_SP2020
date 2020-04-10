@@ -9,7 +9,8 @@
    <export preferredWidth="250" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Project/ECE 385 Custom IPs,Library" />
- <window width="1938" height="1048" x="-9" y="-9" />
+ <library
+   expandedCategories="Project,Library/Processors and Peripherals/Peripherals,Library,Library/Processors and Peripherals,Project/ECE 385 Custom IPs" />
+ <window width="1920" height="1030" x="0" y="0" />
  <generation path="" />
 </preferences>
