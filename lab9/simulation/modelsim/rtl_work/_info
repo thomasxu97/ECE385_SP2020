@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/intelFPGA_lite/18.1/ECE385/lab9/simulation/modelsim
 vAddRoundKey
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1586471549
+Z2 !s110 1586492316
 !i10b 1
 !s100 zE;YkFBkR1>SQONQkXeaG1
 IgIc;mLj[WMblE;ZOWRe4e2
@@ -26,7 +26,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1586471549.000000
+Z5 !s108 1586492316.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/AddRoundKey.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/AddRoundKey.sv|
 !i113 1
@@ -36,7 +36,7 @@ Z8 tCvgOpt 0
 n@add@round@key
 vAES
 R1
-R2
+Z9 !s110 1586492315
 !i10b 1
 !s100 cGmg]Lz;gMfoIk^Sj8cMW3
 IWhA9[1YROMo6X57Q^31EC3
@@ -44,7 +44,7 @@ R3
 !s105 AES_sv_unit
 S1
 R0
-w1586471528
+w1586492284
 8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/AES.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/AES.sv
 L0 10
@@ -52,7 +52,7 @@ R4
 r1
 !s85 0
 31
-R5
+Z10 !s108 1586492315.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/AES.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/AES.sv|
 !i113 1
@@ -62,7 +62,7 @@ R8
 n@a@e@s
 vGF_Mul_9
 R1
-Z9 DXx4 work 21 InvMixColumns_sv_unit 0 22 `Y[>V_zZU_aib<LelPI7P1
+Z11 DXx4 work 21 InvMixColumns_sv_unit 0 22 `Y[>V_zZU_aib<LelPI7P1
 R3
 r1
 !s85 0
@@ -70,17 +70,17 @@ r1
 !i10b 1
 !s100 `>]4H4@iliSP?dl2@_DE82
 I[YBoZQD=CZajESzBiNRg23
-Z10 !s105 InvMixColumns_sv_unit
+Z12 !s105 InvMixColumns_sv_unit
 S1
 R0
-Z11 w1585521376
-Z12 8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvMixColumns.sv
-Z13 FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvMixColumns.sv
+Z13 w1585521376
+Z14 8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvMixColumns.sv
+Z15 FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvMixColumns.sv
 L0 74
 R4
 R5
-Z14 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvMixColumns.sv|
-Z15 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvMixColumns.sv|
+Z16 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvMixColumns.sv|
+Z17 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvMixColumns.sv|
 !i113 1
 R6
 R7
@@ -88,7 +88,7 @@ R8
 n@g@f_@mul_9
 vGF_Mul_b
 R1
-R9
+R11
 R3
 r1
 !s85 0
@@ -96,17 +96,17 @@ r1
 !i10b 1
 !s100 LWUM_dc3_P74=OT`RzHoN1
 Ia:f?mzVNN93RIJ:H_9hMd3
-R10
+R12
 S1
 R0
-R11
-R12
 R13
-Z16 L0 93
-R4
-R5
 R14
 R15
+Z18 L0 93
+R4
+R5
+R16
+R17
 !i113 1
 R6
 R7
@@ -114,7 +114,7 @@ R8
 n@g@f_@mul_b
 vGF_Mul_d
 R1
-R9
+R11
 R3
 r1
 !s85 0
@@ -122,17 +122,17 @@ r1
 !i10b 1
 !s100 CPB;fC9?WAod]IM0<oISe0
 I57UdSiZbC?l^[e5?JOA5G0
-R10
+R12
 S1
 R0
-R11
-R12
 R13
+R14
+R15
 L0 112
 R4
 R5
-R14
-R15
+R16
+R17
 !i113 1
 R6
 R7
@@ -140,7 +140,7 @@ R8
 n@g@f_@mul_d
 vGF_Mul_e
 R1
-R9
+R11
 R3
 r1
 !s85 0
@@ -148,22 +148,47 @@ r1
 !i10b 1
 !s100 8MSGaQX_X5X4HB0HA=_gj1
 ITL6NX2C7H_;BHAhQ>nVWX3
-R10
+R12
 S1
 R0
-R11
-R12
 R13
+R14
+R15
 L0 131
 R4
 R5
-R14
-R15
+R16
+R17
 !i113 1
 R6
 R7
 R8
 n@g@f_@mul_e
+vhexdriver
+R1
+R2
+!i10b 1
+!s100 9aO?^i9QbIaBE;CD84;[50
+IYS_ldeki<CcGBamnzo>Kc2
+R3
+!s105 hexdriver_sv_unit
+S1
+R0
+R13
+8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/hexdriver.sv
+FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/hexdriver.sv
+L0 2
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/hexdriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/hexdriver.sv|
+!i113 1
+R6
+R7
+R8
 vInvMixColumns
 R1
 R2
@@ -171,20 +196,20 @@ R2
 !s100 4o]QlL4?^EZ0IeL:kL;`V3
 I4JdVQIb72`k;9:k]^9ohf1
 R3
-R10
+R12
 S1
 R0
-R11
-R12
 R13
-Z17 L0 14
+R14
+R15
+Z19 L0 14
 R4
 r1
 !s85 0
 31
 R5
-R14
-R15
+R16
+R17
 !i113 1
 R6
 R7
@@ -202,14 +227,14 @@ I`Y[>V_zZU_aib<LelPI7P1
 !i103 1
 S1
 R0
-R11
-R12
 R13
+R14
+R15
 L0 65
 R4
 R5
-R14
-R15
+R16
+R17
 !i113 1
 R6
 R7
@@ -225,7 +250,7 @@ R3
 !s105 InvShiftRows_sv_unit
 S1
 R0
-R11
+R13
 8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvShiftRows.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvShiftRows.sv
 L0 2
@@ -243,25 +268,25 @@ R8
 n@inv@shift@rows
 vInvSubBytes
 R1
-R2
+R9
 !i10b 1
 !s100 fYzzGZ]YiaT7z3;]GQMHB1
 IT@06XJ7Eaa_;gPiz7F=Ec3
 R3
-Z18 !s105 SubBytes_sv_unit
+Z20 !s105 SubBytes_sv_unit
 S1
 R0
-R11
-Z19 8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/SubBytes.sv
-Z20 FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/SubBytes.sv
-R16
+R13
+Z21 8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/SubBytes.sv
+Z22 FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/SubBytes.sv
+R18
 R4
 r1
 !s85 0
 31
-R5
-Z21 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/SubBytes.sv|
-Z22 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/SubBytes.sv|
+R10
+Z23 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/SubBytes.sv|
+Z24 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/SubBytes.sv|
 !i113 1
 R6
 R7
@@ -269,25 +294,25 @@ R8
 n@inv@sub@bytes
 vInvSubBytesMatrix
 R1
-Z23 !s110 1586471550
+Z25 !s110 1586492317
 !i10b 1
 !s100 MUN9aO<5bzlIVm^i:SgYS1
 IX3geie:I2HSKQP``=D:7O2
 R3
-Z24 !s105 InvSubByteMatrix_sv_unit
+Z26 !s105 InvSubByteMatrix_sv_unit
 S1
 R0
-Z25 w1586446962
-Z26 8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvSubByteMatrix.sv
-Z27 FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvSubByteMatrix.sv
+Z27 w1586446962
+Z28 8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvSubByteMatrix.sv
+Z29 FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvSubByteMatrix.sv
 L0 1
 R4
 r1
 !s85 0
 31
-Z28 !s108 1586471550.000000
-Z29 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvSubByteMatrix.sv|
-Z30 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvSubByteMatrix.sv|
+Z30 !s108 1586492317.000000
+Z31 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvSubByteMatrix.sv|
+Z32 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/InvSubByteMatrix.sv|
 !i113 1
 R6
 R7
@@ -295,25 +320,25 @@ R8
 n@inv@sub@bytes@matrix
 vInvSubWord
 R1
-R23
+R25
 !i10b 1
 !s100 @o_D0I07bjoEFBzBzlFXJ3
 INUVYoO<`l]o6TK;4P_Ao21
 R3
-R24
+R26
 S1
 R0
-R25
-R26
 R27
+R28
+R29
 L0 19
 R4
 r1
 !s85 0
 31
-R28
-R29
 R30
+R31
+R32
 !i113 1
 R6
 R7
@@ -326,20 +351,20 @@ R2
 !s100 Bdiae<klOdVNS3GLcDzdF2
 IzI:3U[D?0;5@I8JzTYgS:1
 R3
-Z31 !s105 KeyExpansion_sv_unit
+Z33 !s105 KeyExpansion_sv_unit
 S1
 R0
-R11
-Z32 8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/KeyExpansion.sv
-Z33 FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/KeyExpansion.sv
+R13
+Z34 8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/KeyExpansion.sv
+Z35 FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/KeyExpansion.sv
 L0 13
 R4
 r1
 !s85 0
 31
 R5
-Z34 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/KeyExpansion.sv|
-Z35 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/KeyExpansion.sv|
+Z36 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/KeyExpansion.sv|
+Z37 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/KeyExpansion.sv|
 !i113 1
 R6
 R7
@@ -352,46 +377,71 @@ R2
 !s100 2i=U]i?z:7<e:gKRGRX`f2
 ILcJ[U>EF4^Q6i`d2jm5843
 R3
-R31
+R33
 S1
 R0
-R11
-R32
-R33
+R13
+R34
+R35
 L0 41
 R4
 r1
 !s85 0
 31
 R5
-R34
-R35
+R36
+R37
 !i113 1
 R6
 R7
 R8
 n@key@expansion@one
-vSubBytes
+vlab9_top
 R1
-R2
+R9
 !i10b 1
-!s100 J7353OL5=^nSOQEV4PX_03
-Id=^e4KZKD3d0GhCo0^<YP1
+!s100 0BF;mfl]35B2WMRT5g1[b1
+I4bljzh17Jz<M;RZ0Q70Re2
 R3
-R18
+!s105 lab9_top_sv_unit
 S1
 R0
-R11
-R19
-R20
-R17
+w1586472583
+8C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/lab9_top.sv
+FC:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/lab9_top.sv
+L0 11
 R4
 r1
 !s85 0
 31
-R5
+R10
+!s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/lab9_top.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/lab9_top.sv|
+!i113 1
+R6
+R7
+R8
+vSubBytes
+R1
+R9
+!i10b 1
+!s100 J7353OL5=^nSOQEV4PX_03
+Id=^e4KZKD3d0GhCo0^<YP1
+R3
+R20
+S1
+R0
+R13
 R21
 R22
+R19
+R4
+r1
+!s85 0
+31
+R10
+R23
+R24
 !i113 1
 R6
 R7
@@ -399,7 +449,7 @@ R8
 n@sub@bytes
 vtestbench
 R1
-R23
+!s110 1586492327
 !i10b 1
 !s100 ]HFcT8GmzKnD29gfPh^9j1
 IS@RhE;CM_3;5A4c=6YbNZ2
@@ -415,7 +465,7 @@ R4
 r1
 !s85 0
 31
-R28
+!s108 1586492327.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/testbench.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog|C:/intelFPGA_lite/18.1/ECE385/lab9/SysVerilog/testbench.sv|
 !i113 1

@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 dC:/intelFPGA_lite/18.1/ECE385/lab9/simulation/modelsim
 valtera_avalon_sc_fifo
-Z1 !s110 1586457299
+Z1 !s110 1586492309
 !i10b 1
 !s100 4mK@em][G=j]om3zJIhOc0
 I2O@SC]Y=DJ79faRzE3J>Y3
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z3 w1585970016
+Z3 w1586488713
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_sc_fifo.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_sc_fifo.v
 Z4 L0 21
@@ -23,7 +23,7 @@ Z5 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z6 !s108 1586457299.000000
+Z6 !s108 1586492309.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_sc_fifo.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_sc_fifo.v|
 !i113 1
@@ -31,13 +31,13 @@ Z7 o-vlog01compat -work lab9_soc
 Z8 !s92 -vlog01compat -work lab9_soc +incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules
 Z9 tCvgOpt 0
 valtera_avalon_st_clock_crosser
-Z10 !s110 1586457305
+Z10 !s110 1586492317
 !i10b 1
 !s100 YbU`iK^TYJ_9Hz`CZekjQ3
 Iln7WBz[6YS3RFm3z?meLe1
 R2
 R0
-Z11 w1585970017
+Z11 w1586488714
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_st_clock_crosser.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_st_clock_crosser.v
 L0 22
@@ -45,7 +45,7 @@ R5
 r1
 !s85 0
 31
-Z12 !s108 1586457305.000000
+Z12 !s108 1586492317.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_st_clock_crosser.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_st_clock_crosser.v|
 !i113 1
@@ -53,7 +53,7 @@ R7
 R8
 R9
 valtera_avalon_st_handshake_clock_crosser
-Z13 !s110 1586457304
+R10
 !i10b 1
 !s100 3f<J9K;e[9FU@JKn0^PK?0
 IEoO5YN0W]EB<dBP9:UVYN1
@@ -62,12 +62,12 @@ R0
 R11
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.v
-Z14 L0 24
+Z13 L0 24
 R5
 r1
 !s85 0
 31
-Z15 !s108 1586457304.000000
+R12
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_avalon_st_handshake_clock_crosser.v|
 !i113 1
@@ -75,24 +75,24 @@ R7
 R8
 R9
 valtera_merlin_arb_adder
-Z16 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-R10
+Z14 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z15 !s110 1586492318
 !i10b 1
 !s100 1Jn[a;@5nZmTN?DFKQNzj2
 I19cM]5bVXYN[maGCI_G;_2
 R2
-Z17 !s105 altera_merlin_arbitrator_sv_unit
+Z16 !s105 altera_merlin_arbitrator_sv_unit
 S1
 R0
-R11
-Z18 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_arbitrator.sv
-Z19 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_arbitrator.sv
+R3
+Z17 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_arbitrator.sv
+Z18 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_arbitrator.sv
 L0 228
 R5
 r1
 !s85 0
 31
-R12
+Z19 !s108 1586492318.000000
 Z20 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_arbitrator.sv|
 Z21 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_arbitrator.sv|
 !i113 1
@@ -100,24 +100,24 @@ Z22 o-sv -work lab9_soc
 Z23 !s92 -sv -work lab9_soc +incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules
 R9
 valtera_merlin_arbitrator
-R16
-R10
+R14
+R15
 !i10b 1
 !s100 NQTehjm2fNQROUMUzShGa1
 I3C@Mc5]?d4:L<iedNAM^z0
 R2
-R17
+R16
 S1
 R0
-R11
+R3
+R17
 R18
-R19
 L0 103
 R5
 r1
 !s85 0
 31
-R12
+R19
 R20
 R21
 !i113 1
@@ -125,8 +125,8 @@ R22
 R23
 R9
 valtera_merlin_burst_uncompressor
-R16
-Z24 !s110 1586457309
+R14
+!s110 1586492323
 !i10b 1
 !s100 f1?Rb<=9U?R9LJoHl;7>T3
 IESIlGgQ:gP2ZM]YU2XK2A1
@@ -142,7 +142,7 @@ R5
 r1
 !s85 0
 31
-Z25 !s108 1586457309.000000
+!s108 1586492323.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_burst_uncompressor.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_burst_uncompressor.sv|
 !i113 1
@@ -150,8 +150,8 @@ R22
 R23
 R9
 valtera_merlin_master_agent
-R16
-R24
+R14
+!s110 1586492324
 !i10b 1
 !s100 _CJm:YX=>U2LQKH;8=@cb0
 I]EGV2PcNGRi25W``B:j412
@@ -167,7 +167,7 @@ R5
 r1
 !s85 0
 31
-R25
+!s108 1586492324.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_master_agent.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_master_agent.sv|
 !i113 1
@@ -175,8 +175,8 @@ R22
 R23
 R9
 valtera_merlin_master_translator
-R16
-Z26 !s110 1586457310
+R14
+!s110 1586492326
 !i10b 1
 !s100 NdRk@]3fC2C@V7Rm;dQM31
 I?j136ViRABk:3mCn0ClM32
@@ -192,7 +192,7 @@ R5
 r1
 !s85 0
 31
-R25
+!s108 1586492326.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_master_translator.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_master_translator.sv|
 !i113 1
@@ -200,8 +200,8 @@ R22
 R23
 R9
 valtera_merlin_slave_agent
-R16
-Z27 !s110 1586457308
+R14
+Z24 !s110 1586492321
 !i10b 1
 !s100 ePZN1d?B062J`OBb?blff3
 I7UX^el`zALCTnMP@L=2oS1
@@ -212,12 +212,12 @@ R0
 R3
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_slave_agent.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_slave_agent.sv
-Z28 L0 34
+Z25 L0 34
 R5
 r1
 !s85 0
 31
-Z29 !s108 1586457308.000000
+Z26 !s108 1586492321.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_slave_agent.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_slave_agent.sv|
 !i113 1
@@ -225,8 +225,8 @@ R22
 R23
 R9
 valtera_merlin_slave_translator
-R16
-R24
+R14
+!s110 1586492325
 !i10b 1
 !s100 k`9[YAn_dLTkg;GE`mOb61
 IQd?F[g?l5=_?H=XMj`PC`0
@@ -242,7 +242,7 @@ R5
 r1
 !s85 0
 31
-R25
+!s108 1586492325.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_slave_translator.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_merlin_slave_translator.sv|
 !i113 1
@@ -250,13 +250,13 @@ R22
 R23
 R9
 valtera_reset_controller
-Z30 !s110 1586457298
+Z27 !s110 1586492308
 !i10b 1
 !s100 z[H_hRO9gO=:^2E3_jWH03
 I4de7?Kel62VRU@UAcOL141
 R2
 R0
-Z31 w1585970012
+Z28 w1586488710
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_reset_controller.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_reset_controller.v
 L0 42
@@ -264,7 +264,7 @@ R5
 r1
 !s85 0
 31
-Z32 !s108 1586457298.000000
+Z29 !s108 1586492308.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_reset_controller.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_reset_controller.v|
 !i113 1
@@ -272,21 +272,21 @@ R7
 R8
 R9
 valtera_reset_synchronizer
-R30
+R27
 !i10b 1
 !s100 oWLYmSO[EOX[G0PgQhZ2=0
 IDHc9MCB@j:a82?[KPCZ>Y3
 R2
 R0
-R31
+R28
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_reset_synchronizer.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_reset_synchronizer.v
-R14
+R13
 R5
 r1
 !s85 0
 31
-R32
+R29
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_reset_synchronizer.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_reset_synchronizer.v|
 !i113 1
@@ -294,7 +294,7 @@ R7
 R8
 R9
 valtera_std_synchronizer_nocut
-R10
+R15
 !i10b 1
 !s100 b8zV2<79GgkNg0GC<P[GJ2
 IJMgjCzcV<6Qne1z8KoeeN0
@@ -308,7 +308,7 @@ R5
 r1
 !s85 0
 31
-R12
+R19
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_std_synchronizer_nocut.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/altera_std_synchronizer_nocut.v|
 !i113 1
@@ -316,16 +316,16 @@ R7
 R8
 R9
 vavalon_aes_interface
-R16
-R26
+R14
+!s110 1586492327
 !i10b 1
-!s100 ^Iz>jgHAM<Ted`e:O@3lX1
-I7JAfTK<9O4F;@]3aUgAhK1
+!s100 9c?VBi:8<f]TkVbgHNa`a2
+I]D6MCZ_PG;B:DGIQImQU=0
 R2
 !s105 avalon_aes_interface_sv_unit
 S1
 R0
-Z33 w1585969981
+Z30 w1586488683
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/avalon_aes_interface.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/avalon_aes_interface.sv
 R4
@@ -333,7 +333,7 @@ R5
 r1
 !s85 0
 31
-!s108 1586457310.000000
+!s108 1586492327.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/avalon_aes_interface.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/avalon_aes_interface.sv|
 !i113 1
@@ -341,13 +341,13 @@ R22
 R23
 R9
 vlab9_soc
-R30
+R27
 !i10b 1
-!s100 Z3C0SZl_1`Yh@@`3YAXCU1
-IH<4EmWm4e13D0T0TJTh`i3
+!s100 _FRfk`o]eeeC6IMl3:YSL0
+I;BKaihlf=[14VbMWnfH541
 R2
 R0
-R33
+R30
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/lab9_soc.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/lab9_soc.v
 L0 6
@@ -355,7 +355,7 @@ R5
 r1
 !s85 0
 31
-R32
+R29
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/lab9_soc.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/lab9_soc.v|
 !i113 1
@@ -363,13 +363,13 @@ R7
 !s92 -vlog01compat -work lab9_soc +incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis
 R9
 vlab9_soc_button
-Z34 !s110 1586457303
+Z31 !s110 1586492315
 !i10b 1
 !s100 l`41cHAo^;ZjZX10OQNmR0
 IbOdOJi7GPmZYZDV]]^J801
 R2
 R0
-Z35 w1585969982
+Z32 w1586488684
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_button.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_button.v
 R4
@@ -377,7 +377,7 @@ R5
 r1
 !s85 0
 31
-Z36 !s108 1586457303.000000
+Z33 !s108 1586492315.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_button.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_button.v|
 !i113 1
@@ -385,16 +385,16 @@ R7
 R8
 R9
 vlab9_soc_irq_mapper
-R16
-R13
+R14
+R10
 !i10b 1
-!s100 mKVKlY5YUQ]iencHUn?lR3
-IbgMmd30cEnL<knQDZ3lBa0
+!s100 bTSY=ijiQlUTF>h6DWDFm3
+IY]<cjmRW^Bm_m2Bo9XWW^0
 R2
 !s105 lab9_soc_irq_mapper_sv_unit
 S1
 R0
-R31
+R28
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_irq_mapper.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_irq_mapper.sv
 L0 31
@@ -402,7 +402,7 @@ R5
 r1
 !s85 0
 31
-R15
+R12
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_irq_mapper.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_irq_mapper.sv|
 !i113 1
@@ -410,111 +410,111 @@ R22
 R23
 R9
 vlab9_soc_jtag_uart_0
-Z37 !s110 1586457302
+Z34 !s110 1586492314
 !i10b 1
 !s100 ezVSi?KNgjj1inz:5?g7f0
 I?UKdTGF`_0aHT?jeXQ`7Q1
 R2
 R0
-Z38 w1585969983
-Z39 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_jtag_uart_0.v
-Z40 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_jtag_uart_0.v
+R32
+Z35 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_jtag_uart_0.v
+Z36 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_jtag_uart_0.v
 L0 331
 R5
 r1
 !s85 0
 31
-Z41 !s108 1586457302.000000
-Z42 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_jtag_uart_0.v|
-Z43 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_jtag_uart_0.v|
+Z37 !s108 1586492314.000000
+Z38 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_jtag_uart_0.v|
+Z39 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_jtag_uart_0.v|
 !i113 1
 R7
 R8
 R9
 vlab9_soc_jtag_uart_0_scfifo_r
-R37
+R34
 !i10b 1
 !s100 BmB_Tf;OzaPCM2h4gJ8zT0
 IhV0VIFFZC5KPk`?8oYllo2
 R2
 R0
-R38
-R39
-R40
+R32
+R35
+R36
 L0 243
 R5
 r1
 !s85 0
 31
-R41
-R42
-R43
+R37
+R38
+R39
 !i113 1
 R7
 R8
 R9
 vlab9_soc_jtag_uart_0_scfifo_w
-R37
+R34
 !i10b 1
 !s100 idS<A>ZjX@Zh76M3e`X`02
 IMeh;I[V@4cE`4Id?HjN3b2
 R2
 R0
-R38
-R39
-R40
+R32
+R35
+R36
 L0 78
 R5
 r1
 !s85 0
 31
-R41
-R42
-R43
+R37
+R38
+R39
 !i113 1
 R7
 R8
 R9
 vlab9_soc_jtag_uart_0_sim_scfifo_r
-R37
+R34
 !i10b 1
 !s100 o@J@FUBEXW8W<b@oHU2KY2
 IYg764=@VgoW7WgZ[AbMYB1
 R2
 R0
-R38
-R39
-R40
+R32
+R35
+R36
 L0 164
 R5
 r1
 !s85 0
 31
-R41
-R42
-R43
+R37
+R38
+R39
 !i113 1
 R7
 R8
 R9
 vlab9_soc_jtag_uart_0_sim_scfifo_w
-R37
+R34
 !i10b 1
 !s100 aSUg]mzQ?HEQQ:4m=9K8?3
 IJlTHEdG8W8oE>a8niMDZ:3
 R2
 R0
-R38
-R39
-R40
+R32
+R35
+R36
 R4
 R5
 r1
 !s85 0
 31
-R41
-R42
-R43
+R37
+R38
+R39
 !i113 1
 R7
 R8
@@ -522,11 +522,11 @@ R9
 vlab9_soc_mm_interconnect_0
 R1
 !i10b 1
-!s100 0Fb^HJfPQ^Z5U0JUnhNF80
-I2i<@]]UE1^A>QCXSZ61V[3
+!s100 Zk7ViC[a7Bdae;chLbR8T0
+IIeTae4IFcX1Agl]J^kzb;2
 R2
 R0
-R31
+R28
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0.v
 L0 9
@@ -534,7 +534,7 @@ R5
 r1
 !s85 0
 31
-R32
+R29
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0.v|
 !i113 1
@@ -548,7 +548,7 @@ R1
 I]AHhWFVi?bO70dE>BeD]L2
 R2
 R0
-Z44 w1585970018
+Z40 w1586488715
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_avalon_st_adapter.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_avalon_st_adapter.v
 L0 9
@@ -564,8 +564,8 @@ R7
 R8
 R9
 vlab9_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0
-R16
-R13
+R14
+R10
 !i10b 1
 !s100 PLS>hHl5EjHIHCQdcMhT^2
 IBdgCcmZ<WHMCaW:QklLn`2
@@ -573,7 +573,7 @@ R2
 !s105 lab9_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0_sv_unit
 S1
 R0
-R44
+R40
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv
 L0 66
@@ -581,7 +581,7 @@ R5
 r1
 !s85 0
 31
-R15
+R12
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv|
 !i113 1
@@ -589,8 +589,8 @@ R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_cmd_demux
-R16
-Z45 !s110 1586457307
+R14
+Z41 !s110 1586492320
 !i10b 1
 !s100 dn=DeSW7`2LlLg<kXkKGQ1
 IAdQaN2UVJo1A?cNJSah6D1
@@ -598,15 +598,15 @@ R2
 !s105 lab9_soc_mm_interconnect_0_cmd_demux_sv_unit
 S1
 R0
-R11
+R3
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_demux.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_demux.sv
-Z46 L0 43
+Z42 L0 43
 R5
 r1
 !s85 0
 31
-Z47 !s108 1586457307.000000
+Z43 !s108 1586492320.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_demux.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_demux.sv|
 !i113 1
@@ -614,8 +614,8 @@ R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_cmd_demux_001
-R16
-R45
+R14
+R41
 !i10b 1
 !s100 O70iAJF6B_5D^4lzAEn280
 IdB5e=7mT7gEm4<9lRb=TE0
@@ -623,15 +623,15 @@ R2
 !s105 lab9_soc_mm_interconnect_0_cmd_demux_001_sv_unit
 S1
 R0
-R11
+R3
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_demux_001.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_demux_001.sv
-R46
+R42
 R5
 r1
 !s85 0
 31
-R47
+Z44 !s108 1586492319.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_demux_001.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_demux_001.sv|
 !i113 1
@@ -639,8 +639,8 @@ R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_cmd_mux
-R16
-R45
+R14
+Z45 !s110 1586492319
 !i10b 1
 !s100 NMSCd>@LjoicmDUWaFM<<0
 I3PNJBFHa]MD]Ke_XY]ifW3
@@ -648,15 +648,15 @@ R2
 !s105 lab9_soc_mm_interconnect_0_cmd_mux_sv_unit
 S1
 R0
-R11
+R3
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_mux.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_mux.sv
-Z48 L0 51
+Z46 L0 51
 R5
 r1
 !s85 0
 31
-Z49 !s108 1586457306.000000
+R44
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_mux.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_mux.sv|
 !i113 1
@@ -664,8 +664,8 @@ R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_cmd_mux_002
-R16
-Z50 !s110 1586457306
+R14
+R45
 !i10b 1
 !s100 UlAiPjN[AFERW1oDD1@W:2
 IUcU@BQ;;Ea7^0`@3RcO7e2
@@ -673,15 +673,15 @@ R2
 !s105 lab9_soc_mm_interconnect_0_cmd_mux_002_sv_unit
 S1
 R0
-R11
+R3
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_mux_002.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_mux_002.sv
-R48
+R46
 R5
 r1
 !s85 0
 31
-R49
+R44
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_mux_002.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_cmd_mux_002.sv|
 !i113 1
@@ -689,208 +689,208 @@ R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_router
-R16
-R27
+R14
+R24
 !i10b 1
 !s100 OSO^dfWcC77WGiVSdY]o:1
 Id_K0m6KX7P2P_7:>0_5:23
 R2
-Z51 !s105 lab9_soc_mm_interconnect_0_router_sv_unit
+Z47 !s105 lab9_soc_mm_interconnect_0_router_sv_unit
 S1
 R0
 R3
-Z52 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router.sv
-Z53 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router.sv
-Z54 L0 84
+Z48 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router.sv
+Z49 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router.sv
+Z50 L0 84
 R5
 r1
 !s85 0
 31
-R29
-Z55 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router.sv|
-Z56 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router.sv|
+R26
+Z51 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router.sv|
+Z52 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router.sv|
 !i113 1
 R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_router_001
-R16
-R27
+R14
+R41
 !i10b 1
 !s100 BTD[`kdWo=8GNXCd>ROf81
 I_C<f41FTF1T=U4:a>ZCCi3
 R2
-Z57 !s105 lab9_soc_mm_interconnect_0_router_001_sv_unit
+Z53 !s105 lab9_soc_mm_interconnect_0_router_001_sv_unit
 S1
 R0
 R3
-Z58 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_001.sv
-Z59 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_001.sv
-R54
+Z54 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_001.sv
+Z55 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_001.sv
+R50
 R5
 r1
 !s85 0
 31
-R29
-Z60 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_001.sv|
-Z61 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_001.sv|
+R43
+Z56 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_001.sv|
+Z57 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_001.sv|
 !i113 1
 R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_router_001_default_decode
-R16
-R27
+R14
+R41
 !i10b 1
 !s100 a`:4>4L[zf^_QFQhUIWYC0
 IzKS>UU[4<<NLChTlkdRbo1
 R2
-R57
+R53
 S1
 R0
 R3
-R58
-R59
-Z62 L0 45
+R54
+R55
+Z58 L0 45
 R5
 r1
 !s85 0
 31
-R29
-R60
-R61
+R43
+R56
+R57
 !i113 1
 R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_router_002
-R16
-R45
+R14
+R41
 !i10b 1
 !s100 8FG1a^^:^OLzWbS05@MoI1
 IDMaE5i4EX<bbeKE3;Wg]E1
 R2
-Z63 !s105 lab9_soc_mm_interconnect_0_router_002_sv_unit
+Z59 !s105 lab9_soc_mm_interconnect_0_router_002_sv_unit
 S1
 R0
 R3
-Z64 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_002.sv
-Z65 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_002.sv
-R54
+Z60 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_002.sv
+Z61 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_002.sv
+R50
 R5
 r1
 !s85 0
 31
-R47
-Z66 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_002.sv|
-Z67 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_002.sv|
+R43
+Z62 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_002.sv|
+Z63 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_002.sv|
 !i113 1
 R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_router_002_default_decode
-R16
-R45
+R14
+R41
 !i10b 1
 !s100 [6FEM548c1kZNDddnjY`o0
 Ie6Pa8:XakQQ1cbC=h`23F0
 R2
-R63
+R59
 S1
 R0
 R3
-R64
-R65
-R62
+R60
+R61
+R58
 R5
 r1
 !s85 0
 31
-R47
-R66
-R67
+R43
+R62
+R63
 !i113 1
 R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_router_004
-R16
-R45
+R14
+R41
 !i10b 1
 !s100 `ODg9@fCCS[iHT0U@8f<T0
 IiK32@g5@5lJC^^I<6BB=W1
 R2
-Z68 !s105 lab9_soc_mm_interconnect_0_router_004_sv_unit
+Z64 !s105 lab9_soc_mm_interconnect_0_router_004_sv_unit
 S1
 R0
 R3
-Z69 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_004.sv
-Z70 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_004.sv
-R54
+Z65 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_004.sv
+Z66 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_004.sv
+R50
 R5
 r1
 !s85 0
 31
-R47
-Z71 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_004.sv|
-Z72 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_004.sv|
+R43
+Z67 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_004.sv|
+Z68 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_router_004.sv|
 !i113 1
 R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_router_004_default_decode
-R16
-R45
+R14
+R41
 !i10b 1
 !s100 ;a;Qjf9P`K<4T=U:alNed2
 Ia;P10lYWAMCWI>ENSjU4n1
 R2
-R68
+R64
 S1
 R0
 R3
-R69
-R70
-R62
+R65
+R66
+R58
 R5
 r1
 !s85 0
 31
-R47
-R71
-R72
+R43
+R67
+R68
 !i113 1
 R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_router_default_decode
-R16
-R27
+R14
+R24
 !i10b 1
 !s100 0GdJHg8U_9?Wa8>A1`@a91
 I8Yfg93neahKheUiZQWe0P0
 R2
-R51
+R47
 S1
 R0
 R3
-R52
-R53
-R62
+R48
+R49
+R58
 R5
 r1
 !s85 0
 31
-R29
-R55
-R56
+R26
+R51
+R52
 !i113 1
 R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_rsp_demux
-R16
-R50
+R14
+R45
 !i10b 1
 !s100 QHf781`fn5S_:f8iJNG;21
 IIBBLNSIG36m0`D3H00HPF1
@@ -898,15 +898,15 @@ R2
 !s105 lab9_soc_mm_interconnect_0_rsp_demux_sv_unit
 S1
 R0
-R11
+R3
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_demux.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_demux.sv
-R46
+R42
 R5
 r1
 !s85 0
 31
-R49
+R44
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_demux.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_demux.sv|
 !i113 1
@@ -914,8 +914,8 @@ R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_rsp_demux_002
-R16
-R50
+R14
+R45
 !i10b 1
 !s100 n_Z]oHmoh5jzVo0VenDik0
 IfA^9=YNI]^MG;3QeWdkTU0
@@ -926,12 +926,12 @@ R0
 R11
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_demux_002.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_demux_002.sv
-R46
+R42
 R5
 r1
 !s85 0
 31
-R49
+R44
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_demux_002.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_demux_002.sv|
 !i113 1
@@ -939,8 +939,8 @@ R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_rsp_mux
-R16
-R50
+R14
+R15
 !i10b 1
 !s100 R6IfgV1UY;H=:K7;C_5oA3
 IFXS`Cn6^?eC]DP@zL@R]l3
@@ -951,12 +951,12 @@ R0
 R11
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_mux.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_mux.sv
-R48
+R46
 R5
 r1
 !s85 0
 31
-R49
+R19
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_mux.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_mux.sv|
 !i113 1
@@ -964,8 +964,8 @@ R22
 R23
 R9
 vlab9_soc_mm_interconnect_0_rsp_mux_001
-R16
-R10
+R14
+R15
 !i10b 1
 !s100 COjgS_hNTMo?4M:W`XYz60
 I9=``J53G1zT:S6gOzfO9I1
@@ -976,12 +976,12 @@ R0
 R11
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_mux_001.sv
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_mux_001.sv
-R48
+R46
 R5
 r1
 !s85 0
 31
-R12
+R19
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_mux_001.sv|
 !s90 -reportprogress|300|-sv|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_mm_interconnect_0_rsp_mux_001.sv|
 !i113 1
@@ -989,13 +989,13 @@ R22
 R23
 R9
 vlab9_soc_nios2_gen2_0
-Z73 !s110 1586457300
+Z69 !s110 1586492310
 !i10b 1
 !s100 a=JRPj]lJFWbfh3Jn46EA2
 IIdJnP97G2fRm^fkPVhzRD2
 R2
 R0
-w1585969984
+Z70 w1586488686
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0.v
 L0 9
@@ -1003,7 +1003,7 @@ R5
 r1
 !s85 0
 31
-Z74 !s108 1586457300.000000
+Z71 !s108 1586492310.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0.v|
 !i113 1
@@ -1011,29 +1011,29 @@ R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu
-Z75 !s110 1586457301
+Z72 !s110 1586492311
 !i10b 1
-!s100 n5l];61mdBX_loC0KijRT0
-Ioi4GF4C@6@GZ=3Sf^8ik42
+!s100 ;oDDZ;Jh:K:E1IQL6HcFl3
+I<[6jeT9bmP5WoWBX:OVYA3
 R2
 R0
 R3
-Z76 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu.v
-Z77 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu.v
+Z73 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu.v
+Z74 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu.v
 L0 2834
 R5
 r1
 !s85 0
 31
-Z78 !s108 1586457301.000000
-Z79 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu.v|
-Z80 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu.v|
+Z75 !s108 1586492311.000000
+Z76 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu.v|
+Z77 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu.v|
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_debug_slave_sysclk
-R75
+Z78 !s110 1586492313
 !i10b 1
 !s100 F?a^4aDdWkSNQQ4m6>n]23
 IIZeQO1OzcV8W@PO?<lmF73
@@ -1047,7 +1047,7 @@ R5
 r1
 !s85 0
 31
-R78
+Z79 !s108 1586492313.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu_debug_slave_sysclk.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu_debug_slave_sysclk.v|
 !i113 1
@@ -1055,7 +1055,7 @@ R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_debug_slave_tck
-R37
+R78
 !i10b 1
 !s100 J@8E3Gd:>kc0DZFNVSTd[1
 I?>87nz4FHl6_CgbNH?8ha3
@@ -1069,7 +1069,7 @@ R5
 r1
 !s85 0
 31
-R78
+R79
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu_debug_slave_tck.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu_debug_slave_tck.v|
 !i113 1
@@ -1077,7 +1077,7 @@ R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_debug_slave_wrapper
-R37
+R34
 !i10b 1
 !s100 P4:n3_Wo9MUIoT8bLG7oW1
 I1Q59W;ZQcmR0]hejmLS7H2
@@ -1091,7 +1091,7 @@ R5
 r1
 !s85 0
 31
-R41
+R37
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu_debug_slave_wrapper.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu_debug_slave_wrapper.v|
 !i113 1
@@ -1099,447 +1099,447 @@ R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_avalon_reg
-R75
+R72
 !i10b 1
-!s100 ;k9QU?[C^a^kn9lWil8GZ3
-IgZznQUR_jbG4Vg>XZS>1P1
+!s100 JM<2^QNEIQd^EW6bE6U>o1
+IN><2a8Zbmd>;N8lU=c<Mc3
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 2023
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci
-R75
+R72
 !i10b 1
 !s100 O4AE8?9S7TM[V?^0U>?oA2
 IcEmSezLU1@cS]So]l3^JC3
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 2362
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_break
-R75
+R72
 !i10b 1
 !s100 _c5_Sfied^UT4c>Bc9KUQ0
 I^QNa[CZACWXnbY6oe<>?d2
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 295
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_compute_input_tm_cnt
-R75
+R72
 !i10b 1
 !s100 GCiJjBoKhF`PEfP]48Pbi2
 I?HEa`6j]GWRXS88ccM]zJ3
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 1265
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_dbrk
-R75
+R72
 !i10b 1
 !s100 Za`HeD^XUIRJJ<]>O=e=33
 I2Se[K1n3QP@;c]Fl35P3>1
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 795
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_debug
-R75
+R72
 !i10b 1
 !s100 [9LE1d?>m[oCSh3=fGcnI3
 IM6dmTeXdX23087e9Wj7RJ2
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 153
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_dtrace
-R75
+R72
 !i10b 1
 !s100 hQo<O;3EY_N=Q6fa32dez2
 IAif0iW0m:cklgJcE6ch5N3
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 1183
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_fifo
-R75
+R72
 !i10b 1
 !s100 TPz1]D_KXAIIV4:6bl?KO1
 ILLTO8mzjKQ5U_:;_3mdD82
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 1427
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_fifo_cnt_inc
-R75
+R72
 !i10b 1
 !s100 6DDhhHF_LR72]gH^2gQK42
 I81EIZGSOTKL@3[F^B6jIo2
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 1380
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_fifo_wrptr_inc
-R75
+R72
 !i10b 1
 !s100 EIIbamXlR>nLZ_1Uz<mdH0
 I][oAiVNb]jOkjFCeI8i632
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 1337
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_im
-R75
+R72
 !i10b 1
 !s100 _0P[@NIo?PU45O1<o_Td90
 I8P54D:R3LM`VMUdcM=VBM1
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 1936
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_itrace
-R75
+R72
 !i10b 1
 !s100 ?W9QzFim^^mfU;1n_52Zd0
 IYMK>[8=8[aS4k=lhzA0:A3
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 982
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_pib
-R75
+R72
 !i10b 1
 !s100 k1KLN`f^z45@OEaPQPX]31
 IFgl?CmlWdGn9K^c475>=`2
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 1913
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_td_mode
-R75
+R72
 !i10b 1
 !s100 6LXVg6<S4CN?EgQc`JN8o0
 IbF@mR:^M`18;CDN[LZjS80
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 1115
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_oci_xbrk
-R75
+R72
 !i10b 1
 !s100 `]4Cezo=HKC924d3nziJi3
 IkW3XUDiljYn1CLnnF1ee<0
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 588
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_ocimem
-R75
+R72
 !i10b 1
 !s100 ZMjjoE?@?4mKLFnMVhXU`3
 IEFfSgWjJ^B>YaZPC2E4fR1
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 2181
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_nios2_performance_monitors
-R75
+R72
 !i10b 1
 !s100 Hj:?W__l`QjDg5zQ;=MLz0
 IoXnCK?UE8hgglh`I5QEPQ2
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 2006
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_ociram_sp_ram_module
-R75
+R72
 !i10b 1
 !s100 g1<?cGeg^M^_K7<mHM<^41
 I64ih^=n4o@EB[;>J=a]G]2
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 2116
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_register_bank_a_module
-R75
+R72
 !i10b 1
 !s100 [a=]FPb@FJR6finW8aT8Q1
 ISk5DYQcdjm>SM]nTo`VhG3
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 R4
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_register_bank_b_module
-R75
+R72
 !i10b 1
 !s100 lT;Gi7KNIMAF?aWTZO4l31
 IemU[f;3@KhBUNi8]S<7hC3
 R2
 R0
 R3
-R76
-R77
+R73
+R74
 L0 87
 R5
 r1
 !s85 0
 31
-R78
-R79
-R80
+R75
+R76
+R77
 !i113 1
 R7
 R8
 R9
 vlab9_soc_nios2_gen2_0_cpu_test_bench
-R37
+R34
 !i10b 1
 !s100 ahGEG2ne;2m:ao^<]B_9A2
 I5zIV91>VnlR4RgJ1`U55e3
@@ -1553,7 +1553,7 @@ R5
 r1
 !s85 0
 31
-R41
+R37
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu_test_bench.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_nios2_gen2_0_cpu_test_bench.v|
 !i113 1
@@ -1561,13 +1561,13 @@ R7
 R8
 R9
 vlab9_soc_onchip_memory2_0
-R73
+R69
 !i10b 1
 !s100 mc[fAEEk9LZ^Xf9]mXACf1
 IfWj?BGR]kBT;b]2NBP8e>0
 R2
 R0
-w1585969986
+R70
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_onchip_memory2_0.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_onchip_memory2_0.v
 R4
@@ -1575,7 +1575,7 @@ R5
 r1
 !s85 0
 31
-R74
+R71
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_onchip_memory2_0.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_onchip_memory2_0.v|
 !i113 1
@@ -1583,67 +1583,67 @@ R7
 R8
 R9
 vlab9_soc_sdram
-R73
+R69
 !i10b 1
 !s100 2hzCSziEEH[[F]?SoM:[c3
 IAKR=eVjSAR[Ocjhklf7fB2
 R2
 R0
-Z81 w1585969987
-Z82 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram.v
-Z83 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram.v
+Z80 w1586488687
+Z81 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram.v
+Z82 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram.v
 L0 159
 R5
 r1
 !s85 0
 31
-R74
-Z84 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram.v|
-Z85 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram.v|
+R71
+Z83 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram.v|
+Z84 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram.v|
 !i113 1
 R7
 R8
 R9
 vlab9_soc_sdram_input_efifo_module
-R73
+R69
 !i10b 1
 !s100 k?[^OK7A=fF4]Ld2aRBc42
 I;V>i4M2Y3T0NR_eK[@K:P0
 R2
 R0
+R80
 R81
 R82
-R83
 R4
 R5
 r1
 !s85 0
 31
-R74
+R71
+R83
 R84
-R85
 !i113 1
 R7
 R8
 R9
 vlab9_soc_sdram_pll
-R73
+R1
 !i10b 1
 !s100 k1e?TIU`9iNGmaZ`FJ68X2
 IU1bBSI:X8oG2zZaDmYMaV2
 R2
 R0
-Z86 w1585969989
-Z87 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram_pll.v
-Z88 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram_pll.v
+Z85 w1586488688
+Z86 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram_pll.v
+Z87 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram_pll.v
 L0 217
 R5
 r1
 !s85 0
 31
 R6
-Z89 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram_pll.v|
-Z90 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram_pll.v|
+Z88 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram_pll.v|
+Z89 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sdram_pll.v|
 !i113 1
 R7
 R8
@@ -1655,17 +1655,17 @@ R1
 IQzGMgGb3JY?8`S<>iQ:U^2
 R2
 R0
+R85
 R86
 R87
-R88
 L0 130
 R5
 r1
 !s85 0
 31
 R6
+R88
 R89
-R90
 !i113 1
 R7
 R8
@@ -1677,17 +1677,17 @@ R1
 IOl3>G`NXO:Y`kABigAaBG3
 R2
 R0
+R85
 R86
 R87
-R88
 L0 37
 R5
 r1
 !s85 0
 31
 R6
+R88
 R89
-R90
 !i113 1
 R7
 R8
@@ -1699,17 +1699,17 @@ R1
 ITA33NlnMDQ;e]SRbiCiA^0
 R2
 R0
+R85
 R86
 R87
-R88
 L0 98
 R5
 r1
 !s85 0
 31
 R6
+R88
 R89
-R90
 !i113 1
 R7
 R8
@@ -1717,14 +1717,14 @@ R9
 vlab9_soc_sysid_qsys_0
 R1
 !i10b 1
-!s100 HiPk6z;1:?8AmM3Ed`H??0
-IgG6z[zIjQX;=hz:PUJKc=1
+!s100 NMBfGIM]Dn49f[m@>^:;D3
+IWO^c0zZ>IL9zk7XJI7:]@0
 R2
 R0
-R86
+R85
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sysid_qsys_0.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_sysid_qsys_0.v
-R28
+R25
 R5
 r1
 !s85 0
@@ -1737,13 +1737,13 @@ R7
 R8
 R9
 vlab9_soc_Timer
-R34
+!s110 1586457303
 !i10b 1
 !s100 nh8bCQKWZcYLf4kXDVRh60
 I`WkHF]8bRfz0RLE1hi`oJ0
 R2
 R0
-R35
+w1585969982
 8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_Timer.v
 FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_Timer.v
 R4
@@ -1751,7 +1751,7 @@ R5
 r1
 !s85 0
 31
-R36
+!s108 1586457303.000000
 !s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_Timer.v|
 !s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_Timer.v|
 !i113 1
@@ -1759,3 +1759,26 @@ R7
 R8
 R9
 nlab9_soc_@timer
+vlab9_soc_TIMER
+R31
+!i10b 1
+!s100 Y4TDoE0Aaz_L:82h6l5d73
+ID6?a<AXoRZNPLVcJBKeLc0
+R2
+R0
+R30
+8C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_TIMER.v
+FC:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_TIMER.v
+R4
+R5
+r1
+!s85 0
+31
+R33
+!s107 C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_TIMER.v|
+!s90 -reportprogress|300|-vlog01compat|-work|lab9_soc|+incdir+C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules|C:/intelFPGA_lite/18.1/ECE385/lab9/lab9_soc/synthesis/submodules/lab9_soc_TIMER.v|
+!i113 1
+R7
+R8
+R9
+nlab9_soc_@t@i@m@e@r

@@ -50,7 +50,7 @@ module avalon_aes_interface (
 
 	AES decrypter(
 		.*,
-		.AES_START(AES_START),
+		.AES_START(AES_START[0]),
 		.AES_DONE(done),
 		.AES_KEY({AES_KEY0, AES_KEY1, AES_KEY2, AES_KEY3}),
 		.AES_MSG_ENC({AES_MSG_EN0,AES_MSG_EN1,AES_MSG_EN2,AES_MSG_EN3}),
