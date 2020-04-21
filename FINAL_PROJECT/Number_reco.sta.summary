@@ -1,0 +1,341 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'D5M_PIXLCLK'
+Slack : -4.695
+TNS   : -769.866
+
+Type  : Slow 1200mV 85C Model Setup 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : -3.146
+TNS   : -183.501
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK2_50'
+Slack : -1.556
+TNS   : -1.556
+
+Type  : Slow 1200mV 85C Model Setup 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 1.357
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 8.309
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'D5M_PIXLCLK'
+Slack : 0.272
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.276
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 0.364
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK2_50'
+Slack : 0.387
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : 0.404
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : -4.166
+TNS   : -370.941
+
+Type  : Slow 1200mV 85C Model Recovery 'D5M_PIXLCLK'
+Slack : -3.423
+TNS   : -639.986
+
+Type  : Slow 1200mV 85C Model Recovery 'DE2_115_CAMERA:Camera|RAW2RGB:u4|dval_ctrl'
+Slack : -3.325
+TNS   : -3.325
+
+Type  : Slow 1200mV 85C Model Recovery 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : -2.714
+TNS   : -60.715
+
+Type  : Slow 1200mV 85C Model Recovery 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 3.176
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'CLOCK2_50'
+Slack : 15.217
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : 1.214
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'D5M_PIXLCLK'
+Slack : 1.490
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'CLOCK2_50'
+Slack : 2.507
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'DE2_115_CAMERA:Camera|RAW2RGB:u4|dval_ctrl'
+Slack : 3.823
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 5.007
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 5.009
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'D5M_PIXLCLK'
+Slack : -3.000
+TNS   : -540.347
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : -1.285
+TNS   : -92.520
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'DE2_115_CAMERA:Camera|RAW2RGB:u4|dval_ctrl'
+Slack : -1.285
+TNS   : -1.285
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.691
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK2_50'
+Slack : 9.685
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 12.188
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'D5M_PIXLCLK'
+Slack : -4.224
+TNS   : -682.638
+
+Type  : Slow 1200mV 0C Model Setup 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : -2.770
+TNS   : -161.183
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK2_50'
+Slack : -1.391
+TNS   : -1.391
+
+Type  : Slow 1200mV 0C Model Setup 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 2.136
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 8.649
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'D5M_PIXLCLK'
+Slack : 0.239
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.280
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 0.339
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK2_50'
+Slack : 0.340
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : 0.353
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : -3.406
+TNS   : -250.718
+
+Type  : Slow 1200mV 0C Model Recovery 'D5M_PIXLCLK'
+Slack : -2.988
+TNS   : -531.700
+
+Type  : Slow 1200mV 0C Model Recovery 'DE2_115_CAMERA:Camera|RAW2RGB:u4|dval_ctrl'
+Slack : -2.955
+TNS   : -2.955
+
+Type  : Slow 1200mV 0C Model Recovery 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : -2.318
+TNS   : -51.619
+
+Type  : Slow 1200mV 0C Model Recovery 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 3.948
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'CLOCK2_50'
+Slack : 15.711
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : 1.131
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'D5M_PIXLCLK'
+Slack : 1.284
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'CLOCK2_50'
+Slack : 2.240
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'DE2_115_CAMERA:Camera|RAW2RGB:u4|dval_ctrl'
+Slack : 3.443
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 4.399
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.401
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'D5M_PIXLCLK'
+Slack : -3.000
+TNS   : -537.971
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : -1.285
+TNS   : -92.520
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'DE2_115_CAMERA:Camera|RAW2RGB:u4|dval_ctrl'
+Slack : -1.285
+TNS   : -1.285
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.683
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK2_50'
+Slack : 9.692
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 12.181
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'D5M_PIXLCLK'
+Slack : -2.621
+TNS   : -316.680
+
+Type  : Fast 1200mV 0C Model Setup 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : -1.071
+TNS   : -52.046
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK2_50'
+Slack : -0.704
+TNS   : -0.704
+
+Type  : Fast 1200mV 0C Model Setup 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 5.362
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 10.297
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.096
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'D5M_PIXLCLK'
+Slack : 0.116
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 0.136
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK2_50'
+Slack : 0.174
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : 0.182
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'D5M_PIXLCLK'
+Slack : -1.378
+TNS   : -228.132
+
+Type  : Fast 1200mV 0C Model Recovery 'DE2_115_CAMERA:Camera|RAW2RGB:u4|dval_ctrl'
+Slack : -1.224
+TNS   : -1.224
+
+Type  : Fast 1200mV 0C Model Recovery 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : -1.115
+TNS   : -50.573
+
+Type  : Fast 1200mV 0C Model Recovery 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : -0.835
+TNS   : -17.590
+
+Type  : Fast 1200mV 0C Model Recovery 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 6.320
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'CLOCK2_50'
+Slack : 17.568
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : 0.445
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'D5M_PIXLCLK'
+Slack : 0.863
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'CLOCK2_50'
+Slack : 1.232
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'DE2_115_CAMERA:Camera|RAW2RGB:u4|dval_ctrl'
+Slack : 1.863
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 2.678
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 2.679
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'D5M_PIXLCLK'
+Slack : -3.000
+TNS   : -523.148
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'DE2_115_CAMERA:Camera|I2C_CCD_Config:u8|mI2C_CTRL_CLK'
+Slack : -1.000
+TNS   : -72.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'DE2_115_CAMERA:Camera|RAW2RGB:u4|dval_ctrl'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Camera|u6|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.759
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK2_50'
+Slack : 9.251
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Camera|u6|altpll_component|auto_generated|pll1|clk[4]'
+Slack : 12.257
+TNS   : 0.000
+
+------------------------------------------------------------
