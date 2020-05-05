@@ -1,7 +1,6 @@
 // ieee 754 adder
 
-module adder #(
-(
+module adder (
     input logic [31:0] a, 
     input logic [31:0] b,
     output logic [31:0] f
@@ -30,13 +29,13 @@ assign signed_b = sign_b ? (~align_b + 1) : align_b;
 
 assign signed_f = signed_a + signed_b;
 assign sign_f = signed_f[25];
-assign align_f = sign_f ? signed_f : (~signed_f + 1);
+assign align_f = sign_f ? (~signed_f + 1) : signed_f;
 
 assign exp_f = (exp_a > exp_b) ? exp_a : exp_b;
 
 always_comb
 begin
-    casex (align_f[24:0]) begin
+    casex (align_f[24:0])
         25'b1xxxxxxxxxxxxxxxxxxxxxxxx : f = {sign_f, (exp_f + 1), align_f[23:1]};
         25'b01xxxxxxxxxxxxxxxxxxxxxxx : f = {sign_f, (exp_f + 0), align_f[22:0]};
         25'b001xxxxxxxxxxxxxxxxxxxxxx : f = {sign_f, (exp_f - 1), align_f[21:0], 1'b0};
@@ -63,7 +62,7 @@ begin
         25'b000000000000000000000001x : f = {sign_f, (exp_f - 22), align_f[0:0], 22'b0};
         25'b0000000000000000000000001 : f = {sign_f, (exp_f - 23), 23'b0};
         25'b0000000000000000000000000 : f = 32'b0;
-    end
+    endcase
 end
 
 
