@@ -25,8 +25,8 @@ assign data_b = {3'b001, b[22:0]};
 assign align_a = (exp_a > exp_b) ? data_a : (data_a >> (exp_b - exp_a));
 assign align_b = (exp_b > exp_a) ? data_b : (data_b >> (exp_a - exp_b));
 
-assign signed_a = sign_a ? align_a : (~align_a + 1);
-assign signed_b = sign_b ? align_b : (~align_b + 1);
+assign signed_a = sign_a ? (~align_a + 1) : align_a;
+assign signed_b = sign_b ? (~align_b + 1) : align_b;
 
 assign signed_f = signed_a + signed_b;
 assign sign_f = signed_f[25];
