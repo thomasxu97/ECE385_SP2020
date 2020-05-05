@@ -20,13 +20,13 @@ assign data_b = {24'b0, 1'b1, b[22:0]};
 
 assign sign_f = sign_a ^ sign_b;
 assign data_f = data_a * data_b;
-assign exp_f = exp_a + exp_b - 127 + 23 + data_f[47];
+assign exp_f = exp_a + exp_b - 127 + data_f[47];
 
 always_comb 
 begin
     case(data_f[47])
-        1'b1: f = {sign_f, exp_f[8:0], data_f[46:24]};
-        1'b0: f = {sign_f, exp_f[8:0], data_f[45:23]};
+        1'b1: f = {sign_f, exp_f[7:0], data_f[46:24]};
+        1'b0: f = {sign_f, exp_f[7:0], data_f[45:23]};
     endcase
 end
 

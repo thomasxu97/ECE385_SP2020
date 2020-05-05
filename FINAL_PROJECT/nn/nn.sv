@@ -12,30 +12,35 @@ module nn (
     output logic [4:0] prediction
 );
 
-logic [31:0] d_first_layer [1155:0]; // 34*34*1 padding
-logic [31:0] d_first_layer_out [21019:0]; // 34*34*32
-
+logic [31:0] z0 [28*28-1:0];
+logic [31:0] m1 [28*28*30-1:0];
+logic [31:0] z1 [30-1:0];
+logic [31:0] a1 [30-1:0];
+logic [31:0] m2 [30*15-1:0];
+logic [31:0] z2 [15-1:0];
+logic [31:0] a2 [15-1:0];
+logic [31:0] m3 [15*10-1:0];
+logic [31:0] z3 [10-1:0];
 
 always_comb begin
     Genvar i, j, k;
 
-    for (i=0; i<28; i=i+1) begin
-        for (j=0; j<28; j=j+1) begin
-            d_first_layer[(i+3)*34+(j+3)] = data[i*28+j] ? 32'h3F800000 : 32'h00000000;
+    for (i=0; i<28*28; i=i+1) begin
+        z0[i] = data[i] ? 32'h3F800000 : 32'h00000000;
+    end
+
+    for (i=0; i<28*28; i=i+1) begin
+        for (j=0; j<30; j=j+1) begin
+            multiplier multiplier (
+                .a (z0[i]), 
+                .b (w1[i*30+j]), 
+                .f (m1[i*30+j])
+            );
         end
     end
 
-    for (i=0; i<28; i=i+1) begin
-        for (j=0; j<28; j=j+1) begin
-            for (k=0; k<32; k=k+1) begin
-                conv conv (
-                    .in (d_first_layer[])
-                    .w ()
-                    .out (d_first_layer_out)
-                );
-            end
-        end
-    end
+    
+
 
 end
 
