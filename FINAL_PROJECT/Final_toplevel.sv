@@ -163,6 +163,120 @@ module Final_toplevel(
     output	logic	          		D5M_TRIGGER,
     output	logic             		D5M_XCLKIN
 	);
-//instantiate the camera module
-DE2_115_CAMERA Camera(.*);
+
+logic   [12:0]      x_pos;
+logic   [12:0]      y_pos;
+logic   [12:0]      mX_cont;
+logic   [12:0]      mY_cont;
+logic               disp_flag;
+logic               store_flag;
+logic   [7:0]       grey_out;
+logic               op_CLK;     //40M
+logic   [15:0]      Data_to_SRAM;
+logic   [15:0]      Data_from_SRAM;
+logic   [15:0]      Data_from_sys;
+logic   [15:0]      img_data;
+logic   [7:0]       resizedPixel;
+logic               Pixel_out_Clk;
+logic 				  test_img_pxl;
+logic		[7:0] 		test_img_x;
+logic		[7:0] 		test_img_y;
+logic						rd_CLK;		//The clock of the model
+logic 	[7:0] 		rd_xpos,rd_ypos;
+logic						data_from_buffer;
+logic 					wr_en, rd_en;
+logic 	[14:0] 		weight_addr_w1;
+logic		[31:0]		weight_data_w1;
+logic 	[8:0] 		weight_addr_w2;
+logic		[31:0]		weight_data_w2;
+logic 	[7:0] 		weight_addr_w3;
+logic		[31:0]		weight_data_w3;
+logic 	[4:0] 		weight_addr_b1;
+logic		[31:0]		weight_data_b1;
+logic 	[3:0] 		weight_addr_b2;
+logic		[31:0]		weight_data_b2;
+logic 	[3:0] 		weight_addr_b3;
+logic		[31:0]		weight_data_b3;
+assign op_CLK = ~VGA_CLK;
+DE2_115_CAMERA Camera(
+    .*,
+    .x_coord(x_pos),
+    .y_coord(y_pos),
+    .isdisplay(disp_flag)
+);
+
+Snipper u_snipper(
+	 .iClk(op_CLK), 
+	 .iRst(KEY[0]),
+	 .isdisplay(disp_flag),
+    .X_coord(x_pos),
+    .Y_coord(y_pos),
+	 .oX_cont(mX_cont),
+	 .oY_cont(mY_cont),
+    .isstore(store_flag)
+);
+
+//RGB to Grey scale converter
+RGB2Grey    u_rgb_2_grey(
+    .iRed(VGA_R),
+    .iGreen(VGA_G),
+	 .iBlue(VGA_B),
+    .ogrey(grey_out)
+);
+
+ResizerFile u_resizer(
+	.Clk(op_CLK),
+	.Reset(KEY[0]),
+	.isStore(store_flag),
+	.x_cont(mX_cont),
+	.y_cont(mY_cont),
+	.ipixel(grey_out),
+	.opixel(test_img_pxl),
+	.oX_pos(test_img_x),
+	.oY_pos(test_img_y),
+	.wr_pxl(wr_en)
+);
+
+OCMbuffer u_ocm_buf(
+	.Clk_w(op_CLK),
+	.Clk_r(rd_CLK),
+	.Reset(KEY[0]),
+	.write(wr_en),
+	.read(rd_en),
+	.ipixel(test_img_pxl),
+	.x_w(test_img_x),
+	.y_w(test_img_y),
+	.x_r(rd_xpos),
+	.y_r(rd_ypos),
+	.opixel(data_from_buffer)
+);
+
+weight_mat_w1 u_w1(
+	.addr(weight_addr_w1),
+	.weight(weight_data_w1)
+);
+
+weight_mat_w2 u_w2(
+	.addr(weight_addr_w2),
+	.weight(weight_data_w2)
+);
+weight_mat_w3 u_w3(
+	.addr(weight_addr_w3),
+	.weight(weight_data_w3)
+);
+weight_mat_b1 u_b1(
+	.addr(weight_addr_b1),
+	.weight(weight_data_b1)
+);
+weight_mat_b2 u_b2(
+	.addr(weight_addr_b2),
+	.weight(weight_data_b2)
+);
+weight_mat_b3 u_b3(
+	.addr(weight_addr_b3),
+	.weight(weight_data_b3)
+);
+
+
+
 endmodule 
