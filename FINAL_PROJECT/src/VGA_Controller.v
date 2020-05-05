@@ -57,26 +57,12 @@ module	VGA_Controller(	//	Host Side
 						//	Control Signal
 						iCLK,
 						iRST_N,
-						iZOOM_MODE_SW
+						iZOOM_MODE_SW,
+                        // coordinates
+                        x_pos,
+                        y_pos,
+                        isdisplay
 							);
-`include "VGA_Param.h"
-
-`ifdef VGA_640x480p60
-//	Horizontal Parameter	( Pixel )
-parameter	H_SYNC_CYC	=	96;
-parameter	H_SYNC_BACK	=	48;
-parameter	H_SYNC_ACT	=	640;	
-parameter	H_SYNC_FRONT=	16;
-parameter	H_SYNC_TOTAL=	800;
-
-//	Virtical Parameter		( Line )
-parameter	V_SYNC_CYC	=	2;
-parameter	V_SYNC_BACK	=	33;
-parameter	V_SYNC_ACT	=	480;	
-parameter	V_SYNC_FRONT=	10;
-parameter	V_SYNC_TOTAL=	525; 
-
-`else
  // SVGA_800x600p60
 ////	Horizontal Parameter	( Pixel )
 parameter	H_SYNC_CYC	=	128;         //Peli
@@ -91,10 +77,15 @@ parameter	V_SYNC_ACT	=	600;
 parameter	V_SYNC_FRONT=	1;
 parameter	V_SYNC_TOTAL=	628;
 
-`endif
 //	Start Offset
 parameter	X_START		=	H_SYNC_CYC+H_SYNC_BACK;
 parameter	Y_START		=	V_SYNC_CYC+V_SYNC_BACK;
+
+parameter	LX_START = 260+X_START;
+parameter   LX_END = 540+X_START;
+parameter   LY_START = 160+Y_START;
+parameter   LY_END = 440+Y_START;
+/////////// I/O specification /////////////
 //	Host Side
 input		[9:0]	iRed;
 input		[9:0]	iGreen;
@@ -107,8 +98,15 @@ output	reg	[9:0]	oVGA_B;
 output	reg			oVGA_H_SYNC;
 output	reg			oVGA_V_SYNC;
 output	reg			oVGA_SYNC;
-output	reg			oVGA_BLANK;
-
+output	reg			oVGA_BLANK; 
+output  reg [12:0]  x_pos;
+output  reg [12:0]  y_pos;
+output  reg         isdisplay;    
+//	Control Signal
+input				iCLK;
+input				iRST_N;
+input 				iZOOM_MODE_SW;
+//////////// Wire/ Reg declare /////////////
 wire		[9:0]	mVGA_R;
 wire		[9:0]	mVGA_G;
 wire		[9:0]	mVGA_B;
@@ -116,35 +114,65 @@ reg					mVGA_H_SYNC;
 reg					mVGA_V_SYNC;
 wire				mVGA_SYNC;
 wire				mVGA_BLANK;
-
-//	Control Signal
-input				iCLK;
-input				iRST_N;
-input 				iZOOM_MODE_SW;
-
 //	Internal Registers and Wires
 reg		[12:0]		H_Cont;
 reg		[12:0]		V_Cont;
 
 wire	[12:0]		v_mask;
 
-assign v_mask = 13'd0 ;//iZOOM_MODE_SW ? 13'd0 : 13'd26;
+///////// Font module ///////////////////
+wire 				font_on;
+parameter		FONT_ON_X = 630+X_START;
+parameter		FONT_ON_Y = 220+Y_START;
+parameter		FONT_SIZE_X = 8;
+parameter		FONT_SIZE_Y = 16;
 
-////////////////////////////////////////////////////////
+wire [10:0]		sprite_addr;
+wire [7:0]		sprite_data;
+font_rom 	u_fr (.addr(sprite_addr), .data(sprite_data));
+
+always @(*) begin
+	if (H_Cont >= FONT_ON_X && H_Cont < FONT_ON_X + FONT_SIZE_X &&
+		V_Cont >= FONT_ON_Y && V_Cont < FONT_ON_Y + FONT_SIZE_Y) begin
+		font_on = 1'b1;
+		sprite_addr = (V_Cont - FONT_ON_Y + 16*'h48);
+	end else begin
+		font_on = 1'b0;
+		sprite_addr = 10'd0;
+	end
+end
+
+/////////////logic block /////////////////////
+assign v_mask = 13'd0 ;//iZOOM_MODE_SW ? 13'd0 : 13'd26;
 
 assign	mVGA_BLANK	=	mVGA_H_SYNC & mVGA_V_SYNC;
 assign	mVGA_SYNC	=	1'b0;
-
-assign	mVGA_R	=	(	H_Cont>=X_START 	&& H_Cont<X_START+H_SYNC_ACT &&
-						V_Cont>=Y_START+v_mask 	&& V_Cont<Y_START+V_SYNC_ACT )
-						?	iRed	:	0;
-assign	mVGA_G	=	(	H_Cont>=X_START 	&& H_Cont<X_START+H_SYNC_ACT &&
-						V_Cont>=Y_START+v_mask 	&& V_Cont<Y_START+V_SYNC_ACT )
-						?	iGreen	:	0;
-assign	mVGA_B	=	(	H_Cont>=X_START 	&& H_Cont<X_START+H_SYNC_ACT &&
-						V_Cont>=Y_START+v_mask 	&& V_Cont<Y_START+V_SYNC_ACT )
-						?	iBlue	:	0;
-
+					
+always @(*) begin 
+	mVGA_R = 0;
+	mVGA_G = 0;
+	mVGA_B = 0;
+	if (	H_Cont>=X_START 	&& H_Cont<X_START+H_SYNC_ACT &&
+			V_Cont>=Y_START+v_mask 	&& V_Cont<Y_START+V_SYNC_ACT ) begin
+			if (H_Cont>=LX_START 	&& H_Cont<LX_END &&
+					V_Cont>=LY_START 	&& V_Cont<LY_END ) begin
+				mVGA_R = iRed;
+				mVGA_G = iGreen;
+				mVGA_B = iBlue;
+			end
+			else if ((font_on == 1'b1) && sprite_data[H_Cont - FONT_ON_X] == 1'b1) begin
+				mVGA_R = 10'd255;
+				mVGA_G = 10'd255;
+				mVGA_B = 10'd255;
+			end
+			else begin
+				mVGA_R = iRed/2;
+				mVGA_G = iGreen/2;
+				mVGA_B = iBlue/2;
+			end
+	end
+end 
+						
 always@(posedge iCLK or negedge iRST_N)
 	begin
 		if (!iRST_N)
@@ -161,7 +189,7 @@ always@(posedge iCLK or negedge iRST_N)
 			begin
 				oVGA_R <= mVGA_R;
 				oVGA_G <= mVGA_G;
-                oVGA_B <= mVGA_B;
+            oVGA_B <= mVGA_B;
 				oVGA_BLANK <= mVGA_BLANK;
 				oVGA_SYNC <= mVGA_SYNC;
 				oVGA_H_SYNC <= mVGA_H_SYNC;
@@ -169,6 +197,20 @@ always@(posedge iCLK or negedge iRST_N)
 			end               
 	end
 
+// x,y coordinates generator
+always@(posedge iCLK)
+begin
+    if (H_Cont>=X_START && H_Cont<X_START+H_SYNC_ACT &&
+		V_Cont>=Y_START+v_mask 	&& V_Cont<Y_START+V_SYNC_ACT ) begin
+        x_pos <= H_Cont - X_START;
+        y_pos <= V_Cont - Y_START-v_mask;
+        isdisplay <= 1'd1;
+    end else begin
+        x_pos <= 13'bzzzzzzzzzzzzz;
+        y_pos <= 13'bzzzzzzzzzzzzz;
+        isdisplay <= 1'd0;
+    end
+end
 
 
 //	Pixel LUT Address Generator

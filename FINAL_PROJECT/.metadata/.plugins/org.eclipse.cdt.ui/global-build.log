@@ -1,6 +1,6 @@
-14:42:28 **** Clean-only build of configuration Nios II for project DisplayImage_bsp ****
+21:45:53 **** Clean-only build of configuration Nios II for project Num_reco_bsp ****
 make clean 
 [BSP clean complete]
-14:42:40 **** Clean-only build of configuration Nios II for project DisplayImage ****
+21:46:02 **** Clean-only build of configuration Nios II for project Num_reco ****
 make clean 
-[DisplayImage clean complete]
+[Num_reco clean complete]

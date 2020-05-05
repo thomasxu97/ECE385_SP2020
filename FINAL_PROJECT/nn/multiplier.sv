@@ -1,11 +1,11 @@
 // ieee 754 multiplier
 // no overflow situation considered
 
-module multiplier {
+module multiplier (
     input logic [31:0] a,
     input logic [31:0] b,
-    output logic [31:0] f,
-};
+    output logic [31:0] f
+);
 
 logic sign_a, sign_b, sign_f;
 logic [8:0] exp_a, exp_b, exp_f;
@@ -30,4 +30,4 @@ begin
     endcase
 end
 
-endmodule
+endmodule 

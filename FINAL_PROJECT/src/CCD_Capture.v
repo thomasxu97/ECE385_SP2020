@@ -39,7 +39,6 @@
 //   Ver  :| Author            :| Mod. Date :| Changes Made:
 //   V1.0 :| Johnny FAN        :| 07/07/09  :| Initial Revision
 // --------------------------------------------------------------------
-`include "VGA_Param.h"
 module CCD_Capture(	oDATA,
 					oDVAL,
 					oX_Cont,
@@ -75,11 +74,7 @@ reg		[15:0]	Y_Cont;
 reg		[31:0]	Frame_Cont;
 reg				mSTART;
 
-`ifdef VGA_640x480p60
-parameter COLUMN_WIDTH = 1280;
-`else
 parameter COLUMN_WIDTH = 800;
-`endif  
 
 assign	oX_Cont		=	X_Cont;
 assign	oY_Cont		=	Y_Cont;

@@ -271,52 +271,43 @@ sdr_data_path  u_sdr_data_path (
          .DQOUT(DQOUT),
          .DQM(IDQM) );
 
-Sdram_WR_FIFO  u_write1_fifo (
-				.data(WR1_DATA),
-				.wrreq(WR1),
-				.wrclk(WR1_CLK),
-				.aclr(WR1_LOAD),
-				.rdreq(IN_REQ&&WR_MASK[0]),
-				.rdclk(CLK),
-				.q(mDATAIN1),
-				.rdusedw(write_side_fifo_rusedw1) );
+SDRAM_FIFO_WR write_fifo(
+		.CLK(CLK),
+		//	FIFO Write Side 1
+		.WR1_DATA(WR1_DATA),
+		//	FIFO Write Side 2
+		.WR2_DATA(WR2_DATA),
+		// helper ports
+		.WR(WR1),
+		.WR_LOAD(WR1_LOAD),
+		.WR_CLK(WR1_CLK),
+		.IN_REQ(IN_REQ),
+		.WR_MASK(WR_MASK),
+		.mDATAIN(mDATAIN),
+		.write_side_fifo_rusedw1(write_side_fifo_rusedw1),
+		.write_side_fifo_rusedw2(write_side_fifo_rusedw2)
+);
 
-Sdram_WR_FIFO  u_write2_fifo (
-				.data(WR2_DATA),
-				.wrreq(WR2),
-				.wrclk(WR2_CLK),
-				.aclr(WR2_LOAD),
-				.rdreq(IN_REQ&&WR_MASK[1]),
-				.rdclk(CLK),
-				.q(mDATAIN2),
-				.rdusedw(write_side_fifo_rusedw2)	);
-				
-Sdram_RD_FIFO  u_read1_fifo (
-				.data(mDATAOUT),
-				.wrreq(OUT_VALID&&RD_MASK[0]),
-				.wrclk(CLK),
-				.aclr(RD1_LOAD),
-				.rdreq(RD1),
-				.rdclk(RD1_CLK),
-				.q(RD1_DATA),
-				.wrusedw(read_side_fifo_wusedw1) );
-				
-Sdram_RD_FIFO  u_read2_fifo (
-				.data(mDATAOUT),
-				.wrreq(OUT_VALID&&RD_MASK[1]),
-				.wrclk(CLK),
-				.aclr(RD2_LOAD),
-				.rdreq(RD2),
-				.rdclk(RD2_CLK),
-				.q(RD2_DATA),
-				.wrusedw(read_side_fifo_wusedw2) );
-
+SDRAM_FIFO_RD read_fifo(
+		.CLK(CLK),
+		.RD1_DATA(RD1_DATA),
+		//	FIFO Read Side 2
+		.RD2_DATA(RD2_DATA),
+		// helper ports
+		.RD(RD1),
+		.RD_LOAD(RD1_LOAD),	
+		.RD_CLK(RD1_CLK),
+		.mDATAOUT(mDATAOUT),
+		.OUT_VALID(OUT_VALID),
+		.RD_MASK(RD_MASK),
+		.read_side_fifo_wusedw1(read_side_fifo_wusedw1),
+		.read_side_fifo_wusedw2(read_side_fifo_wusedw2)
+);
 
 
 //=======================================================
 //  Structural coding
 //=======================================================
-assign mDATAIN = (WR_MASK[0])	?	mDATAIN1 : mDATAIN2;
 assign DQ = oe ? DQOUT : `DSIZE'hzzzz;
 assign active	=	Read | Write;
 
