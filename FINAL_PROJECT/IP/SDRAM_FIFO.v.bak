@@ -1,3 +1,0 @@
-module SDRAM_FIFO(
-);
-endmodule

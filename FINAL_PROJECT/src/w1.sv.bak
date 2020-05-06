@@ -1,7 +1,0 @@
-module weight_mat #(SIZE = 10)(
-	input [10:0] addr,
-	output [31:0] weight
-);
-
-
-endmodule 
