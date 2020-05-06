@@ -19,14 +19,14 @@ endfunction
 logic [31:0] max_score;
 assign max_score = max(max(max(max(in[0], in[1]), max(in[2], in[3])), max(max(in[4], in[5]), max(in[6], in[7]))), max(in[8], in[9]));
 
-assign number = (in[0] == max_score) ? 0 : 
-	((in[1] == max_score) ? 1 : 
-	((in[2] == max_score) ? 2 : 
-	((in[3] == max_score) ? 3 : 
-	((in[4] == max_score) ? 4 : 
-	((in[5] == max_score) ? 5 : 
-	((in[6] == max_score) ? 6 : 
-	((in[7] == max_score) ? 7 : 
-	((in[8] == max_score) ? 8 : 9))))))));
+assign number = (in[0] == max_score) ? 4'd0 : 
+	((in[1] == max_score) ? 4'd1 : 
+	((in[2] == max_score) ? 4'd2 : 
+	((in[3] == max_score) ? 4'd3 : 
+	((in[4] == max_score) ? 4'd4 : 
+	((in[5] == max_score) ? 4'd5 : 
+	((in[6] == max_score) ? 4'd6 : 
+	((in[7] == max_score) ? 4'd7 : 
+	((in[8] == max_score) ? 4'd8 : 4'd9))))))));
 
 endmodule
