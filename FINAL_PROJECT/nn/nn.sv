@@ -41,13 +41,9 @@ logic [31:0] t18 [2*10-1:0];
 logic [31:0] t19 [10-1:0];
 logic [31:0] z3 [10-1:0];
 
-always_comb begin
-    Genvar i, j, k;
 
-    for (i=0; i<28*28; i=i+1) begin
-        z0[i] = data[i] ? 32'h3F800000 : 32'h00000000;
-    end
-
+generate
+    genvar i, j;
     for (i=0; i<28*28; i=i+1) begin
         for (j=0; j<30; j=j+1) begin
             multiplier multiplier (
@@ -55,12 +51,6 @@ always_comb begin
                 .b (w1[i*30+j]), 
                 .f (m1[i*30+j])
             );
-        end
-    end
-
-    for (i=28*28; i<1024; i=i+1) begin
-        for (j=0; j<30; j=j+1) begin
-            m1[i*30+j] = 32'b0;
         end
     end
 
@@ -138,7 +128,7 @@ always_comb begin
         for (j=0; j<30; j=j+1) begin
             adder adder (
                 .a (t7[i*60+j]),
-                .b (t8[i*60+30+j]),
+                .b (t7[i*60+30+j]),
                 .f (t8[i*30+j])
             );
         end
@@ -186,12 +176,6 @@ always_comb begin
                 .b (w2[i*15+j]), 
                 .f (m2[i*15+j])
             );
-        end
-    end
-
-    for (i=30; i<32; i=i+1) begin
-        for (j=0; j<15; j=j+1) begin
-            m2[i*15+j] = 32'b0;
         end
     end
 
@@ -270,12 +254,6 @@ always_comb begin
         end
     end
 
-    for (i=15; i<16; i=i+1) begin
-        for (j=0; j<10; j=j+1) begin
-            m3[i*10+j] = 32'b0;
-        end
-    end
-
     for (i=0; i<8; i=i+1) begin
         for (j=0; j<10; j=j+1) begin
             adder adder (
@@ -323,11 +301,36 @@ always_comb begin
             .f (z3[j])
         );
     end
+endgenerate
 
-    argmax argmax (
+argmax argmax (
         .in (z3),
         .number (prediction)
     );
+
+
+always_comb begin
+    for (int i=0; i<28*28; i=i+1) begin
+        z0[i] = data[i] ? 32'h3F800000 : 32'h00000000;
+    end
+
+    for (i=28*28; i<1024; i=i+1) begin
+        for (j=0; j<30; j=j+1) begin
+            m1[i*30+j] = 32'b0;
+        end
+    end
+
+    for (i=30; i<32; i=i+1) begin
+        for (j=0; j<15; j=j+1) begin
+            m2[i*15+j] = 32'b0;
+        end
+    end
+
+    for (i=15; i<16; i=i+1) begin
+        for (j=0; j<10; j=j+1) begin
+            m3[i*10+j] = 32'b0;
+        end
+    end
 
 end
 
