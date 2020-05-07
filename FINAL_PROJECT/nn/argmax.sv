@@ -4,16 +4,23 @@ module argmax (
 );
 
 function logic [31:0] max (logic [31:0] a, logic [31:0] b);
+	logic sign_a, sign_b;
 	logic [8:0] exp_a, exp_b;
 	logic [23:0] data_a, data_b;
 
+	sign_a = a[31];
+	sign_b = b[31];
 	exp_a = {1'b0, a[30:23]};
 	exp_b = {1'b0, b[30:23]};
 	data_a = {1'b1, a[22:0]};
 	data_b = {1'b1, b[22:0]};
 
-	return ((exp_a == exp_b) ? ((data_a > data_b) ? a : b) : 
-		((exp_a > exp_b) ? a : b));
+	return (sign_a == sign_b) ? 
+		((sign_a == 1'b0) ? ((exp_a == exp_b) ? ((data_a > data_b) ? a : b) : ((exp_a > exp_b) ? a : b)) : 
+			((exp_a == exp_b) ? ((data_a > data_b) ? b : a) : ((exp_a > exp_b) ? b : a))) : 
+		((sign_a > sign_b) ? b : a);
+
+		;
 endfunction
 
 logic [31:0] max_score;
