@@ -8,7 +8,9 @@ module nn (
     input logic [28*28-1:0] data,
     input logic [15:0] rdata,
     output logic [4:0] prediction, 
-    output logic [19:0] address
+    output logic [19:0] address,
+	 output logic resp,
+	 output logic [31:0] w_
 );
 
 
@@ -25,7 +27,7 @@ logic [31:0] b1 [30-1:0];
 logic [31:0] b2 [15-1:0];
 logic [31:0] b3 [10-1:0];
 
-
+assign w_ = w;
 assign b1[0] = 32'h3ff11456;
 assign b1[1] = 32'h3ff9f879;
 assign b1[2] = 32'h3fc9399c;
@@ -98,12 +100,12 @@ adder add (
 
 relu relu (
 	.a (z), 
-	.o (a)
+	.f (a)
 );
 
 argmax argmax (
 	.in (z3),
-	.out (prediction)
+	.number (prediction)
 );
 
 enum logic [4:0] {
@@ -168,7 +170,7 @@ always_ff @(posedge Clk) begin
 	endcase
 end
 
-always_comb begin : Next_state Logic
+always_comb begin
 	Next_state = State;
 	case (State)
 		Ready : if (Start) Next_state = Layer1_prep;
@@ -206,7 +208,7 @@ always_comb begin : Next_state Logic
 	endcase
 end
 
-always_comb begin : Control Logic
+always_comb begin
 	address = 'x;
 	resp = 1'b0;
 	case (State) 
@@ -240,3 +242,4 @@ always_comb begin : Control Logic
 end
 
 
+endmodule 

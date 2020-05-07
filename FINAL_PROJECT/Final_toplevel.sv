@@ -185,29 +185,34 @@ logic						rd_CLK;		//The clock of the model
 logic 	[7:0] 		rd_xpos,rd_ypos;
 logic		[28*28-1:0]				data_from_buffer;
 logic 					wr_en, rd_en;
-logic 	[14:0] 		weight_addr_w1;
-logic		[31:0]		weight_data_w1;
-logic 	[8:0] 		weight_addr_w2;
-logic		[31:0]		weight_data_w2;
-logic 	[7:0] 		weight_addr_w3;
-logic		[31:0]		weight_data_w3;
-logic 	[4:0] 		weight_addr_b1;
-logic		[31:0]		weight_data_b1;
-logic 	[3:0] 		weight_addr_b2;
-logic		[31:0]		weight_data_b2;
-logic 	[3:0] 		weight_addr_b3;
-logic		[31:0]		weight_data_b3;
 logic 	[4:0]			pred;
-logic 					scan_flag, nn_flag;
+logic 	[4:0] 		nn_pred;
+logic 					scan_flag, nn_flag, start_flag;
+logic 	[31:0] 		weight;
 assign op_CLK = ~VGA_CLK;
-//assign pred = 5'd7;
+
+assign SRAM_CE_N = 1'b0;
+assign SRAM_LB_N = 1'b0;
+assign SRAM_OE_N = 1'b0;
+assign SRAM_WE_N = 1'b1;
+assign SRAM_UB_N = 1'b0;
+
+assign pred = (nn_flag) ? 5'dz: nn_pred;
 DE2_115_CAMERA Camera(
     .*,
     .x_coord(x_pos),
     .y_coord(y_pos),
     .isdisplay(disp_flag),
-	 .predict(pred)
+	 .predict(pred),
+	 .start_reco(start_flag)
 );
+
+SEG7_LUT_8 			u5	(	.oSEG0(HEX0),.oSEG1(HEX1),
+							.oSEG2(HEX2),.oSEG3(HEX3),
+							.oSEG4(HEX4),.oSEG5(HEX5),
+							.oSEG6(HEX6),.oSEG7(HEX7),
+							.iDIG({12'd0,SRAM_ADDR})
+						);
 
 Snipper u_snipper(
 	 .iClk(op_CLK), 
@@ -243,7 +248,7 @@ ResizerFile u_resizer(
 
 OCMbuffer u_ocm_buf(
 	.Clk(op_CLK),
-	.Reset(KEY[0]),
+	.Reset(start_flag),
 	.write(wr_en),
 	.ipixel(test_img_pxl),
 	.odata(data_from_buffer),
@@ -255,15 +260,11 @@ nn u_nn(
 	 .Rst(KEY[0]),
 	 .Start(scan_flag),
     .data(data_from_buffer),
-    .prediction(pred),
+    .prediction(nn_pred),
 	 .resp(nn_flag),
 	 .rdata(SRAM_DQ),
 	 .address(SRAM_ADDR),
-	 .CE(SRAM_CE_N),
-	 .LB(SRAM_LB_N),
-	 .OE(SRAM_OE_N),
-	 .WE(SRAM_WE_N),
-	 .UB(SRAM_UB_N)
+	 .w_(weight)
 );
 
 

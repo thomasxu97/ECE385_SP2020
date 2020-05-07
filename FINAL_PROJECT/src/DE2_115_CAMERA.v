@@ -57,16 +57,6 @@ module DE2_115_CAMERA(
 	//////////// SW //////////
 	SW,
 
-	//////////// SEG7 //////////
-	HEX0,
-	HEX1,
-	HEX2,
-	HEX3,
-	HEX4,
-	HEX5,
-	HEX6,
-	HEX7,
-
 	//////////// RS232 //////////
 	UART_CTS,
 	UART_RTS,
@@ -111,7 +101,8 @@ module DE2_115_CAMERA(
     x_coord,
     y_coord,
     isdisplay,
-	 predict
+	 predict,
+	 start_reco
 );
 
 //=======================================================
@@ -132,16 +123,6 @@ input		     [3:0]		KEY;
 
 //////////// SW //////////
 input		    [17:0]		SW;
-
-//////////// SEG7 //////////
-output		     [6:0]		HEX0;
-output		     [6:0]		HEX1;
-output		     [6:0]		HEX2;
-output		     [6:0]		HEX3;
-output		     [6:0]		HEX4;
-output		     [6:0]		HEX5;
-output		     [6:0]		HEX6;
-output		     [6:0]		HEX7;
 
 //////////// RS232 //////////
 output		          		UART_CTS;
@@ -188,6 +169,7 @@ output    [12:0]  x_coord;
 output    [12:0]  y_coord;
 output            isdisplay;
 input 	[4:0] 	predict;
+output 				start_reco;
 
 //=======================================================
 //  REG/WIRE declarations
@@ -231,7 +213,7 @@ wire             auto_start;
 assign	D5M_TRIGGER	=	1'b1;  // tRIGGER
 assign	D5M_RESET_N	=	DLY_RST_1;
 assign  VGA_CTRL_CLK = ~VGA_CLK;
-
+assign   start_reco = !KEY[2];
 assign	LEDR		=	SW;
 assign	LEDG		=	Y_Cont;
 assign	UART_TXD = UART_RXD;
@@ -288,12 +270,12 @@ RAW2RGB				u4	(	.iCLK(D5M_PIXLCLK),
 							.iY_Cont(Y_Cont)
 						);
 //Frame count display
-SEG7_LUT_8 			u5	(	.oSEG0(HEX0),.oSEG1(HEX1),
-							.oSEG2(HEX2),.oSEG3(HEX3),
-							.oSEG4(HEX4),.oSEG5(HEX5),
-							.oSEG6(HEX6),.oSEG7(HEX7),
-							.iDIG(Frame_Cont[31:0])
-						);
+//SEG7_LUT_8 			u5	(	.oSEG0(HEX0),.oSEG1(HEX1),
+//							.oSEG2(HEX2),.oSEG3(HEX3),
+//							.oSEG4(HEX4),.oSEG5(HEX5),
+//							.oSEG6(HEX6),.oSEG7(HEX7),
+//							.iDIG(Frame_Cont[31:0])
+//						);
 
 sdram_pll 			u6	(
 							.inclk0(CLOCK2_50),

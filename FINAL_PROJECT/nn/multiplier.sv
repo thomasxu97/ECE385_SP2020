@@ -20,7 +20,7 @@ assign data_b = {24'b0, 1'b1, b[22:0]};
 
 assign sign_f = sign_a ^ sign_b;
 assign data_f = data_a * data_b;
-assign exp_f = exp_a + exp_b - 127 + data_f[47];
+assign exp_f = exp_a + exp_b - 8'd127 + data_f[47];
 
 always_comb 
 begin

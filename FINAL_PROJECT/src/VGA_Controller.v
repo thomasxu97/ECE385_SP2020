@@ -230,51 +230,51 @@ always @(*) begin
 	end
 	if (H_Cont >= FONT_ON_X_A && H_Cont < FONT_ON_X_A + FONT_SIZE_X &&
 		V_Cont >= FONT_ON_Y && V_Cont < FONT_ON_Y + FONT_SIZE_Y && sprite_data[H_Cont - FONT_ON_X_A] == 1'b1) begin
-		mVGA_R = 10'd255;
-		mVGA_G = 10'd255;
-		mVGA_B = 10'd255;
+		mVGA_R = iRed;
+		mVGA_G = iGreen;
+		mVGA_B = iBlue;
 	end 
 	else if (H_Cont >= FONT_ON_X_N && H_Cont < FONT_ON_X_N + FONT_SIZE_X &&
 		V_Cont >= FONT_ON_Y && V_Cont < FONT_ON_Y + FONT_SIZE_Y && sprite_data[H_Cont - FONT_ON_X_N] == 1'b1) begin
-		mVGA_R = 10'd255;
-		mVGA_G = 10'd255;
-		mVGA_B = 10'd255;
+		mVGA_R = iRed;
+		mVGA_G = iGreen;
+		mVGA_B = iBlue;
 	end 
 	else if (H_Cont >= FONT_ON_X_S && H_Cont < FONT_ON_X_S + FONT_SIZE_X &&
 		V_Cont >= FONT_ON_Y && V_Cont < FONT_ON_Y + FONT_SIZE_Y && sprite_data[H_Cont - FONT_ON_X_S] == 1'b1) begin
-		mVGA_R = 10'd255;
-		mVGA_G = 10'd255;
-		mVGA_B = 10'd255;
+		mVGA_R = iRed;
+		mVGA_G = iGreen;
+		mVGA_B = iBlue;
 	end 
 	else if (H_Cont >= FONT_ON_X_W && H_Cont < FONT_ON_X_W + FONT_SIZE_X &&
 		V_Cont >= FONT_ON_Y && V_Cont < FONT_ON_Y + FONT_SIZE_Y && sprite_data[H_Cont - FONT_ON_X_W] == 1'b1) begin
-		mVGA_R = 10'd255;
-		mVGA_G = 10'd255;
-		mVGA_B = 10'd255;
+		mVGA_R = iRed;
+		mVGA_G = iGreen;
+		mVGA_B = iBlue;
 	end 
 	else if (H_Cont >= FONT_ON_X_E && H_Cont < FONT_ON_X_E + FONT_SIZE_X &&
 		V_Cont >= FONT_ON_Y && V_Cont < FONT_ON_Y + FONT_SIZE_Y && sprite_data[H_Cont - FONT_ON_X_E] == 1'b1) begin
-		mVGA_R = 10'd255;
-		mVGA_G = 10'd255;
-		mVGA_B = 10'd255;
+		mVGA_R = iRed;
+		mVGA_G = iGreen;
+		mVGA_B = iBlue;
 	end 
 	else if (H_Cont >= FONT_ON_X_R && H_Cont < FONT_ON_X_R + FONT_SIZE_X &&
 		V_Cont >= FONT_ON_Y && V_Cont < FONT_ON_Y + FONT_SIZE_Y && sprite_data[H_Cont - FONT_ON_X_R] == 1'b1) begin
-		mVGA_R = 10'd255;
-		mVGA_G = 10'd255;
-		mVGA_B = 10'd255;
+		mVGA_R = iRed;
+		mVGA_G = iGreen;
+		mVGA_B = iBlue;
 	end 
 	else if (H_Cont >= FONT_ON_X_COL && H_Cont < FONT_ON_X_COL + FONT_SIZE_X &&
 		V_Cont >= FONT_ON_Y && V_Cont < FONT_ON_Y + FONT_SIZE_Y && sprite_data[H_Cont - FONT_ON_X_COL] == 1'b1) begin
-		mVGA_R = 10'd255;
-		mVGA_G = 10'd255;
-		mVGA_B = 10'd255;
+		mVGA_R = iRed;
+		mVGA_G = iGreen;
+		mVGA_B = iBlue;
 	end 
 	else if (H_Cont >= FONT_ON_X_P && H_Cont < FONT_ON_X_P + FONT_SIZE_X &&
 		V_Cont >= FONT_ON_Y && V_Cont < FONT_ON_Y + FONT_SIZE_Y && sprite_data[H_Cont - FONT_ON_X_P] == 1'b1) begin
-		mVGA_R = 10'd255;
-		mVGA_G = 10'd255;
-		mVGA_B = 10'd255;
+		mVGA_R = iRed;
+		mVGA_G = iGreen;
+		mVGA_B = iBlue;
 	end 
 end 
 						
