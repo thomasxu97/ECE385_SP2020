@@ -194,8 +194,6 @@ always_ff @(posedge Clk) begin
 			counter_2 <= -1;
 			counter_3 <= -1;
 		end
-		Ld1 : begin
-		end
 		Layer1 : begin
 			counter_1 <= counter_1 + 1'b1;
 		end
