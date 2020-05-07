@@ -25,8 +25,8 @@ assign exp_f = exp_a + exp_b - 8'd127 + data_f[47];
 always_comb 
 begin
     case(data_f[47])
-        1'b1: f = {sign_f, exp_f[7:0], data_f[46:24]};
-        1'b0: f = {sign_f, exp_f[7:0], data_f[45:23]};
+        1'b1: if (exp_f[8] == 1'b1) f = '0; else f = {sign_f, exp_f[7:0], data_f[46:24]};
+        1'b0: if (exp_f[8] == 1'b1) f = '0; else f = {sign_f, exp_f[7:0], data_f[45:23]};
     endcase
 end
 
