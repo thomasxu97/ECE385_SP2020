@@ -6,8 +6,10 @@ module nn (
 	input Rst,
 	input Start,
     input logic [28*28-1:0] data,
+    input logic [15:0] rdata,
     output logic [4:0] prediction, 
-    output resp
+    output resp,
+    output logic [19:0] address,
 );
 
 logic [31:0] d1 [30-1:0];
@@ -30,21 +32,18 @@ logic [31:0] m3 [10-1:0];
 logic [31:0] t3 [10-1:0];
 logic [31:0] z3 [10-1:0];
 
+logic [31:0] counter_0;
 logic [31:0] counter_1;
 logic [31:0] counter_2;
 logic [31:0] counter_3;
 
 //////// weight matrix ////////////
-logic [31:0] w1_addr;
-logic [31:0] w2_addr;
-logic [31:0] w3_addr;
-
 logic [31:0] b1 [30-1:0];
 logic [31:0] b2 [15-1:0];
 logic [31:0] b3 [10-1:0];
-logic [32*30-1:0] w1;
-logic [32*15-1:0] w2;
-logic [32*10-1:0] w3;
+logic [31:0] w1 [784*30-1:0];
+logic [31:0] w2 [30*15-1:0];
+logic [31:0] w3 [15*10-1:0];
 
 
 assign b1[0] = 32'h3ff11456;
@@ -105,13 +104,14 @@ assign b3[7] = 32'hc0a13bd6;
 assign b3[8] = 32'h3fb1a379;
 assign b3[9] = 32'h3f3a284b;
 
-//////////////////////////////
-weight_mat_w1 u_w1(.addr(w1_addr), .weight(w1));
-weight_mat_w2 u_w2(.addr(w2_addr), .weight(w2));
-weight_mat_w3 u_w3(.addr(w3_addr), .weight(w3));
+//////// weight matrix ////////////
+
 
 
 enum logic [4:0] {
+	Preload,
+	Ld1, Ld2, Ld3, 
+	Ld4, Ld5, Ld6,
 	Ready,
 	Layer1, 
 	Layer2,
@@ -173,25 +173,37 @@ argmax argmax (
 
 always_ff @(posedge Clk) begin
 	if (~Rst) State <= Next_state;
-	else State <= Ready;
+	else State <= Preload;
 
 	unique case (State)
+		Preload: begin
+			counter_0 <= -1;
+		end
+		Ld1 : counter_0 <= counter_0 + 1'b1;
+		Ld2 : ;
+		Ld3 : if (counter_0 < 23520) w1[counter_0][15:0] <= rdata;
+			  else if (counter_0 <23790) w2[counter_0-23520][15:0] <= rdata;
+			  else w3[counter_0-23790][15:0] <= rdata;
+		Ld4 : ;
+		Ld5 : ;
+		Ld6 : if (counter_0 < 23520) w1[counter_0][31:16] <= rdata;
+			  else if (counter_0 <23790) w2[counter_0-23520][31:16] <= rdata;
+			  else w3[counter_0-23790][31:16] <= rdata;
 		Ready : begin
-			counter_1 <= '0;
-			counter_2 <= '0;
-			counter_3 <= '0;
+			counter_1 <= -1;
+			counter_2 <= -1;
+			counter_3 <= -1;
+		end
+		Ld1 : begin
 		end
 		Layer1 : begin
 			counter_1 <= counter_1 + 1'b1;
-			w1_addr <= counter_1 * 30;
 		end
 		Layer2 : begin
 			counter_2 <= counter_2 + 1'b1;
-			w2_addr <= counter_2 * 15;
 		end
 		Layer3 : begin
 			counter_3 <= counter_3 + 1'b1;
-			w3_addr <= counter_3 * 10;
 		end
 		Output : ;
 		default : ;
@@ -201,6 +213,7 @@ end
 function void set_default ();
 	Next_state = State;
 	resp = 1'b0;
+	address = 'x;
 	for (int i=0; i<30; i=i+1) begin
 		d1[i] = 32'h00000000;
 		g1[i] = 32'h00000000;
@@ -221,29 +234,36 @@ endfunction
 always_comb begin
 	set_default();
 	unique case (State)
+		Preload: begin Next_state = Ld1; end
+		Ld1: begin Next_state = Ld2; address = counter_0 * 2; end
+		Ld2: begin Next_state = Ld3; address = counter_0 * 2; end
+		Ld3: begin Next_state = Ld4; address = counter_0 * 2; end
+		Ld4: begin Next_state = Ld5; address = counter_0 * 2 + 1; end
+		Ld5: begin Next_state = Ld6; address = counter_0 * 2 + 1; end
+		Ld6: begin if (counter_0 == 24119) Next_state = Ready; else Next_state = Ld1; address = counter_0 * 2 + 1; end
 		Ready: begin if (Start) Next_state = Layer1; end
 		Layer1: begin
-			if (counter_1 == 28*28) Next_state = Layer2;
+			if (counter_1 == 783) Next_state = Layer2;
 			for (int i=0; i<30; i=i+1) begin
-				d1[i] = data[counter_1-1] ? 32'h3F800000 : 32'h00000000;
-				g1[i] = w1[i*32+31 -:32];
-				t1[i] = ((counter_1-1) == '0) ? b1[i] : z1[i];
+				d1[i] = data[counter_1] ? 32'h3F800000 : 32'h00000000;
+				g1[i] = w1[counter_1*30+i];
+				t1[i] = (counter_1 == '0) ? b1[i] : z1[i];
 			end
 		end
 		Layer2: begin
-			if (counter_2 == 30) Next_state = Layer3;
+			if (counter_2 == 29) Next_state = Layer3;
 			for (int i=0; i<15; i=i+1) begin
-				d2[i] <= a1[counter_2-1];
-				g2[i] <= w2[i*32+31 -:32];
-				t2[i] <= ((counter_2-1) == '0) ? b2[i] : z2[i];
+				d2[i] <= a1[counter_2];
+				g2[i] <= w2[counter_2*15+i];
+				t2[i] <= (counter_2 == '0) ? b2[i] : z2[i];
 			end
 		end
 		Layer3: begin
-			if (counter_3 == 15) Next_state = Output;
+			if (counter_3 == 14) Next_state = Output;
 			for (int i=0; i<10; i=i+1) begin
-				d3[i] <= a2[counter_3-1];
-				g3[i] <= w3[i*32+31 -:32];
-				t3[i] <= ((counter_3-1) == '0) ? b3[i] : z3[i];
+				d3[i] <= a2[counter_3];
+				g3[i] <= w3[counter_3*10+1];
+				t3[i] <= (counter_3 == '0) ? b3[i] : z3[i];
 			end
 		end
 		Output: begin Next_state = Ready; resp = 1'b1; end
