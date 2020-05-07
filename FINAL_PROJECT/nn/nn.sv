@@ -6,21 +6,21 @@ module nn (
 	input Rst,
 	input Start,
     input logic [28*28-1:0] data,
-//    input logic [15:0] rdata,
-	output wire [15:0] rdata,
+    input logic [15:0] rdata,
+//	output wire [15:0] rdata,
     output logic [4:0] prediction, 
     output logic [19:0] address,
 	 output logic resp,
 	 output logic [31:0] w_
 );
 /////////////// for debug //////////////////
-logic CE, UB, LB,OE, WE;
-assign CE = 1'b0;
-assign LB = 1'b0;
-assign OE = 1'b0;
-assign WE = 1'b1;
-assign UB = 1'b0;
-test_memory my_test_memory(.Reset(Rst), .I_O(rdata), .A(address), .*);
+//logic CE, UB, LB,OE, WE;
+//assign CE = 1'b0;
+//assign LB = 1'b0;
+//assign OE = 1'b0;
+//assign WE = 1'b1;
+//assign UB = 1'b0;
+//test_memory my_test_memory(.Reset(Rst), .I_O(rdata), .A(address), .*);
 
 
 ///////////////////////////////
@@ -190,7 +190,7 @@ always_comb begin
 		Layer1_load_3 : Next_state = Layer1_load_4;
 		Layer1_load_4 : Next_state = Layer1_multiply;
 		Layer1_multiply : Next_state = Layer1_add;
-		Layer1_add : if (row_counter == 784) Next_state = Layer1_activation;
+		Layer1_add : if (row_counter == 783) Next_state = Layer1_activation;
 					 else Next_state = Layer1_load_1;
 		Layer1_activation : if (col_counter == 29) Next_state = Layer2_prep;
 							else Next_state = Layer1_load_1;
@@ -212,8 +212,8 @@ always_comb begin
 		Layer3_multiply : Next_state = Layer3_add;
 		Layer3_add : if (row_counter == 14) Next_state = Layer3_activation;
 					 else Next_state = Layer3_load_1;
-		Layer3_activation : if (col_counter == 9) Next_state = Layer3_prep;
-							else Next_state = Output;
+		Layer3_activation : if (col_counter == 9) Next_state = Output;
+							else Next_state = Layer3_load_1;
 		Output : ;
 	endcase
 end
@@ -233,18 +233,18 @@ always_comb begin
 		Layer1_activation : ;
 		Layer2_prep : ;
 		Layer2_load_1 : ;
-		Layer2_load_2 : address = 20'd47040 + (row_counter * 30 + col_counter) * 2;
-		Layer2_load_3 : address = 20'd47040 + (row_counter * 30 + col_counter) * 2;
-		Layer2_load_4 : address = 20'd47040 + (row_counter * 30 + col_counter) * 2 + 1;
-		Layer2_multiply : address = 20'd47040 + (row_counter * 30 + col_counter) * 2 + 1;
+		Layer2_load_2 : address = 20'd47040 + (row_counter * 15 + col_counter) * 2;
+		Layer2_load_3 : address = 20'd47040 + (row_counter * 15 + col_counter) * 2;
+		Layer2_load_4 : address = 20'd47040 + (row_counter * 15 + col_counter) * 2 + 1;
+		Layer2_multiply : address = 20'd47040 + (row_counter * 15 + col_counter) * 2 + 1;
 		Layer2_add : ;
 		Layer2_activation : ;
 		Layer3_prep : ;
 		Layer3_load_1 : ;
-		Layer3_load_2 : address = 20'd47940 + (row_counter * 30 + col_counter) * 2;
-		Layer3_load_3 : address = 20'd47940 + (row_counter * 30 + col_counter) * 2;
-		Layer3_load_4 : address = 20'd47940 + (row_counter * 30 + col_counter) * 2 + 1;
-		Layer3_multiply : address = 20'd47940 + (row_counter * 30 + col_counter) * 2 + 1;
+		Layer3_load_2 : address = 20'd47940 + (row_counter * 10 + col_counter) * 2;
+		Layer3_load_3 : address = 20'd47940 + (row_counter * 10 + col_counter) * 2;
+		Layer3_load_4 : address = 20'd47940 + (row_counter * 10 + col_counter) * 2 + 1;
+		Layer3_multiply : address = 20'd47940 + (row_counter * 10 + col_counter) * 2 + 1;
 		Layer3_add : ;
 		Layer3_activation : ;
 		Output : resp = 1'b1;

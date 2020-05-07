@@ -35,4 +35,12 @@ always_ff @(posedge iClk) begin
 		end
 	end
 end
+
+//always_comb begin
+//	isstore = 1'b0;
+//	if (isdisplay && X_coord >= X_START && X_coord <= X_END 
+//					&& Y_coord >= Y_START && Y_coord <= Y_END) begin
+//		isstore = 1'b1;
+//	end
+//end
 endmodule

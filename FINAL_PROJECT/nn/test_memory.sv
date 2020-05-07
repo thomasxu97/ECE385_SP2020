@@ -30,7 +30,7 @@ module test_memory ( input          Clk,
                                     WE     // Write enable
 );
 
-    parameter size          = 47040; // expand memory as needed (currently it is 256 words)
+    parameter size          = 48240; // expand memory as needed (currently it is 256 words)
     parameter init_external = 0;   // If init external is 0, it means you want to parse the memory_contents.sv file, otherwise you are providing a parsed .dat file
 
     integer ptr;
@@ -39,8 +39,8 @@ module test_memory ( input          Clk,
     logic [15:0] mem_array [0:size-1];
     logic [15:0] mem_out;
     logic [15:0] I_O_wire;
-    logic [7:0] actual_address;
-    assign actual_address = A[7:0];
+    logic [19:0] actual_address;
+    assign actual_address = A[19:0];
     // A[7:0] is because size = 256, so we only use the lower 8 bits of the address.
     // It should be changed accordingly if size is modified.
 

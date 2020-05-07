@@ -1,6 +1,6 @@
 module memory_parser;
 
-parameter size = 47040;
+parameter size = 48240;
 
 task memory_contents(output logic[15:0] mem_array[0:size-1]);
 
@@ -48246,4 +48246,4 @@ mem_array[48238]=16'h8023;
 mem_array[48239]=16'hbf2d;
 
 endtask
-endmodule
+endmodule 
