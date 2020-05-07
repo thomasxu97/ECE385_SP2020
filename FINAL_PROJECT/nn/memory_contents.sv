@@ -11,8 +11,6 @@
 //      UIUC ECE Department                                              --
 //-------------------------------------------------------------------------
 // Requires SLC3_2.sv
-import SLC3_2::*;
-
 module memory_parser;
 
 parameter size = 47040;

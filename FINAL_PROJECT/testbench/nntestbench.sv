@@ -40,6 +40,7 @@ end
 
 initial begin: CLOCK_INITIALIZATION
     Clk = 0;
+	 img_data = 784'd0;
 end 
 
 // Testing begins here
@@ -47,31 +48,14 @@ end
 // Everything happens sequentially inside an initial block
 // as in a software program
 initial begin: TEST
-Reset = 0;		// Toggle Rest
+Reset = 1;		// Toggle Rest
 Run = 1;
-Continue = 1;
-S = 11;
 
-#4 Reset = 1;
+#4 Reset = 0;
 
 #4 Run = 0;
 #4 Run = 1;
 
-/* test 1
-#4 S = 16'b1011;
-# 50 Continue = 0;
-# 4 Continue = 1;
-*/
-
-
-#100 S = 4;
-#4 Continue = 0;
-#4 Continue = 1;
-
-for (int i=0; i< 10; i++) begin
-	#100 Continue = 0;
-	#4 Continue = 1;
-end
 
 /* test 4
 #100 S = 16'b1100;

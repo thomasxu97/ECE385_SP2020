@@ -6,14 +6,24 @@ module nn (
 	input Rst,
 	input Start,
     input logic [28*28-1:0] data,
-    input logic [15:0] rdata,
+//    input logic [15:0] rdata,
+	output wire [15:0] rdata,
     output logic [4:0] prediction, 
     output logic [19:0] address,
 	 output logic resp,
 	 output logic [31:0] w_
 );
+/////////////// for debug //////////////////
+logic CE, UB, LB,OE, WE;
+assign CE = 1'b0;
+assign LB = 1'b0;
+assign OE = 1'b0;
+assign WE = 1'b1;
+assign UB = 1'b0;
+test_memory my_test_memory(.Reset(Rst), .I_O(rdata), .A(address), .*);
 
 
+///////////////////////////////
 logic [31:0] a1 [29:0];
 logic [31:0] a2 [14:0];
 logic [31:0] z3 [9:0];
