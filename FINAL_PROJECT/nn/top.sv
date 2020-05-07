@@ -9,7 +9,7 @@ module nn (
     input logic [15:0] rdata,
     output logic [4:0] prediction, 
     output resp,
-    output logic [19:0] address,
+    output logic [19:0] address
 );
 
 logic [31:0] d1 [30-1:0];

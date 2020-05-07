@@ -256,7 +256,14 @@ nn u_nn(
 	 .Start(scan_flag),
     .data(data_from_buffer),
     .prediction(pred),
-	 .resp(nn_flag)
+	 .resp(nn_flag),
+	 .rdata(SRAM_DQ),
+	 .address(SRAM_ADDR),
+	 .CE(SRAM_CE_N),
+	 .LB(SRAM_LB_N),
+	 .OE(SRAM_OE_N),
+	 .WE(SRAM_WE_N),
+	 .UB(SRAM_UB_N)
 );
 
 
