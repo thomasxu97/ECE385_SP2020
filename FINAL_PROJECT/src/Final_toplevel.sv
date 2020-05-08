@@ -197,6 +197,8 @@ assign SRAM_OE_N = 1'b0;
 assign SRAM_WE_N = 1'b1;
 assign SRAM_UB_N = 1'b0;
 assign pred = (~nn_flag) ? 5'd16: nn_pred;
+
+
 DE2_115_CAMERA Camera(
     .*,
     .x_coord(x_pos),
@@ -205,13 +207,13 @@ DE2_115_CAMERA Camera(
 	 .predict(pred),
 	 .start_reco(start_flag)
 );
-//
-//SEG7_LUT_8 			u5	(	.oSEG0(HEX0),.oSEG1(HEX1),
-//							.oSEG2(HEX2),.oSEG3(HEX3),
-//							.oSEG4(HEX4),.oSEG5(HEX5),
-//							.oSEG6(HEX6),.oSEG7(HEX7),
-//							.iDIG({SRAM_ADDR[14:0], SRAM_DQ[15:0], op_CLK})
-//						);
+
+SEG7_LUT_8 			u5	(	.oSEG0(HEX0),.oSEG1(HEX1),
+							.oSEG2(HEX2),.oSEG3(HEX3),
+							.oSEG4(HEX4),.oSEG5(HEX5),
+							.oSEG6(HEX6),.oSEG7(HEX7),
+							.iDIG({SRAM_ADDR[14:0], SRAM_DQ[15:0], op_CLK})
+						);
 
 Snipper u_snipper(
 	 .iClk(op_CLK), 
